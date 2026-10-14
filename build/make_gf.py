@@ -37,7 +37,7 @@ p1 = allowbreak(p1)
 
 # ---- Paper II
 p2 = (ROOT / "paper2" / "paper2_vG.tex").read_text()
-p2 = apply(p2, "Version G --- October 2026", "Version Gf --- 14 October 2026", name="p2 version")
+p2 = apply(p2, "Version G --- October 2026", "Version Gf --- 15 October 2026", name="p2 version")
 p2 = apply(p2, "\\newpage\\setcounter{page}{1}", "\\bigskip", name="p2 front matter break")
 p2 = allowbreak(p2)
 (OUT / "paper2_evolution_as_active_geometry_vGf.tex").write_text(p2)

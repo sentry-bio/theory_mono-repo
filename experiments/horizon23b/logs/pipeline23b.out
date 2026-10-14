@@ -1,0 +1,24 @@
+2026-10-14 18:18:08 UTC pipeline23b start; run23b.py 31d3e6204d1ad181
+2026-10-14 18:18:08 UTC REGISTERED (3 quartets) read start (work/quartets.json )
+2026-10-14 18:18:08 UTC REGISTERED (3 quartets) read exit 0 ; done 3 0s
+2026-10-14 18:18:08 UTC REGISTERED (3 quartets) predict start
+2026-10-14 18:18:09 UTC REGISTERED (3 quartets) predict exit 0 ; done 0s
+2026-10-14 18:18:09 UTC REGISTERED (3 quartets) score start
+2026-10-14 18:18:09 UTC REGISTERED (3 quartets) score exit 0 ; 
+2026-10-14 18:18:09 UTC SMOKE on S2 (disclosed; kept, not interpreted) read start (work/quartets_S2.json --smoke)
+2026-10-14 18:18:10 UTC SMOKE on S2 (disclosed; kept, not interpreted) read exit 0 ; done 100 1s
+2026-10-14 18:18:10 UTC SMOKE on S2 (disclosed; kept, not interpreted) predict start
+2026-10-14 18:18:11 UTC SMOKE on S2 (disclosed; kept, not interpreted) predict exit 0 ; done 1s
+2026-10-14 18:18:11 UTC SECONDARY S1 (one-sided truth set, registered balance) read start (work/quartets_S1.json )
+2026-10-14 18:18:13 UTC SECONDARY S1 (one-sided truth set, registered balance) read exit 0 ; done 43 1s
+2026-10-14 18:18:13 UTC SECONDARY S1 (one-sided truth set, registered balance) predict start
+2026-10-14 18:18:19 UTC SECONDARY S1 (one-sided truth set, registered balance) predict exit 0 ; done 6s
+2026-10-14 18:18:19 UTC SECONDARY S1 (one-sided truth set, registered balance) score start
+2026-10-14 18:18:19 UTC SECONDARY S1 (one-sided truth set, registered balance) score exit 0 ; 
+2026-10-14 18:18:19 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) read start (work/quartets_S2.json )
+2026-10-14 18:18:26 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) read exit 0 ; done 256 7s
+2026-10-14 18:18:26 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) predict start
+2026-10-14 18:19:04 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) predict exit 0 ; done 37s
+2026-10-14 18:19:04 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) score start
+2026-10-14 18:19:04 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) score exit 0 ; 
+2026-10-14 18:19:04 UTC pipeline23b done

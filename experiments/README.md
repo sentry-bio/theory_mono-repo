@@ -17,7 +17,7 @@ ledger names them.
 | `horizon-A/` | PREREG15b four-letter tightness (scoring script and results only) | on the line for four letters; registered verdict not reached on one control cell | synthetic |
 | `horizon22/` | PREREG22 two-reader rate-spectrum horizon | LAW CONFIRMED IN SIMULATION, V1–V5 | synthetic |
 | `horizon23/` | PREREG23 rate-class test on GTDB r232 bac120 | NOT SUPPORTED AS REGISTERED (every cell unresolved; readings reported) | GTDB r232 bac120 MSA and tree (MD5-verified, deleted after hashing); the derived subsample alignment `work/sub.faa` excluded (CC BY-SA 4.0, 7.5 MB); IQ-TREE binary excluded |
-| `horizon23b/` | PREREG23b the rate-tail law on vertebrate mitogenomes | running on 14 October 2026; results in a later commit | NCBI RefSeq release 237 mitochondrion (public domain), fetched by `fetch_mito.py`; alignment and tree built in scratch |
+| `horizon23b/` | PREREG23b the rate-tail law on vertebrate mitogenomes (four dated amendments) | NOT SUPPORTED AS REGISTERED (registered truth-set clause unsatisfiable by construction; secondary analyses unresolved); readings: parameter-free prediction within 0.025 at L ≤ 512, rate-weighted reader above unweighted by the predicted growing margin, a ~30% floor at full length | NCBI RefSeq release 237 mitochondrion (public domain), fetched by `fetch_mito.py`; alignment and tree built in scratch |
 | `openai-math-lean/` | Lean comparator statements for the openai/math families that sit on this frame's ground (148, 229, 099) | reference material, not a registration | — |
 
 Compute policy, recorded in each `run.log`: heavy jobs run on biosphereatlas in a single scratch directory under

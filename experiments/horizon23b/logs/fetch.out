@@ -1,0 +1,6 @@
+downloaded 403234487 bytes md5 4491799651740f49c8f6a011cf9a96e5 (104s)
+  parsed 5000 records, kept 2023 (116s)
+  parsed 15000 records, kept 6811 (142s)
+records 18235, vertebrate 7858, complete 7770, with all 13 genes 7749
+after length filter 7743
+{"url": "https://ftp.ncbi.nlm.nih.gov/refseq/release/mitochondrion/mitochondrion.1.genomic.gbff.gz", "md5": "4491799651740f49c8f6a011cf9a96e5", "bytes": 403234487, "records": 18235, "vertebrate": 7858, "complete": 7770, "with_13_genes": 7749, "after_length_filter": 7743, "chosen": 1500, "seed": 23, "cap": 300, "class_counts": {"Amphibia": 228, "Aves": 243, "Chondrichthyes": 196, "Crocodylia": 14, "Dipnomorpha": 4, "Hyperoartia": 15, "Lepidosauria": 240, "Mammalia": 232, "Myxini": 1, "Testudines": 98, "other": 229}, "median_gene_len": {"ND1": 975, "ND2": 1045, "COX1": 1551, "COX2": 691, "ATP8": 168, "ATP6": 684, "COX3": 784, "ND3": 349, "ND4L": 297, "ND4": 1381, "ND5": 1827, "ND6": 522, "CYTB": 1141}, "elapsed_s": 150}

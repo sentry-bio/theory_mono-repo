@@ -1,21 +1,90 @@
-2026-10-14 07:40:28 CEST
-PREREG23b frozen:
-03dee339a27ec91b99912ee2bdec9225e4c271e723fec03148ea926d1fa3e269  PREREG23b_mitogenome_rate_tail.md
---- fetch launched on biosphereatlas ---
-2026-10-14 07:44:42 CEST
+2026-10-14 05:42:12 UTC
 b83e5db96eefb080d97c2e34c6217fdb89dfc42aa3459789328ec8c4e832670b  fetch_mito.py
-2b73d4c33e6c61e5b10c0b6ba254f8808563633ec87b1142319f82c88a6e4f97  setup_remote.sh
---- amendment (truth-set rule without ranks) re-freeze ---
-2026-10-14 07:46:12 CEST
-03a102b5d61e2580bd004f161f3970e6385d5f05f138c6b7cf4620152be55cf5  PREREG23b_mitogenome_rate_tail.md
---- scripts frozen (align_tree, concat, run23b) ---
-2026-10-14 07:49:34 CEST
+2026-10-14 05:45:00 UTC
 782d802a3ce12fd0099c62033b90141c724042282500792355519b44b90e3daa  align_tree.sh
 6c43c41c0aeaa619aeb85c2a8c856c0601d655594c95d71e3a3e864675ad5728  concat.py
+641c040c3deae79e6efd31a0ac030c3bb7bfaef6153038f20bbe01b7f59e293a  prep23.py
+fetch_summary:
+{
+ "url": "https://ftp.ncbi.nlm.nih.gov/refseq/release/mitochondrion/mitochondrion.1.genomic.gbff.gz",
+ "md5": "4491799651740f49c8f6a011cf9a96e5",
+ "bytes": 403234487,
+ "records": 18235,
+ "vertebrate": 7858,
+ "complete": 7770,
+ "with_13_genes": 7749,
+ "after_length_filter": 7743,
+ "chosen": 1500,
+ "
+2026-10-14 05:45:00 UTC align_tree start
+2026-10-14 05:45:05 UTC aligned ND1: 1500 seqs
+2026-10-14 05:45:12 UTC aligned ND2: 1500 seqs
+2026-10-14 05:45:22 UTC aligned COX1: 1500 seqs
+2026-10-14 05:45:24 UTC aligned COX2: 1500 seqs
+2026-10-14 05:45:25 UTC aligned ATP8: 1500 seqs
+2026-10-14 05:45:29 UTC aligned ATP6: 1500 seqs
+2026-10-14 05:45:33 UTC aligned COX3: 1500 seqs
+2026-10-14 05:45:35 UTC aligned ND3: 1500 seqs
+2026-10-14 05:45:36 UTC aligned ND4L: 1500 seqs
+2026-10-14 05:45:46 UTC aligned ND4: 1500 seqs
+2026-10-14 05:46:03 UTC aligned ND5: 1500 seqs
+2026-10-14 05:46:06 UTC aligned ND6: 1500 seqs
+2026-10-14 05:46:12 UTC aligned CYTB: 1500 seqs
+{"taxa": 1500, "raw_columns": 14527, "kept_columns": 11422, "gene_bounds": {"ND1": [0, 1119], "ND2": [1119, 2387], "COX1": [2387, 4154], "COX2": [4154, 5000], "ATP8": [5000, 5464], "ATP6": [5464, 6341], "COX3": [6341, 7183], "ND3": [7183, 7615], "ND4L": [7615, 7954], "ND4": [7954, 9589], "ND5": [9589, 12161], "ND6": [12161, 13224], "CYTB": [13224, 14527]}}
+2026-10-14 05:46:15 UTC iqtree start
+2026-10-14 05:49:37 UTC
 31d3e6204d1ad181fce021736b02f7bfa0c346cd8a249eb822494ad483e282a9  run23b.py
---- amendment (capped search, -n 3) re-freeze ---
-2026-10-14 11:42:53 CEST
-87ef157452b39b62a46ee90536f595e6cd4e7b870ceaa9c131b6a0297f2cb61f  PREREG23b_mitogenome_rate_tail.md
+2026-10-14 09:43:00 UTC
+capped-search amendment: stopping align_tree.sh and iqtree2, resuming with -n 3
 c2f979477a3247ef5a6e6d71f1ccae195412cb2b67ae268c1d5d509a266696f1  finish_tree.sh
-2026-10-14 09:47:52 UTC (11:47:52 CEST) amendment NOT applied: the capped search (-n 3) is withdrawn before any reader result; the checkpoint holds no search state (22 lines, 06:21 UTC) and the 85 min/iteration estimate was the NNI pass on the 20 best initial trees; the registered default search continues as pid 1830572 (iteration 10 at 3h58m, better trees at 1, 2, 8); finish_tree2.sh waits for it, then runs the -wsr step unchanged
+2026-10-14 09:43:15 UTC
+capped-search amendment: stopping align_tree.sh and iqtree2, resuming with -n 3
+c2f979477a3247ef5a6e6d71f1ccae195412cb2b67ae268c1d5d509a266696f1  finish_tree.sh
+2026-10-14 09:43:40 UTC
+capped-search amendment: stopping align_tree.sh and iqtree2, resuming with -n 3
+c2f979477a3247ef5a6e6d71f1ccae195412cb2b67ae268c1d5d509a266696f1  finish_tree.sh
 fa82df451c79aef72a19d1c3f53e2bdf531c4d31203ca92774baeeb452d81073  finish_tree2.sh
+2026-10-14 09:47:52 UTC amendment NOT applied: the capped search (-n 3) is withdrawn before any reader result; the checkpoint holds no search state (22 lines, 06:21 UTC) and the 85 min/iteration estimate was the NNI pass on the 20 best initial trees; the registered default search continues as pid 1830572 (iteration 10 at 3h58m, better trees at 1, 2, 8); finish_tree2.sh waits for it, then runs the -wsr step unchanged
+2026-10-14 09:47:52 UTC finish_tree2 start: waiting for the default search (pid 1830572) to finish
+2026-10-14 17:35:53 UTC search process gone; treefile 2026-10-14 17:34:35; 1 completion line(s)
+2026-10-14 18:14:26 UTC site rates done: 11431 lines
+Rate parameter R:
+State frequencies: (empirical counts from alignment)
+Site proportion and rates:  (0.2372,0.005177) (0.09056,0.04995) (0.08027,0.1523) (0.0748,0.3301) (0.07846,0.6049) (0.09044,0.9539) (0.0888,1.414) (0.1104,2.013) (0.108,2.832) (0.04118,4.132)
+Log-likelihood of the tree: -6237215.1986 (s.e. 50955.4812)
+Total tree length (sum of branch lengths): 245.3664
+2026-10-14 18:14:26 UTC finish_tree2 done
+2026-10-14 18:15:00 UTC quartets step start
+2026-10-14 18:15:00 UTC quartets step exit 0
+2026-10-14 18:16:43 UTC diagnostic diag23b_quartets.py (quartet draw variants; no reader output) ba8b2701fba228af
+2026-10-14 18:18:06 UTC AMENDMENT (iv), after the quartet summary (3 kept of 103) and before any reader result: the two-sided truth-set clause is unsatisfiable by the sampling construction (root always on the CD side); registered pipeline runs unchanged on work/quartets.json for the verdict of record; secondary analyses S1 (one-sided, factor 1.5, 4 targets) and S2 (one-sided, factor 2.0, 8 targets) reported as readings
+4a60160b6eef60f0f0466dcdfddf53b638f7f28bcdb925976151141e180ec4cd  quartets23b_amended.py
+4c75e60da3f27137c504d9542e26c1d27c9a45ed1d41c4c8cf79d229b3d1d5a2  pipeline23b.sh
+{"rule": "one-sided (amendment iv)", "factor": 1.5, "targets": 4, "edges_in_tau_band": 986, "candidates": 43, "rejected_by_taxonomy": 60, "kept": 43, "per_bin": {"4": 16, "5": 27}, "bins": [0.04999999
+{"rule": "one-sided (amendment iv)", "factor": 2.0, "targets": 8, "edges_in_tau_band": 986, "candidates": 256, "rejected_by_taxonomy": 282, "kept": 256, "per_bin": {"2": 1, "3": 9, "4": 143, "5": 103}
+2026-10-14 18:18:08 UTC pipeline23b start; run23b.py 31d3e6204d1ad181
+2026-10-14 18:18:08 UTC REGISTERED (3 quartets) read start (work/quartets.json )
+2026-10-14 18:18:08 UTC REGISTERED (3 quartets) read exit 0 ; done 3 0s
+2026-10-14 18:18:08 UTC REGISTERED (3 quartets) predict start
+2026-10-14 18:18:09 UTC REGISTERED (3 quartets) predict exit 0 ; done 0s
+2026-10-14 18:18:09 UTC REGISTERED (3 quartets) score start
+2026-10-14 18:18:09 UTC REGISTERED (3 quartets) score exit 0 ; 
+2026-10-14 18:18:09 UTC SMOKE on S2 (disclosed; kept, not interpreted) read start (work/quartets_S2.json --smoke)
+2026-10-14 18:18:10 UTC SMOKE on S2 (disclosed; kept, not interpreted) read exit 0 ; done 100 1s
+2026-10-14 18:18:10 UTC SMOKE on S2 (disclosed; kept, not interpreted) predict start
+2026-10-14 18:18:11 UTC SMOKE on S2 (disclosed; kept, not interpreted) predict exit 0 ; done 1s
+2026-10-14 18:18:11 UTC SECONDARY S1 (one-sided truth set, registered balance) read start (work/quartets_S1.json )
+2026-10-14 18:18:13 UTC SECONDARY S1 (one-sided truth set, registered balance) read exit 0 ; done 43 1s
+2026-10-14 18:18:13 UTC SECONDARY S1 (one-sided truth set, registered balance) predict start
+2026-10-14 18:18:19 UTC SECONDARY S1 (one-sided truth set, registered balance) predict exit 0 ; done 6s
+2026-10-14 18:18:19 UTC SECONDARY S1 (one-sided truth set, registered balance) score start
+2026-10-14 18:18:19 UTC SECONDARY S1 (one-sided truth set, registered balance) score exit 0 ; 
+2026-10-14 18:18:19 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) read start (work/quartets_S2.json )
+2026-10-14 18:18:26 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) read exit 0 ; done 256 7s
+2026-10-14 18:18:26 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) predict start
+2026-10-14 18:19:04 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) predict exit 0 ; done 37s
+2026-10-14 18:19:04 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) score start
+2026-10-14 18:19:04 UTC SECONDARY S2 (one-sided, factor 2.0, eight targets) score exit 0 ; 
+2026-10-14 18:19:04 UTC pipeline23b done
+2026-10-14 18:25:30 UTC audit: 22 result/work/log files match the local copies by SHA-256; /fast/scratch_h23b deleted (nothing else on biosphereatlas touched; /fast/scratch_lean2 kept for the Lean review)
+2026-10-14 22:56:27 UTC post-hoc reading floor23b.py on the S2 files (not registered): full-length shortfall U 0.194 W 0.139 U_RY 0.125 W_RY 0.090; unrecovered quartets have median tau 0.035 vs 0.069; shortfall by tau tertile U 0.31/0.16/0.12; 14 of 256 fail under all four readers; written to RESULTS_PREREG23b.md readings 6-7 and Paper II section 5.3

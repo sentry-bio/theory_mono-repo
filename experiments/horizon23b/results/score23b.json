@@ -1,0 +1,180 @@
+{
+ "observed_tstar": {
+  "U|64": null,
+  "U|128": null,
+  "U|256": null,
+  "U|512": null,
+  "U|1024": null,
+  "U|2048": null,
+  "U|4096": null,
+  "U|8192": null,
+  "W|64": null,
+  "W|128": null,
+  "W|256": null,
+  "W|512": null,
+  "W|1024": null,
+  "W|2048": null,
+  "W|4096": null,
+  "W|8192": null,
+  "S|64": null,
+  "S|128": null,
+  "S|256": null,
+  "S|512": null,
+  "S|1024": null,
+  "S|2048": null,
+  "S|4096": null,
+  "S|8192": null,
+  "U_RY|64": null,
+  "U_RY|128": null,
+  "U_RY|256": null,
+  "U_RY|512": null,
+  "U_RY|1024": null,
+  "U_RY|2048": null,
+  "U_RY|4096": null,
+  "U_RY|8192": null,
+  "W_RY|64": null,
+  "W_RY|128": null,
+  "W_RY|256": null,
+  "W_RY|512": null,
+  "W_RY|1024": null,
+  "W_RY|2048": null,
+  "W_RY|4096": null,
+  "W_RY|8192": null
+ },
+ "predicted_tstar": {
+  "U|64": null,
+  "U|128": null,
+  "U|256": null,
+  "U|512": null,
+  "U|1024": null,
+  "U|2048": null,
+  "U|4096": null,
+  "U|8192": null,
+  "W|64": null,
+  "W|128": null,
+  "W|256": null,
+  "W|512": null,
+  "W|1024": null,
+  "W|2048": null,
+  "W|4096": null,
+  "W|8192": null,
+  "U_RY|64": null,
+  "U_RY|128": null,
+  "U_RY|256": null,
+  "U_RY|512": null,
+  "U_RY|1024": null,
+  "U_RY|2048": null,
+  "U_RY|4096": null,
+  "U_RY|8192": null,
+  "W_RY|64": null,
+  "W_RY|128": null,
+  "W_RY|256": null,
+  "W_RY|512": null,
+  "W_RY|1024": null,
+  "W_RY|2048": null,
+  "W_RY|4096": null,
+  "W_RY|8192": null
+ },
+ "verdicts": {
+  "V1_form_unweighted": {
+   "pass": false,
+   "rel_err": {
+    "128": null,
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null,
+    "8192": null
+   }
+  },
+  "V2_form_weighted": {
+   "pass": false,
+   "rel_err": {
+    "128": null,
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null,
+    "8192": null
+   }
+  },
+  "V3_ordering": {
+   "pass": false,
+   "observed_ratio": {
+    "128": null,
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null,
+    "8192": null
+   },
+   "predicted_ratio": {}
+  },
+  "V4_exponent": {
+   "pass": false,
+   "slopes": {
+    "U": {
+     "obs": null,
+     "pred": null,
+     "L_obs": [],
+     "L_pred": []
+    },
+    "W": {
+     "obs": null,
+     "pred": null,
+     "L_obs": [],
+     "L_pred": []
+    }
+   }
+  },
+  "V5_shuffle": {
+   "pass": false,
+   "rel_diff": {
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null,
+    "8192": null
+   }
+  },
+  "V6_RY_arm": {
+   "pass": false,
+   "rel_err_U": {
+    "128": null,
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null,
+    "8192": null
+   },
+   "rel_err_W": {
+    "128": null,
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null,
+    "8192": null
+   },
+   "decisive": false
+  }
+ },
+ "readings": {
+  "gamma_shape_of_R_spectrum": 0.42946862023188226,
+  "asymptote_unweighted": 0.34978032600596165,
+  "asymptote_weighted": 0.41161264305795164,
+  "regime_depth_3a_over_8": 0.16105073258695585,
+  "full_length_recovery_U_by_bin": {
+   "4": 0.5,
+   "5": 0.0
+  },
+  "n_quartets": 3,
+  "Lmax": 11422
+ },
+ "overall": "NOT SUPPORTED AS REGISTERED"
+}

@@ -1,0 +1,8 @@
+registered: two-sided, factor 1.5, 4 targets {"edges": 986, "attempts": 3944, "balanced": 103, "kept": 3, "per_bin": {"4": 2, "5": 1}}
+one-sided, factor 1.5, 4 targets {"edges": 986, "attempts": 3944, "balanced": 103, "kept": 43, "per_bin": {"4": 16, "5": 27}}
+one-sided, factor 2.0, 4 targets {"edges": 986, "attempts": 3944, "balanced": 229, "kept": 104, "per_bin": {"4": 52, "5": 52}}
+one-sided, factor 1.5, 8 targets {"edges": 986, "attempts": 7888, "balanced": 249, "kept": 112, "per_bin": {"3": 2, "4": 60, "5": 50}}
+one-sided, factor 2.0, 8 targets {"edges": 986, "attempts": 7888, "balanced": 538, "kept": 256, "per_bin": {"2": 1, "3": 9, "4": 143, "5": 103}}
+no taxonomy, factor 1.5, 4 targets {"edges": 986, "attempts": 3944, "balanced": 103, "kept": 103, "per_bin": {"4": 39, "5": 64}}
+tip depths from root: min 0.138 median 1.034 max 2.012
+bins [0.049999999999999996, 0.08341399288659158, 0.13915788418568703, 0.23215429523156061, 0.38729833462074165, 0.646122010580866, 1.0779123358892524, 1.7982594383647084, 3.0]

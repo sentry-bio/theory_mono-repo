@@ -1,0 +1,16 @@
+2026-10-14 05:45:00 UTC align_tree start
+2026-10-14 05:45:05 UTC aligned ND1: 1500 seqs
+2026-10-14 05:45:12 UTC aligned ND2: 1500 seqs
+2026-10-14 05:45:22 UTC aligned COX1: 1500 seqs
+2026-10-14 05:45:24 UTC aligned COX2: 1500 seqs
+2026-10-14 05:45:25 UTC aligned ATP8: 1500 seqs
+2026-10-14 05:45:29 UTC aligned ATP6: 1500 seqs
+2026-10-14 05:45:33 UTC aligned COX3: 1500 seqs
+2026-10-14 05:45:35 UTC aligned ND3: 1500 seqs
+2026-10-14 05:45:36 UTC aligned ND4L: 1500 seqs
+2026-10-14 05:45:46 UTC aligned ND4: 1500 seqs
+2026-10-14 05:46:03 UTC aligned ND5: 1500 seqs
+2026-10-14 05:46:06 UTC aligned ND6: 1500 seqs
+2026-10-14 05:46:12 UTC aligned CYTB: 1500 seqs
+{"taxa": 1500, "raw_columns": 14527, "kept_columns": 11422, "gene_bounds": {"ND1": [0, 1119], "ND2": [1119, 2387], "COX1": [2387, 4154], "COX2": [4154, 5000], "ATP8": [5000, 5464], "ATP6": [5464, 6341], "COX3": [6341, 7183], "ND3": [7183, 7615], "ND4L": [7615, 7954], "ND4": [7954, 9589], "ND5": [9589, 12161], "ND6": [12161, 13224], "CYTB": [13224, 14527]}}
+2026-10-14 05:46:15 UTC iqtree start

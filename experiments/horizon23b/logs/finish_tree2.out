@@ -1,0 +1,9 @@
+2026-10-14 09:47:52 UTC finish_tree2 start: waiting for the default search (pid 1830572) to finish
+2026-10-14 17:35:53 UTC search process gone; treefile 2026-10-14 17:34:35; 1 completion line(s)
+2026-10-14 18:14:26 UTC site rates done: 11431 lines
+Rate parameter R:
+State frequencies: (empirical counts from alignment)
+Site proportion and rates:  (0.2372,0.005177) (0.09056,0.04995) (0.08027,0.1523) (0.0748,0.3301) (0.07846,0.6049) (0.09044,0.9539) (0.0888,1.414) (0.1104,2.013) (0.108,2.832) (0.04118,4.132)
+Log-likelihood of the tree: -6237215.1986 (s.e. 50955.4812)
+Total tree length (sum of branch lengths): 245.3664
+2026-10-14 18:14:26 UTC finish_tree2 done

@@ -26,7 +26,7 @@ that measured it, and the observation that would falsify it.
 | Document | What it is | Evidentiary standard | Source | Compiled |
 |---|---|---|---|---|
 | **Paper I**, *The Addressability Limit* | What a medium can hold: the packing converse, the block identity, the admissibility ladder (block, persistent, causal, relational), the balloon separation, the coarse packing converse, bounded geometry and scale invariance, the hyperbolic equality, rigidity of exact saturation, the distance reader's window | Unconditional theorems; Lean certificate per theorem | `paper1/paper1_vG.tex` (pre-pass source), `paper1/paper1_vGh.tex` (structural pass, candidate release text) | `build/Gf/paper1_addressability_limit_vGf.pdf` (17 pp), `build/Gh/paper1_addressability_limit_vGh.pdf` (14 pp) |
-| **Paper II**, *Evolution as Active Geometry: Identity Is Cheap, Ancestry Is Dear* | What a lineage keeps: the window, the audit in five factors, the rate-tail law, the genealogy horizon, the registered record | Registered measurements, PREREG00–24; imports five objects from Paper I and re-derives none | `paper2/paper2_vG.tex`, `paper2/RATE_TAIL_DERIVATION.md` | `build/Gf/paper2_evolution_as_active_geometry_vGf.pdf` (17 pp) |
+| **Paper II**, *Evolution as Active Geometry: Descent Under the Addressability Limit* | What a lineage keeps: the window, the audit in five factors, the rate-tail law, the genealogy horizon, the registered record | Registered measurements, PREREG00–25; imports five objects from Paper I and re-derives none | `paper2/paper2_vG.tex`, `paper2/RATE_TAIL_DERIVATION.md` | `build/Gf/paper2_evolution_as_active_geometry_vGf.pdf` (17 pp) |
 | **The note**, *The Structured Addressability Limit* | The mathematical brief: definitions, the three stacked facts, the persistent rung, the separations, a status table of what is and is not established, the Lean inventory by module | Theorems with Lean status per row | `paper1/structured-addressability-note_vG.tex` | `build/Gf/structured-addressability-note_vGf.pdf` (7 pp) |
 | **BRF2026 datum specification sheet**, draft 0.1 | One row per component of the reference frame (base map, containment, backbone, witness, sextant, gate, novelty, chimera, audit): band claimed, licensing theorem or Lean declaration, registration and number, falsifier; the open items; the realisation rule | Inherits the standards above; re-issued with every realisation | `brf2026/BRF2026_spec_sheet.tex` | `brf2026/BRF2026_spec_sheet.pdf` (2 pp) |
 
@@ -45,7 +45,7 @@ build/            make_gf.py (typographic pass), make_gh.py (structural pass), n
 brf2026/          The datum specification sheet
 lean-modules/     Lean 4 modules added to the kernel sentry-bio/addressability-limit (ActiveGeometry/), challenge files
                   and job JSONs (Challenges/), axiom checks (axcheck/), INTEGRATION.md and its 14 Oct addendum
-registrations/    The ledger: every registration PREREG00–24 with results, index in README.md
+registrations/    The ledger: every registration PREREG00–25 with results, index in README.md
 experiments/      One folder per experiment: registration, frozen scripts, run.log with clock times and hashes, results
 docs/             The closure plan, the package notes of 14 Oct, the status note of 9 Oct
 ```
@@ -93,10 +93,21 @@ and derived alignments are excluded; each experiment's `run.log` carries the has
 Atlas base map v1.0 (186,527 genomes, recipe fingerprint `3b92fc2b…`) is referenced, not stored. See
 `experiments/README.md`.
 
-## Status, 14 October 2026
+## Status, 15 October 2026
 
-- PREREG23b (the rate-tail law on vertebrate mitogenomes) is running; its registration and amendments are in
-  `experiments/horizon23b/`, results follow in a later commit.
+- PREREG23b (the rate-tail law on vertebrate mitogenomes) reported on the evening of 14 October: NOT SUPPORTED AS
+  REGISTERED (the registered truth-set rule's second clause was unsatisfiable by construction; recorded as a dated
+  amendment before any reader result); readings: the parameter-free finite-length prediction holds within 0.025 at
+  every tape length up to 512 for every reader; across the two real alignments the rate-weighted reader's gain is
+  absent where the spectrum is flat (α = 1.74) and present, of the predicted and growing size, where it has a slow
+  tail (a = 0.43), and absent under shuffled weights; the full-length shortfall below prediction is a function of
+  the reader (0.19 → 0.14 → 0.12 → 0.09 across the four readers) and sits on short internal edges, a bias that more
+  sequence does not average away (`experiments/horizon23b/RESULTS_PREREG23b.md`, readings 6–7 post hoc and dated;
+  ledger row 25). The depth exponents remain untested; the third design is Paper II §7.2 item (1).
+- Paper II (15 October): the PREREG23b readings folded into §5.3 with the shortfall table, §7.2 and Appendix C;
+  the three-lever pass run to the extent the paper needed it (abstract and version note cut, three paragraphs
+  compressed, ledger as a breakable table, bibliography coherence); 17 pages. The pre-pass source is kept in
+  `paper2/archive/`.
 - Paper I version Gh is the candidate release text pending one end-to-end read; Gf is the pre-pass text.
 - The spec sheet needs the realisation name, the partner institutions and the archaeal band label.
 - Open mathematically: the clock-ULF separation question, the best-reader window, the hyperbolic equality's

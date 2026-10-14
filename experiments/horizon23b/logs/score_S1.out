@@ -1,0 +1,8 @@
+V1_form_unweighted FAIL
+V2_form_weighted FAIL
+V3_ordering FAIL
+V4_exponent FAIL
+V5_shuffle FAIL
+V6_RY_arm FAIL
+NOT SUPPORTED AS REGISTERED
+{"gamma_shape_of_R_spectrum": 0.42946862023188226, "asymptote_unweighted": 0.34978032600596165, "asymptote_weighted": 0.41161264305795164, "regime_depth_3a_over_8": 0.16105073258695585, "full_length_recovery_U_by_bin": {"4": 0.625, "5": 0.8148148148148148}, "n_quartets": 43, "Lmax": 11422}

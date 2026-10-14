@@ -1,10 +1,30 @@
-# Manuscripts and the debut package — snapshot 2026-10-14 (worktree `theory-oct8`, uncommitted)
+# Manuscripts and the debut package — snapshot 2026-10-15, early (worktree `theory-oct8`, uncommitted)
+
+## 15 OCT (00:56 CEST) — PREREG23b folded in; Paper II's three-lever pass
+`paper2/paper2_vG.tex` (pre-pass copy archived as `paper2/archive/paper2_vG_2026-10-14_evening_pre-23b-fold.tex`);
+Gf recompiled: **17 pages** (from 18), one 4 pt overfull line in prose. The fold: §5.3's two real-data paragraphs
+rewritten as one block (the two tests bracket the regime; the three readings; a table of the full-length shortfall
+by reader, 0.19 → 0.14 → 0.12 → 0.09; the floor sits on short internal edges, median 0.035 vs 0.069 substitutions per
+site, and is a bias that more tape does not average away; why the depth estimator starved: the contrast is a function
+of depth and edge together, Paper I's window theorem); §7.2 item (1) is the third design (prediction as estimator,
+floor term, edge-to-depth ratio controlled, quartets below 0.2, one-sided rule, four-taxon ML on every unrecovered
+quartet); App. C row 25; the §1 layer-table row; the abstract's last clauses; the version note. The levers, to the
+extent Paper II needed them: lever 1, abstract 430 → 290 words and version note 330 → 190 (the geometry was already
+Paper II's); lever 2, nil (Paper II carries two Lean identifiers); lever 3, the §2 reading paragraph, Appendix B and
+the withdrawn two-bit comparison compressed, every retirement kept by name. Layout: the ledger is a breakable
+`longtable`, the bibliography `\footnotesize`. Bibliography coherence: five entries the prose named without citing
+(Kanehisa, Parks, Tatusov, Diop, Buneman) now cited inline; two with no role in Paper II (Gromov, Skenderi) removed.
+The post-hoc reading behind the floor paragraph is `horizon23b/floor23b.py` (dated in `run.log`, readings 6–7 of
+`RESULTS_PREREG23b.md`, not registered). Spec sheet sextant row and open item (3) updated; ledger row 25 updated.
+Title (01:05 CEST, the user's call): Paper II is now *Evolution as Active Geometry: Descent Under the Addressability
+Limit*; the phrase "identity is cheap, ancestry is dear" stays as the title of §3 (was "genealogy is expensive");
+Paper I's bibliography entry (vG, vGh), the spec sheet and the repo README carry the new title; all four PDFs recompiled.
 
 ## BRF2026 DATUM SPEC SHEET (draft 0.1, 14 Oct) — `brf2026/BRF2026_spec_sheet.tex` / `.pdf`, 2 pages
 The hinge between the datum and the papers: one row per component (base map, containment, backbone, witness,
 sextant, gate, novelty, chimera, audit) with the band claimed, the licensing theorem or Lean declaration, the
 registration and its number, and what would falsify the band; the four open items carried by this realisation
-(0.2 substitutions-per-site horizon unmeasured; archaea; PREREG23b pending; organelles/viruses outside); the
+(0.2 substitutions-per-site horizon unmeasured; archaea; PREREG23b's depth exponents; organelles/viruses outside); the
 realisation rule (no learned component in the foundation layer; no coordinate moved by a later realisation; every
 band carries its registration). To be re-issued with every realisation. Numbers taken from the base-map v1.0
 document and the ledger; the fingerprint is the v1.0 recipe's.
@@ -46,7 +66,7 @@ import counts, the firewall's theorem list and the manuscript note (Paper I §1,
 |---|---|---|---|
 | Paper I, *The Addressability Limit* | `paper1_addressability_limit_vGf.tex` | `paper1_addressability_limit_vGf.pdf` | 17 |
 | Paper I, version Gh (structural pass, candidate release text) | `paper1_addressability_limit_vGh.tex` | `paper1_addressability_limit_vGh.pdf` | 14 |
-| Paper II, *Evolution as Active Geometry* | `paper2_evolution_as_active_geometry_vGf.tex` | `paper2_evolution_as_active_geometry_vGf.pdf` | 17 |
+| Paper II, *Evolution as Active Geometry* | `paper2_evolution_as_active_geometry_vGf.tex` | `paper2_evolution_as_active_geometry_vGf.pdf` | 17 (15 Oct, after the 23b fold and the lever pass) |
 | The mathematical note, *The Structured Addressability Limit* | `structured-addressability-note_vGf.tex` | `structured-addressability-note_vGf.pdf` | 7 |
 
 Gf = the version-G text as of the evening of 14 October (coarse packing converse, scale-invariance theorem, the
@@ -115,6 +135,11 @@ PREREG00–24 with results. Today's three, all registered before data, amendment
   rises with L at every depth; ~25% floor; rate-weighted = shuffled control at α = 1.74); resolving design stated.
 - 24 the audit in mutual information (intMEMOIR, both splits): NOT AS REGISTERED (MI1, MI2, MI4 pass; MI3 closure
   fails: observed model-critic information negative on every generation).
+- 25 (evening) the rate-tail law on vertebrate mitogenomes (PREREG23b): NOT SUPPORTED AS REGISTERED (registered
+  truth-set clause unsatisfiable by construction; secondary analyses unresolved); readings: the parameter-free
+  finite-L prediction holds within 0.025 at L ≤ 512 for every reader, the rate-weighted reader's advantage is real and
+  growing, a ~30% floor of unrecoverable quartets blocks the depth exponents. Post-hoc reading of 15 Oct: the floor
+  is reader-dependent (shortfall 0.19 → 0.14 → 0.12 → 0.09 across U, W, U_RY, W_RY) and sits on short internal edges.
 Supporting derivation: `paper2/RATE_TAIL_DERIVATION.md`. Run logs with clock times and hashes: `horizon22/run.log`,
 `horizon23/run.log`, `closure/mi/run.log`.
 

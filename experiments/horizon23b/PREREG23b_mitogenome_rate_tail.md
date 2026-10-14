@@ -106,3 +106,19 @@ public-domain NCBI data and is not kept.
   resume with `-n 3` would have discarded four hours of search for no gain. The registered default search runs on
   unchanged (pid 1830572); `finish_tree2.sh` (hash in `run.log`) waits for it and then runs the `-wsr` site-rate step
   exactly as in `finish_tree.sh`. The design of step 2 is therefore as registered.
+- 2026-10-14 18:18:06 UTC (20:18:06 CEST), **amendment (iv)**, after the registered quartet draw was summarised
+  (986 edges in the τ band, 3,944 targets, 103 depth-balanced candidates, 3 kept) and before any reader result: the
+  truth-set rule's second clause, "C and D share a taxon containing neither A nor B", is unsatisfiable by the
+  sampling construction of step 3, which takes C from the sister subtree and D from the complement above the edge,
+  so that the taxa C and D share always contain A and B; the three quartets it kept are tree–taxonomy conflicts. The
+  first clause alone ("A and B share a taxon containing neither C nor D") certifies the split AB|CD and was the
+  intended rule. The diagnostic `diag23b_quartets.py` (hash in `run.log`; it reads only the tree and the taxonomy)
+  gives: registered rule 3 kept; one-sided rule 43 kept under the registered balance (factor 1.5, four targets);
+  104 with factor 2.0; 112 with eight targets; 256 with factor 2.0 and eight targets; no taxonomy rule 103. Every
+  balanced quartet on this tree lies at depth 0.39–1.08 (bins 4–5; tip depths from the root run 0.14–2.0), so the
+  shallow bins are empty under any rule. Decision: the registered pipeline runs unchanged on the registered quartet
+  file and gives the verdict of record; two labelled secondary analyses are reported as readings, not as the
+  registered verdict: S1 = one-sided rule with the registered balance (43 quartets), S2 = one-sided rule, balance
+  factor 2.0, eight targets (256 quartets; the only change to step 3 beyond the clause). Scripts
+  `quartets23b_amended.py` and `pipeline23b.sh` (hashes in `run.log`); `run23b.py` unchanged
+  (31d3e620…). The smoke test of the registration is run on S2 and kept, not interpreted.
