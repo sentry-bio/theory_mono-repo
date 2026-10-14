@@ -1,0 +1,36 @@
+{
+  "challenge_module": "Challenges.Window",
+  "solution_module": "ActiveGeometry.Window",
+  "theorem_names": [
+    "ActiveGeometry.Window.allOnes_mul_allOnes",
+    "ActiveGeometry.Window.symChannel_mul",
+    "ActiveGeometry.Window.symChannel_pow",
+    "ActiveGeometry.Window.same_letter_prob",
+    "ActiveGeometry.Window.same_letter_prob_four",
+    "ActiveGeometry.Window.identity_sites",
+    "ActiveGeometry.Window.kestenStigum_iff_rate",
+    "ActiveGeometry.Window.signal_tendsto_atTop",
+    "ActiveGeometry.Window.signal_tendsto_zero",
+    "ActiveGeometry.Window.horizon_of_threshold",
+    "ActiveGeometry.Window.pSame_pos",
+    "ActiveGeometry.Window.pSame_lt_one",
+    "ActiveGeometry.Window.pSame_le_pSame",
+    "ActiveGeometry.Window.identified_of_sites",
+    "ActiveGeometry.Window.identified_mono",
+    "ActiveGeometry.Window.sqrt_pos_of_readable",
+    "ActiveGeometry.Window.readable_depth_le",
+    "ActiveGeometry.Window.readable_branch_lower",
+    "ActiveGeometry.Window.window"
+  ],
+  "definition_names": [
+    "ActiveGeometry.Window.allOnes",
+    "ActiveGeometry.Window.symChannel",
+    "ActiveGeometry.Window.Reconstructs",
+    "ActiveGeometry.Window.ReconstructionThreshold",
+    "ActiveGeometry.Window.pSame",
+    "ActiveGeometry.Window.Identified",
+    "ActiveGeometry.Window.Readable"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}

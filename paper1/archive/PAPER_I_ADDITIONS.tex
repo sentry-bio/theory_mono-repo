@@ -1,0 +1,78 @@
+% Paper I v2 additions, 2026-10-09. Two insertions and one paragraph update, written against
+% "The Addressability Limit - Paper I v2.tex" (410 lines). Macros as in v2: \hpack \hvol \Hk \Crel \Cblock \eps.
+% Nothing else in the manuscript is touched. For the author's review.
+
+% =====================================================================
+% (1) INSERT after the sentence ending "...we use them interchangeably only under that stated condition. The three
+%     quantities $\beta,c,\hpack$ are logically independent." (v2 line 118, end of §2.1 Definitions)
+% =====================================================================
+
+\paragraph{The room's five names.}
+The invariant this paper needs is $\hpack$ alone, and it carries five classical names, each under its own
+hypothesis. In a complete Riemannian manifold of bounded geometry it is the \emph{volume entropy}
+$\hvol=\lim_{\rho\to\infty}\rho^{-1}\log\mathrm{vol}\,B(o,\rho)$, the condition stated above. For a closed negatively
+curved manifold, Manning's theorem identifies the volume entropy of the universal cover with the \emph{topological
+entropy} of the geodesic flow \cite{manning1979}. For a discrete group of isometries of a proper geodesic space, orbit
+growth gives the \emph{critical exponent} $\delta(\Gamma)$ of the Poincar\'e series, equal to $\hvol$ for cocompact
+lattices \cite{patterson1976,sullivan1979} and, for geometrically finite Kleinian groups, to the \emph{Hausdorff
+dimension of the limit set} \cite{bishopjones1997}. The \emph{Liouville entropy} of the geodesic flow is the fifth, and
+it agrees with the others only in the locally symmetric case; in general it lies strictly below (Katok's inequality
+\cite{katok1982}, with the rigidity theorem of Besson--Courtois--Gallot \cite{bcg1995}), and this paper never uses
+it. The five coincide exactly where the host is as symmetric as Assumption~A3 of \S\ref{sec:chart} demands, and they
+come apart outside it. Theorem~\ref{thm:bound} uses only $\hpack$, which exists in every metric space, so none of the
+hypotheses behind the other four is a hypothesis of the bound; they are the names under which the same room has been
+measured in dynamics, geometry and group theory. Read for heredity, they share one sentence: a lineage cannot branch
+faster than its medium's geodesics diverge.
+
+% =====================================================================
+% (2) INSERT after Proposition~\ref{prop:sat} (Exponential saturation), before the paragraph
+%     "\noindent\textbf{Why the boundary is special, without a dynamics.}" (v2 §Saturation, around line 338)
+% =====================================================================
+
+\begin{remark}[Four rigidities at the equality case]\label{rem:rigidity}
+Equality in Theorem~\ref{thm:bound} is rigid in four independent senses; the Lean module \texttt{Rigidity} checks the
+first and the others are classical.
+\emph{(i) Net.} If $\log N(R)=\log P(B(o,r(R)),\eps)+o(R)$ along a sequence of radii, the address set is, at
+exponential order, a maximal $\eps$-separated subset of the ball, hence an $\eps$-net of it
+(\texttt{Rigidity.maximal\_separated\_isNet}); and a relational code of distortion $(D,K)$ whose book is an $\eps$-net
+of the ball makes the source $(D,K+2\eps)$-quasi-isometric to the host (\texttt{Rigidity.quasiIsometric\_of\_net}). A
+saturating genealogy is therefore not merely housed by its medium: at scale $\eps$ it \emph{is} its medium, and a
+saturating tree forces a host that is a tree at scale $\eps$ (the min form of \S\ref{sec:IIb}).
+\emph{(ii) Isotropy.} Under A3, Proposition~\ref{prop:schur} leaves one host, so the equality value $\bar\kappa^*$ is
+unique.
+\emph{(iii) Entropy rigidity.} Among metrics of fixed volume on a closed negatively curved manifold, the locally
+symmetric metric alone minimizes volume entropy \cite{bcg1995}; a host that is also entropy-minimal is locally
+symmetric.
+\emph{(iv) Katok.} Liouville and topological entropy of the geodesic flow agree only for the locally symmetric metric
+\cite{katok1982}; a saturating process whose dynamical and volume entropies agree is in that case.
+None of the four is a claim about any biological system. Together they say that saturation is a \emph{design regime}:
+reached by engineered codes, which can be laid down as nets, and approached, by the audit of Paper~II, by none of the
+natural media measured there.
+\end{remark}
+
+% =====================================================================
+% (3) REPLACE the paragraph of \section{Formal (Lean) inventory} (v2 line 378) with:
+% =====================================================================
+
+Machine-checked, \texttt{theory/lean/ActiveGeometry/}, zero \texttt{sorry}/\texttt{admit}; every declaration uses
+only \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}. The kernel (\texttt{Packing},
+\texttt{Constrained}, \texttt{Capacity}, \texttt{Balloon}, \texttt{Chart}) carries the bound, the profile and the
+separation. Three modules sit downstream of it: \texttt{AuditFactors} (the five-ratio efficiency identity and its
+bounds, \S\ref{sec:slack}), \texttt{Rigidity} (the net and quasi-isometry statements of Remark~\ref{rem:rigidity}),
+and \texttt{Window} (the $q$-state symmetric channel and its powers, the identity price $N p^L\le\delta$ once
+$L\ge\log(N/\delta)/(-\log p)$, and the Kesten--Stigum line $b\lambda^2>1\iff\beta>2\rho$ in rate form; exactness of
+that line enters as the named hypothesis \texttt{ReconstructionThreshold}, proved classically for two letters and
+claimed for three and four in the openai/math collection of October 2026, family 229). The geometry lemmas of
+Theorem~\ref{thm:relational}'s lower bound (Skenderi's construction, residual finiteness, critical exponents of
+cocompact lattices), the representation theory of Proposition~\ref{prop:schur}, and Manning's, Katok's and
+Besson--Courtois--Gallot's theorems are classical, cited rather than formalized; the Lean predicate
+\texttt{IsotropicHyperbolic} names a hypothesis, not a derived conclusion. Each module ships with a comparator-style
+challenge file (the same statements with every proof replaced by \texttt{sorry}) and a job file naming the theorems,
+definitions and permitted axioms, so the statements can be checked independently of the proofs.
+
+% =====================================================================
+% (4) BIBLIOGRAPHY: add
+% =====================================================================
+\bibitem{manning1979} Manning, A.\ Topological entropy for geodesic flows. \emph{Ann.\ of Math.} \textbf{110}, 567--573 (1979).
+\bibitem{katok1982} Katok, A.\ Entropy and closed geodesics. \emph{Ergodic Theory Dynam.\ Systems} \textbf{2}, 339--365 (1982).
+\bibitem{bcg1995} Besson, G., Courtois, G.\ \& Gallot, S.\ Entropies et rigidit\'es des espaces localement sym\'etriques de courbure strictement n\'egative. \emph{Geom.\ Funct.\ Anal.} \textbf{5}, 731--799 (1995).

@@ -1,0 +1,448 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Rates}{\mathsf{Rates}}
+\newcommand{\Capy}{\mathsf{C}}
+\newcommand{\hpack}{h_{\mathrm{pack}}}
+\newcommand{\Hyp}{\mathbb{H}}
+
+\title{The Structured Addressability Limit\\
+\large A note for independent review of the core mathematics}
+\author{}
+\date{Version Gf, 14 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We ask how much exponentially growing history a proper metric host can carry
+under a linear radial budget, when the code is required to preserve
+successively more of the source's own structure. The kernel is a packing
+converse, $\beta \le c\,\hpack$. The distinctive claim is that the resulting
+capacity is not a single number: imposing a quasi-isometry obligation on the
+code can strictly reduce what is representable, and we exhibit a proper metric
+host and an explicit source where it does---and, over the family of sources
+whose own metric has uniformly bounded balls (bounded valence), at the level of
+capacities: relational capacity $0$ against block capacity $\log 2$. The
+converse, the block endpoint, the separation, the capacity-level separation,
+and the host's properness and packing entropy are formally verified in Lean~4
+against Mathlib. This note
+states the definitions and results precisely, marks exactly which statements
+are machine-checked and which are not, and isolates the questions we believe
+are open.
+\end{abstract}
+
+\section{Setup}
+
+Throughout, $(M,d)$ is a metric space with basepoint $o$, and $\varepsilon>0$ is
+a fixed resolution. $S$ is a set of \emph{histories}.
+
+\begin{definition}[Source]
+A \emph{source} is a map $\sigma:\mathbb{N}\to\mathcal{P}_{\mathrm{fin}}(S)$
+with each census $\sigma(R)$ finite and nonempty. It \emph{has growth} $\beta$
+if $\log|\sigma(R)|/R \to \beta$.
+\end{definition}
+
+The source owns its filtration. This matters: bundling the census into the code
+makes ``can this host carry \emph{this} source?'' unstatable, and conflates it
+with ``what rates does this host support?''
+
+\begin{definition}[Code]
+A \emph{code} is a pair $\kappa=(\mathrm{addr},r)$ with
+$\mathrm{addr}:\mathbb{N}\to S\to M$ and $r:\mathbb{N}\to\mathbb{R}$.
+Write $\kappa_R(\sigma) = \mathrm{addr}(R)\bigl(\sigma(R)\bigr)\subseteq M$.
+\end{definition}
+
+\begin{definition}[Obligations]
+An \emph{obligation} is a predicate on pairs $(\sigma,\kappa)$.
+\begin{itemize}
+\item \textbf{Base} $=$ \textbf{Faithful} $\wedge$ \textbf{Radial}:
+  $\mathrm{addr}(R)$ is injective on $\sigma(R)$, its image is
+  $\varepsilon$-separated, and $\kappa_R(\sigma)\subseteq \bar B(o,r(R))$.
+\item \textbf{Relational} at lawful distortion $q=(D,K)$, $D\ge 1$, $K\ge 0$
+  (requires a metric on $S$): for all $R$ and all $u,v\in\sigma(R)$,
+  \[
+    D^{-1} d_S(u,v) - K \;\le\; d\bigl(\mathrm{addr}(R)u,\mathrm{addr}(R)v\bigr)
+    \;\le\; D\, d_S(u,v) + K .
+  \]
+\end{itemize}
+\end{definition}
+
+Base feasibility is not optional. The radial budget $r$ is a free field of the
+code, unrelated \emph{a priori} to where $\mathrm{addr}$ places anything; without
+Base, a code mapping every history to a single point and declaring
+$r(R)=cR$ satisfies every rate condition, and a one-point host reports a
+positive rate. (This degenerate witness is included in the formalization
+precisely so the omission cannot recur.)
+
+\begin{definition}[Representability and capacity]
+$\sigma$ is \emph{$\mathcal{A}$-representable at radial rate $c$}, written
+$\mathrm{Rep}_{\mathcal A}(\sigma,c)$, if there is a code $\kappa$ with
+$\mathrm{Base}(\sigma,\kappa)$, $\mathcal A(\sigma,\kappa)$,
+$r(R)\to\infty$, and $r(R)/R\to c$.
+
+For a declared family $\mathfrak{S}$ of sources,
+\begin{align*}
+  \Rates_{\mathfrak S,\mathcal A}(c)
+  &\;=\;\bigl\{\beta : \exists\,\sigma\in\mathfrak S,\ \sigma \text{ has growth }
+  \beta \text{ and } \mathrm{Rep}_{\mathcal A}(\sigma,c)\bigr\},\\
+  \Capy_{\mathfrak S,\mathcal A}(c) &\;=\;\sup \Rates_{\mathfrak S,\mathcal A}(c).
+\end{align*}
+\end{definition}
+
+Capacity is a set before it is a number: boundedness is a theorem
+(Theorem~\ref{thm:converse}), and the supremum is taken only afterwards.
+
+\begin{definition}[ULF]
+$\sigma$ is \emph{uniformly locally finite} if
+$\exists K>0$ with $|\sigma(R+1)| \le K\,|\sigma(R)|$ for all $R$.
+\end{definition}
+
+This is a finite-generation-rate condition on the source's clock (Lean
+\texttt{Source.ULF}); it is \emph{not} a restriction on the universal
+converse, which holds for arbitrary sources including bursty ones. A second,
+independent finiteness condition concerns the source's own metric.
+
+\begin{definition}[Metric-ULF]
+$\sigma$ is \emph{metric-ULF} (Lean \texttt{Source.MetricULF}) if there is
+$f:\mathbb N\to\mathbb N$ with
+$|\{v\in\sigma(R): d_S(u,v)\le t\}|\le f(t)$ for all $R$, all $u\in\sigma(R)$
+and all $t$: uniformly bounded balls in $d_S$, the standard meaning of a
+uniformly locally finite metric space, and bounded valence in the tree case.
+\end{definition}
+
+The binary tree is both clock-ULF ($K=2$) and metric-ULF ($f(t)=2^t$); a star
+with $2^i$ leaves is clock-ULF and not metric-ULF. The canonical class for
+relational statements is the metric-ULF clocked tree, and the distinction is
+exactly what separates Theorem~\ref{thm:sepcap} from Question~\ref{q:sep}.
+
+\section{The three stacked facts}
+
+\begin{theorem}[Packing converse; Lean]\label{thm:converse}
+Let $M$ be proper and $\varepsilon>0$, and suppose the packing growth
+converges:
+\[
+  \frac{\log P\bigl(\bar B(o,\rho),\varepsilon\bigr)}{\rho}
+  \;\longrightarrow\; \hpack \qquad (\rho\to\infty).
+\]
+Then for every family $\mathfrak S$ and every obligation $\mathcal A$,
+\[
+  \beta \in \Rates_{\mathfrak S,\mathcal A}(c)
+  \;\Longrightarrow\;
+  \beta \le c\,\hpack .
+\]
+\end{theorem}
+
+The finite-depth form, which is what a measurement computes, is
+$\log|\sigma(R)|/r(R) \le \log P(\bar B(o,r(R)),\varepsilon)/r(R)$; the
+asymptotic statement discards an additive constant.
+
+\begin{theorem}[Obligation monotonicity; Lean]
+If $\mathcal A \Rightarrow \mathcal B$ pointwise then
+$\Rates_{\mathfrak S,\mathcal A}(c) \subseteq \Rates_{\mathfrak S,\mathcal B}(c)$.
+Likewise $\mathfrak S\subseteq\mathfrak T$ gives
+$\Rates_{\mathfrak S,\mathcal A}\subseteq\Rates_{\mathfrak T,\mathcal A}$.
+\end{theorem}
+
+\begin{theorem}[Block endpoint, constructive; Lean]\label{thm:block}
+Let $M$ be proper, $\varepsilon>0$, $c>0$, and
+$\log P(\bar B(o,\rho),\varepsilon)/\rho \to \hpack$. Taking
+$\sigma(R)$ to be an optimal $\varepsilon$-packing of $\bar B(o,cR)$ and
+$\mathrm{addr}(R)=\mathrm{id}$ yields
+$c\,\hpack \in \Rates_{\mathrm{all},\,\mathrm{noExtra}}(c)$, hence
+$\Capy_{\mathrm{all},\,\mathrm{noExtra}}(c) = c\,\hpack$.
+\end{theorem}
+
+\begin{remark}[Depthwise recoding]
+Theorem~\ref{thm:block} achieves the endpoint with codebooks chosen
+independently at each radius: every address may be rewritten at every depth.
+It is \emph{not} a nested, persistent, or successively refinable code, and the
+Shannon analogy should be read with that qualification. Persistent
+achievability is open.
+\end{remark}
+
+Together:
+\[
+  \beta \;\le\; \Capy_{\mathfrak S,\mathcal A}(c) \;\le\;
+  \Capy_{\mathfrak S,\mathrm{noExtra}}(c) \;=\; c\,\hpack .
+\]
+The content of the theory is entirely in whether the middle inequality can be
+strict.
+
+\begin{theorem}[The persistent rung; Lean]\label{thm:persistent}
+Let $M$ be proper, $\varepsilon>0$, $c>0$, with convergent packing rates at
+resolutions $\varepsilon$ and $2\varepsilon$. Over retentive sources
+($\sigma(R)\subseteq\sigma(R{+}1)$, \texttt{Source.Retentive}) under the
+obligation that an assigned address never moves (\texttt{Stable}~$m$, any
+$m\ge0$),
+\[
+  c\,\hpack(2\varepsilon)\;\le\;\Capy_{\mathrm{pers}}(\varepsilon)
+  \;\le\;\Capy_{\mathrm{noExtra}}(\varepsilon)\;=\;c\,\hpack(\varepsilon),
+\]
+and if the balls of radius $2\varepsilon$ have uniformly bounded packing number
+at resolution $\varepsilon$, both inequalities are equalities: the block rate
+is achieved by one nested family of addresses that never move
+(\texttt{Persistent.lean}: \texttt{achievable\_\allowbreak{}stable\_\allowbreak{}persistent},
+\texttt{capacity\_\allowbreak{}stable\_\allowbreak{}between},
+\texttt{capacity\_\allowbreak{}stable\_\allowbreak{}eq\_\allowbreak{}packing\_\allowbreak{}of\_\allowbreak{}boundedGeometry}).
+\end{theorem}
+
+The construction is a nested family of separated sets, each extended to a
+cover of the next ball by a maximal separated subset of the far region, then
+thinned to a nested census of size exactly the packing count at $2\varepsilon$;
+the identity map is the code. The equality clause is the scale-invariance
+theorem of \texttt{CoarseConverse}. Nesting therefore costs at most the gap
+between two scales of packing entropy; the ladder's price, where there is one,
+is paid at the relational rung.
+
+\section{The separation}
+
+\begin{definition}[Balloon]
+Let $B$ have points $\mathsf{hub}(i)$, $i\in\mathbb{N}$, and
+$\mathsf{leaf}(i,a)$, $a \in \mathbb{Z}/2^i$, with
+\[
+ d(\mathsf{hub}\,i,\mathsf{hub}\,j)=|i-j|,\quad
+ d(\mathsf{hub}\,i,\mathsf{leaf}(j,b))=|i-j|+1,
+\]
+\[
+ d(\mathsf{leaf}(i,a),\mathsf{leaf}(j,b))=
+ \begin{cases} 0 & i=j,\ a=b\\ 2 & i=j,\ a\ne b\\ |i-j|+2 & i\ne j.\end{cases}
+\]
+\end{definition}
+
+$B$ is a metric space (triangle inequality verified formally). It is the ray
+$\mathbb{N}$ with a star of $2^i$ leaves attached at $\mathsf{hub}(i)$; balls
+are finite, so $B$ is proper, and $\hpack(B,\mathsf{hub}\,0;\varepsilon)=\log 2$
+for $\varepsilon\le 1$.
+
+Let $T_2$ be the infinite rooted binary tree, $S=\{0,1\}^{*}$, with
+$\sigma_2(R)=\{0,1\}^R$ and $d_S$ the tree metric via longest common prefix.
+Then $\sigma_2$ is ULF with $K=2$ and has growth $\log 2$.
+
+\begin{theorem}[Separation; Lean]\label{thm:sep}
+For every lawful distortion $q=(D,K)$, at $\varepsilon=1$ and $c=1$,
+\[
+ \log 2 \in \Rates_{\{\sigma_2\},\,\mathrm{noExtra}}(1)
+ \qquad\text{and}\qquad
+ \log 2 \notin \Rates_{\{\sigma_2\},\,\mathrm{Relational}(q)}(1).
+\]
+In particular the two rate sets differ.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+\emph{Block.} Send $\{0,1\}^R$ injectively onto the $2^R$ leaves of
+$\mathsf{hub}(R)$. Distinct leaves are at distance $2\ge\varepsilon$, and all
+lie in $\bar B(\mathsf{hub}\,0,R+1)$, so $r(R)=R+1$ works and $r(R)/R\to 1$.
+
+\emph{Relational.} Suppose $\kappa$ satisfies $\mathrm{Relational}(q)$. Choose
+$L$ with $D^{-1}\cdot 2(L+1)-K > 2$. For $u\ne v\in\{0,1\}^k$, the padded words
+$u0^L, v0^L \in \{0,1\}^{k+L}$ satisfy $d_S \ge 2(L+1)$, so their images are at
+host distance $>2$. In $B$, two points at distance $>2$ cannot share a hub's
+star, so the $2^k$ padded images occupy $2^k$ distinct hubs. But the radial
+budget confines them to $\bar B(\mathsf{hub}\,0,r(R))$, which meets only
+$\lfloor r(R)\rfloor+1$ hubs. Since $r(R)/R\to 1$, this is $O(R)$, while
+$2^k$ grows exponentially in $R$. Contradiction.
+\end{proof}
+
+The mechanism is that $B$ has exponentially many points but only linearly many
+\emph{bounded-diameter shells}, whereas $T_2$ has exponentially many mutually
+tree-distant vertices at each depth. The same count lifts from one source to
+the natural family.
+
+\begin{theorem}[Capacity-level separation over metric-ULF sources; Lean]\label{thm:sepcap}
+Let $\mathfrak S$ be the family of metric-ULF sources. For every lawful
+distortion $q$, every $\varepsilon>0$ and every $c$, no source in $\mathfrak S$
+of positive growth is $\mathrm{Relational}(q)$-representable in $B$ at rate
+$c$: $\Rates_{\mathfrak S,\mathrm{Relational}(q)}(c)\subseteq\{0\}$. At
+$\varepsilon=c=1$ the block rate set contains $\log 2$ and the relational rate
+set contains $0$, so as numbers
+\[
+  \Capy_{\mathfrak S,\mathrm{Relational}(q)}(1)=0
+  \;<\;\log 2=\Capy_{\mathfrak S,\mathrm{noExtra}}(1).
+\]
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Two addresses in one star are at host distance $\le 2$, so the \emph{lower}
+relational bound gives $d_S\le D(2+K)=:t_0$ for their histories, and a star
+holds at most $f(t_0)$ histories of one census. The radial budget meets
+$\lfloor r(R)\rfloor+1$ stars, so $|\sigma(R)|\le f(t_0)(r(R)+1)$, linear in
+$R$; a source of growth $\beta>0$ has $|\sigma(R)|\ge e^{\beta R/2}$
+eventually. The binary tree is metric-ULF with $f(t)=2^t$ (generation-$R$
+vertices within tree distance $t$ share a prefix of length $R-t$), and
+Theorem~\ref{thm:sep} supplies its block code; the one-history source
+supplies $0$. The scalar form uses that $B$ is proper with
+$\hpack(B;1)=\log 2$ (now formalized) through the block identity. Only the
+lower side of the quasi-isometry sandwich is used.
+\end{proof}
+
+The balloon is the instance at scale $\varepsilon'\ge2$ of a general statement.
+
+\begin{theorem}[Coarse packing converse; Lean]\label{thm:coarse}
+Let $M$ be proper, $\sigma$ metric-ULF with ball bound $f$, and $\kappa$ a
+code with Base at resolution $\varepsilon$ and $\mathrm{Relational}(D,K)$.
+Then for every $\varepsilon'>0$ and every $R$,
+$|\sigma(R)|\le f(\lceil D(2\varepsilon'+K)\rceil)\cdot
+P(\bar B(o,r(R)),\varepsilon')$; hence, if $\sigma$ has growth $\beta$ and
+is relationally representable at rate $c$ and the packing rate at scale
+$\varepsilon'$ converges to $\hpack(\varepsilon')$, then
+$\beta\le c\,\hpack(\varepsilon')$. Relational capacity over metric-ULF
+sources is bounded by $c$ times the infimum of packing entropy over all
+scales: the coarse growth rate, a quasi-isometry invariant.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+A maximal $\varepsilon'$-separated subset of the budget ball is an
+$\varepsilon'$-cover with exactly the packing number of points (Mathlib,
+\texttt{isCover\_\allowbreak{}maximalSeparatedSet}, \texttt{encard\_\allowbreak{}maximalSeparatedSet}).
+Histories assigned to the same cover point have addresses within
+$2\varepsilon'$, hence source distance at most $D(2\varepsilon'+K)$ by the
+lower bound, hence at most $f(\lceil D(2\varepsilon'+K)\rceil)$ per cell.
+In $B$, at any $\varepsilon'\ge2$, a ball of radius $\rho$ packs at most
+$\lfloor\rho\rfloor+1$ points, so $\hpack(B;\varepsilon')=0$ and
+Theorem~\ref{thm:sepcap} follows (\texttt{balloon\_\allowbreak{}relational\_\allowbreak{}rate\_\allowbreak{}nonpos}).
+\end{proof}
+
+Block capacity reads packing entropy at the reader's scale; relational
+capacity reads it at every scale. The gap can open only in hosts without
+bounded geometry: if every $\varepsilon'$-ball packs at most $N_0$ points at
+resolution $\varepsilon$, uniformly in the centre, the two packing rates have
+the same limit (Lean, \texttt{packingRate\_\allowbreak{}scale\_\allowbreak{}invariant}). Scale-invariant
+packing entropy is therefore necessary for zero relational tax over
+metric-ULF sources; achievability (a quasi-isometric full-rate tree in the
+host) is the open half, and neither Gromov hyperbolicity nor the absence of
+conjugate points is necessary for it (a regular tree times a line carries the
+binary tree at full rate; conjugate points are invisible to quasi-isometry).
+
+\section{What is and is not established}
+
+\begin{center}
+\begin{tabular}{@{}p{0.66\textwidth}p{0.30\textwidth}@{}}
+\toprule
+Statement & Status \\
+\midrule
+Packing converse, finite-depth and asymptotic & Lean \\
+Obligation and family monotonicity & Lean \\
+Block endpoint $\Capy_{\mathrm{noExtra}}=c\,\hpack$, constructive & Lean \\
+Separation (Theorem~\ref{thm:sep}), all lawful $q$ & Lean \\
+Capacity-level separation over metric-ULF sources (Theorem~\ref{thm:sepcap}), rate sets and numbers & Lean \\
+Coarse packing converse (Theorem~\ref{thm:coarse}); $\hpack(B;\varepsilon')=0$ for $\varepsilon'\ge2$ & Lean (\texttt{CoarseConverse}) \\
+Isometry invariance of $\Rates$ & Lean \\
+$\Capy_{\mathrm{rel}}=\Capy_{\mathrm{block}}$ in $\Hyp^n_\kappa$ & paper only, via \cite{Skenderi} \\
+$\hpack(B;1)=\log 2$; $B$ proper & Lean (\texttt{BalloonPacking}) \\
+Persistent rung (Theorem~\ref{thm:persistent}): $c\,\hpack(2\varepsilon)\le\Capy_{\mathrm{pers}}\le c\,\hpack(\varepsilon)$, equality under bounded geometry & Lean (\texttt{Persistent}) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All formalized statements depend only on \texttt{propext},
+\texttt{Classical.choice}, \texttt{Quot.sound}; there are no \texttt{sorry}s and
+no additional axioms. The audit is executed in CI.
+
+\section{Two honest limitations}
+
+\paragraph{(i) Representability versus capacity.}
+Theorem~\ref{thm:sep} is stated over the singleton family $\{\sigma_2\}$, and
+Theorem~\ref{thm:sepcap} lifts it to the metric-ULF family. It does \emph{not}
+lift to the clock-ULF family. $B$ is itself a tree metric --- the leaves of a
+common hub are at distance $2$, exactly their distance through the hub, so no
+clique edges are present --- and the identity embedding of $B$'s own spanning
+tree, whose census $\{\mathsf{leaf}(R,\cdot)\}$ is clock-ULF with $K=2$ but
+not metric-ULF, is an isometry achieving growth $\log 2$. So
+$\Capy_{\mathrm{rel}}(B)=\Capy_{\mathrm{block}}(B)=\log 2$ over the full
+clock-ULF family, while $\Capy_{\mathrm{rel}}(B)=0<\log2$ over the metric-ULF
+family: the separation is a statement about bounded valence.
+
+\begin{question}\label{q:sep}
+Is there a proper metric host with $\hpack>0$ such that \emph{no} clock-ULF
+source of growth $c\,\hpack$ is relationally representable at rate $c$? The
+balloon is not such a host. Equivalently, over sources of unbounded valence, is
+a capacity-level separation attainable at all, or is some universality theorem
+in force?
+\end{question}
+
+This is the question we would most like an expert opinion on, and we flag that
+\cite{BLMN} proves a universality statement in a neighbouring regime (every
+$n$-point metric space has a subset of size $n^{1-\epsilon}$ embedding in an
+ultrametric at distortion $O(\log(2/\epsilon)/\epsilon)$). That theorem
+concerns unbounded-degree ultrametrics on a fixed finite set; the balloon's
+stars are ultrametric and are exactly what \cite{BLMN} would exploit, which is
+why unbounded valence is the regime in which universality could still be in
+force, and bounded valence (Theorem~\ref{thm:sepcap}) is where it is not.
+
+\paragraph{(ii) The equality endpoint is imported.}
+$\Capy_{\mathrm{rel}}(\Hyp^n_\kappa)=c(n-1)\sqrt{\kappa}$ rests on
+\cite{Skenderi} and is not formalized. \cite{Tessera} and \cite{Kerr} give
+positivity of relational capacity in broad homogeneous classes, not equality;
+we state the corresponding homogeneity claims as conjectures, not theorems.
+
+\section{Inventory by module}\label{sec:inventory}
+The kernel, module by module, as compiled on the pinned Mathlib (Lean 4.34.0-rc1). Every declaration depends only on
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}; each downstream module ships with a challenge file
+(the same statements with every proof replaced by \texttt{sorry}) and a job file naming its theorems, definitions
+and permitted axioms. Paper~I cites declarations by name in its [\textsc{Lean}: \ldots] tags.
+
+{\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.3cm}>{\raggedright\arraybackslash}p{10.6cm}@{}}
+\toprule
+\textbf{File} & \textbf{Certifies} \\
+\midrule
+\texttt{Packing.lean} & Finite-depth count; \texttt{logCard\_\allowbreak{}div\_\allowbreak{}radius\_\allowbreak{}le\_\allowbreak{}packingRate} (the measurable form); \texttt{convergent\_\allowbreak{}rate\_\allowbreak{}addressability\_\allowbreak{}limit}; \texttt{exists\_\allowbreak{}optimal\_\allowbreak{}blockCode}, \texttt{card\_\allowbreak{}le\_\allowbreak{}packingCount}; \texttt{distinguishable\_\allowbreak{}le\_\allowbreak{}min}; sub-ball fraction. \\
+\texttt{Constrained.lean} & The profile: \texttt{Source}, \texttt{Code}, \texttt{Obligation}; \texttt{Represents} and \texttt{Achievable}; monotonicity in obligation and family; \texttt{capacity\_\allowbreak{}block\_\allowbreak{}eq\_\allowbreak{}packing} by depthwise recoding; \texttt{structured\_\allowbreak{}addressability\_\allowbreak{}limit}; \texttt{Source.ULF}. \\
+\texttt{Balloon.lean} & The balloon host and \texttt{balloon\_\allowbreak{}separates}: the ULF binary tree is block-achievable and not relationally representable at $\varepsilon=c=1$. \\
+\texttt{BalloonCapacity.lean} & \texttt{Source.MetricULF}; \texttt{metricULF\_\allowbreak{}not\_\allowbreak{}relational\_\allowbreak{}pos} (no positive relational rate in $B$ at any $\varepsilon$, $c$, $(D,K)$); \texttt{balloon\_\allowbreak{}capacity\_\allowbreak{}separation}, \texttt{balloon\_\allowbreak{}capacity\_\allowbreak{}relational\_\allowbreak{}le\_\allowbreak{}zero}, \texttt{balloon\_\allowbreak{}separates\_\allowbreak{}metricUlf}; \texttt{binaryTreeSource\_\allowbreak{}metricULF} ($f(t)=2^t$). \\
+\texttt{BalloonPacking.lean} & \texttt{ProperSpace Balloon} (closed balls finite); \texttt{balloon\_\allowbreak{}packingRate\_\allowbreak{}tendsto} ($\hpack(B;1)=\log2$); \texttt{balloon\_\allowbreak{}capacity\_\allowbreak{}block\_\allowbreak{}eq} ($=\log2$), \texttt{balloon\_\allowbreak{}capacity\_\allowbreak{}relational\_\allowbreak{}eq\_\allowbreak{}zero}, \texttt{balloon\_\allowbreak{}capacity\_\allowbreak{}strict}. \\
+\texttt{CoarseConverse.lean} & \texttt{census\_\allowbreak{}card\_\allowbreak{}le\_\allowbreak{}coarse\_\allowbreak{}packing} (the counting step at any scale $\varepsilon'$, via Mathlib's maximal separated set as a cover); \texttt{coarse\_\allowbreak{}packing\_\allowbreak{}converse} ($\beta\le c\,\hpack(\varepsilon')$ for every $\varepsilon'$); \texttt{balloon\_\allowbreak{}packingCount\_\allowbreak{}le}, \texttt{balloon\_\allowbreak{}coarse\_\allowbreak{}entropy\_\allowbreak{}zero} ($\hpack(B;\varepsilon')=0$ for $\varepsilon'\ge2$); \texttt{balloon\_\allowbreak{}relational\_\allowbreak{}rate\_\allowbreak{}nonpos}; \texttt{packingCount\_\allowbreak{}anti}, \texttt{packingCount\_\allowbreak{}le\_\allowbreak{}mul\_\allowbreak{}packingCount}, \texttt{packingRate\_\allowbreak{}scale\_\allowbreak{}invariant}. \\
+\texttt{Persistent.lean} & The persistent rung: \texttt{extendSeparated\_\allowbreak{}isCover} (a separated set extends to a separated cover of the ball, without Zorn), \texttt{packingCount\_\allowbreak{}two\_\allowbreak{}mul\_\allowbreak{}le\_\allowbreak{}nestedFinset\_\allowbreak{}card} (a cover at $\varepsilon$ is at least a packing at $2\varepsilon$), \texttt{persistentSource\_\allowbreak{}retentive}, \texttt{recodingCode\_\allowbreak{}base\_\allowbreak{}persistent}; \texttt{achievable\_\allowbreak{}stable\_\allowbreak{}persistent} ($c\,\hpack(2\varepsilon)$ with addresses that never move), \texttt{capacity\_\allowbreak{}stable\_\allowbreak{}between}, \texttt{capacity\_\allowbreak{}stable\_\allowbreak{}eq\_\allowbreak{}packing\_\allowbreak{}of\_\allowbreak{}boundedGeometry} (equality with the block capacity under bounded geometry), \texttt{persistent\_\allowbreak{}chain}. \\
+\texttt{Rigidity.lean} & \texttt{maximal\_\allowbreak{}separated\_\allowbreak{}isNet}; \texttt{quasiIsometric\_\allowbreak{}of\_\allowbreak{}net}. \\
+\texttt{AuditFactors.lean} & \texttt{Chain.efficiency\_\allowbreak{}eq\_\allowbreak{}product}, \texttt{factors\_\allowbreak{}le\_\allowbreak{}one}, \texttt{efficiency\_\allowbreak{}le\_\allowbreak{}one}; \texttt{card\_\allowbreak{}chain}, \texttt{log\_\allowbreak{}card\_\allowbreak{}chain} (the finite form). \\
+\texttt{Capacity.lean}, \texttt{StateEquation.lean} & Real algebra downstream of $\beta\le c\,\hpack$: efficiency, curvature floor, gauge invariance; the equality-case face \texttt{normalized\_\allowbreak{}state\_\allowbreak{}equation}; mismatch diagnostics explicitly \emph{not} a Lyapunov theorem. \\
+\texttt{Window.lean} & For the companion: the $q$-state symmetric channel and its powers; the identity price $Np^L\le\delta$ for $L\ge\log(N/\delta)/(-\log p)$; the Kesten--Stigum line $b\lambda^2>1\iff\beta>2\rho$ in rate form; exactness of the line as the named hypothesis \texttt{ReconstructionThreshold}; the distance reader's window: \texttt{identified\_\allowbreak{}of\_\allowbreak{}sites}, \texttt{identified\_\allowbreak{}mono}, \texttt{readable\_\allowbreak{}branch\_\allowbreak{}lower}, \texttt{readable\_\allowbreak{}depth\_\allowbreak{}le}, \texttt{window}. \\
+\texttt{Heredity.lean} & The room of compositions, the reader-side counterpart of the coarse packing converse: carriers of length $L$ over an alphabet of size $a$ have $a^L$ ordered states but at most $(L+2)^{a^k}$ distinct $k$-mer spectra (\texttt{card\_\allowbreak{}spectra\_\allowbreak{}le}); histories a code tells apart by composition alone are bounded by that polynomial room (\texttt{histories\_\allowbreak{}le\_\allowbreak{}composition\_\allowbreak{}room}); for every fixed $k$ the spectrum map is non-injective on all sufficiently long carriers (\texttt{eventually\_\allowbreak{}spectrum\_\allowbreak{}not\_\allowbreak{}injective}). The companion's composition results (its \S3.3) rest on this count. \\
+\bottomrule
+\end{longtable}}
+
+\section{Relation to neighbouring work}
+
+Kolmogorov--Tikhomirov $\varepsilon$-capacity is the $\mathcal A=\mathrm{noExtra}$
+case without a clock; the radial budget and the generative clock are what make
+this a rate problem rather than a counting problem. Buyalo--Schroeder
+\cite{BuyaloSchroeder} treat trees as coordinates and hosts as domains; we
+reverse the variance. Successive refinement \cite{EquitzCover} is the
+information-theoretic analogue of the persistence obligation, which we do not
+compute here. \cite{DokuAmponsah} gives a rate--distortion AEP for
+tree-indexed processes, with no host geometry.
+
+\begin{thebibliography}{9}
+\bibitem{BLMN} Y.~Bartal, N.~Linial, M.~Mendel, A.~Naor.
+  \emph{On metric Ramsey-type phenomena}. Ann. of Math. \textbf{162} (2005), 643--709.
+\bibitem{BuyaloSchroeder} S.~Buyalo, V.~Schroeder.
+  \emph{Embedding of hyperbolic spaces in the product of trees}. Geom. Dedicata (2005).
+\bibitem{DokuAmponsah} K.~Doku-Amponsah.
+  \emph{Lossy asymptotic equipartition property for hierarchical data structures}. arXiv:1608.04154.
+\bibitem{EquitzCover} W.~Equitz, T.~Cover.
+  \emph{Successive refinement of information}. IEEE Trans. Inform. Theory \textbf{37} (1991).
+\bibitem{Kerr} A.~Kerr. \emph{Quasi-trees and product set growth}. DPhil thesis, Oxford (2022).
+\bibitem{Skenderi} A.~Skenderi. \emph{Free semigroups of large critical exponent}.
+  J. Topology (2026), DOI 10.1112/topo.70087.
+\bibitem{Tessera} R.~Tessera. \emph{Quasi-isometrically embedded free sub-semigroups}.
+  Geom. Topol. \textbf{12} (2008), 461--473.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,46 @@
+Acetobacteraceae         genera   6  (34s)
+Acutalibacteraceae       genera   9  (99s)
+Anaerovoracaceae         genera   3  (103s)
+Aristaeellaceae          genera   6  (172s)
+Bacteroidaceae           genera   7  (263s)
+Beijerinckiaceae         genera   3  (304s)
+Borkfalkiaceae           genera   4  (355s)
+Burkholderiaceae         genera  25  (713s)
+CAG-272                  genera   8  (812s)
+CAG-508                  genera   4  (885s)
+Chitinophagaceae         genera   6  (918s)
+Cyanobiaceae             genera   1  (920s)
+Enterobacteriaceae       genera   4  (945s)
+Flavobacteriaceae        genera  13  (1068s)
+Gastranaerophilaceae     genera   8  (1128s)
+Lachnospiraceae          genera  39  (1763s)
+Lactobacillaceae         genera   5  (1830s)
+Microbacteriaceae        genera   5  (1871s)
+Micrococcaceae           genera   3  (1907s)
+Muribaculaceae           genera   3  (1953s)
+Mycobacteriaceae         genera   2  (1987s)
+Oscillospiraceae         genera  12  (2201s)
+Paludibacteraceae        genera   1  (2229s)
+Pelagibacteraceae        genera   2  (2272s)
+Pseudomonadaceae         genera   2  (2287s)
+Rhizobiaceae             genera   9  (2398s)
+Rhodobacteraceae         genera  16  (2516s)
+Rhodocyclaceae           genera   6  (2582s)
+Ruminococcaceae          genera  13  (2700s)
+Saprospiraceae           genera   2  (2706s)
+Sphingobacteriaceae      genera   3  (2741s)
+Sphingomonadaceae        genera   6  (2786s)
+Treponemataceae          genera   1  (2787s)
+UBA660                   genera  13  (2832s)
+Xanthobacteraceae        genera   5  (2857s)
+Xanthomonadaceae         genera   7  (2906s)
+
+[bac] ε | Σ_obs | Σ_fam | Σ_lin | Σn | log err obs/fam | log err obs/lin | mean η_obs | mean factors: occupancy avail writing retention residual
+  0.40 |   5372 |  5383.8 |  5371.4 |  5384 | -0.002 | +0.000 | 0.0082 | 0.0082 0.622 0.999 1.001 0.999
+  0.60 |   5293 |  5380.5 |  5336.4 |  5384 | -0.016 | -0.008 | 0.0097 | 0.0097 0.579 0.996 1.004 0.994
+  0.79 |   5151 |  5364.9 |  5283.6 |  5384 | -0.041 | -0.025 | 0.0109 | 0.0112 0.547 0.992 1.008 0.984
+  1.00 |   4993 |  5304.3 |  5205.0 |  5384 | -0.060 | -0.042 | 0.0123 | 0.0127 0.519 0.985 1.011 0.974
+  1.25 |   4772 |  5177.1 |  5084.3 |  5384 | -0.081 | -0.063 | 0.0138 | 0.0148 0.493 0.974 1.012 0.962
+  1.60 |   4457 |  4927.2 |  4866.2 |  5384 | -0.100 | -0.088 | 0.0162 | 0.0181 0.467 0.955 1.012 0.953
+  2.00 |   4094 |  4618.6 |  4569.3 |  5384 | -0.121 | -0.110 | 0.0196 | 0.0245 0.458 0.927 1.012 0.943
+ATLAS ARM DONE bac (2906s)

@@ -1,0 +1,21 @@
+2026-10-14 07:40:28 CEST
+PREREG23b frozen:
+03dee339a27ec91b99912ee2bdec9225e4c271e723fec03148ea926d1fa3e269  PREREG23b_mitogenome_rate_tail.md
+--- fetch launched on biosphereatlas ---
+2026-10-14 07:44:42 CEST
+b83e5db96eefb080d97c2e34c6217fdb89dfc42aa3459789328ec8c4e832670b  fetch_mito.py
+2b73d4c33e6c61e5b10c0b6ba254f8808563633ec87b1142319f82c88a6e4f97  setup_remote.sh
+--- amendment (truth-set rule without ranks) re-freeze ---
+2026-10-14 07:46:12 CEST
+03a102b5d61e2580bd004f161f3970e6385d5f05f138c6b7cf4620152be55cf5  PREREG23b_mitogenome_rate_tail.md
+--- scripts frozen (align_tree, concat, run23b) ---
+2026-10-14 07:49:34 CEST
+782d802a3ce12fd0099c62033b90141c724042282500792355519b44b90e3daa  align_tree.sh
+6c43c41c0aeaa619aeb85c2a8c856c0601d655594c95d71e3a3e864675ad5728  concat.py
+31d3e6204d1ad181fce021736b02f7bfa0c346cd8a249eb822494ad483e282a9  run23b.py
+--- amendment (capped search, -n 3) re-freeze ---
+2026-10-14 11:42:53 CEST
+87ef157452b39b62a46ee90536f595e6cd4e7b870ceaa9c131b6a0297f2cb61f  PREREG23b_mitogenome_rate_tail.md
+c2f979477a3247ef5a6e6d71f1ccae195412cb2b67ae268c1d5d509a266696f1  finish_tree.sh
+2026-10-14 09:47:52 UTC (11:47:52 CEST) amendment NOT applied: the capped search (-n 3) is withdrawn before any reader result; the checkpoint holds no search state (22 lines, 06:21 UTC) and the 85 min/iteration estimate was the NNI pass on the 20 best initial trees; the registered default search continues as pid 1830572 (iteration 10 at 3h58m, better trees at 1, 2, 8); finish_tree2.sh waits for it, then runs the -wsr step unchanged
+fa82df451c79aef72a19d1c3f53e2bdf531c4d31203ca92774baeeb452d81073  finish_tree2.sh

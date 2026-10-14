@@ -1,0 +1,11 @@
+{
+ "tree_tips": 189801,
+ "msa_seqs": 189801,
+ "common": 189801,
+ "T": 1500,
+ "seed": 23,
+ "L0": 5010,
+ "L_max": 5008,
+ "internal_nodes_pruned": 1499,
+ "elapsed_s": 16.0
+}

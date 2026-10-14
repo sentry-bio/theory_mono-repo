@@ -1,0 +1,43 @@
+{
+ "dom": "bac",
+ "tag": "bac_smoke",
+ "families": [
+  {
+   "family": "Acetobacteraceae",
+   "n_family": 369,
+   "nA": 30,
+   "nB": 30,
+   "theta": 0.955640193108881,
+   "beta": 10.972970315329503,
+   "line": 9.061689929111742,
+   "split_depth": 0.3852557548500001,
+   "family_depth": 0.5386687901436316,
+   "clipped": 0.2622065249221363,
+   "obs_quartet": 0.805,
+   "obs_centroid": 0.9333333333333333,
+   "pred_quartet": 0.6675,
+   "pred_quartet_sd": 0.21363812861940162,
+   "pred_centroid": 0.8766666666666667,
+   "pred_centroid_sd": 0.09865765724632496
+  }
+ ],
+ "n_families": 1,
+ "H1": false,
+ "H2": true,
+ "H3": false,
+ "spearman_line_centroid": NaN,
+ "verdict": "PARTIAL",
+ "pooled": {
+  "obs_quartet": 0.805,
+  "pred_quartet": 0.6675,
+  "obs_centroid": 0.9333333333333333,
+  "pred_centroid": 0.8766666666666667,
+  "median_abs_err_quartet": 0.13750000000000007,
+  "median_abs_err_centroid": 0.05666666666666664,
+  "frac_adv_positive": 1.0,
+  "frac_adv_within": 1.0,
+  "families_above_line": 1,
+  "families_below_line": 0
+ },
+ "seconds": 64.93679094314575
+}

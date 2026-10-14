@@ -1,0 +1,12 @@
+frozen sha256:
+b66171ea5077b194df95db0294dde679bebadf322eedbb9c3cb08edc97c7f49a  sim_core.py
+4fb7dce089795aea101f99fdfbee837000ef737d37fcbaa8cdf76182dfd1c801  measures.py
+9c8a0763f441044c5060c9603c9af3f2ffafaa165b4229e7c7e3cc1931f20c97  hgt_core.py
+0bdd1b2352cd1e41221bf9bda959e25721a72e44e7f11701abfa2f1e9b63d7d5  misspec_core.py
+01807aa0dee1980ca801fec6790b8c97a1a0606d37bafd85ec99b4f425b299a7  testB_run.py
+0d60eebe08d92fd7a914fac6885c2e64d3d2c15e1406a2d70b3cdf831e51552f  testB_score.py
+7eb8836a4bc119f948ccec6eb92527c9773d398e7f96ad3a1d9b1ef1e8d13239  PREREG19_testB.md
+Thu Oct  8 11:30:50 PM UTC 2026
+smoke ok
+jobs done Thu Oct  8 11:34:26 PM UTC 2026
+ALL DONE

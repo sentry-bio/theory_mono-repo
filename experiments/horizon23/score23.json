@@ -1,0 +1,92 @@
+{
+ "verdicts": {
+  "V1_form_unweighted": {
+   "pass": false,
+   "rel_err": {
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null
+   }
+  },
+  "V2_form_weighted": {
+   "pass": false,
+   "rel_err": {
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null
+   }
+  },
+  "V3_ordering": {
+   "pass": false,
+   "ratios": {
+    "128": null,
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null
+   },
+   "first_L": 128
+  },
+  "V4_exponent": {
+   "pass": false,
+   "slopes": {
+    "U": null,
+    "W": null
+   }
+  },
+  "V5_shuffle": {
+   "pass": false,
+   "rel_diff": {
+    "256": null,
+    "512": null,
+    "1024": null,
+    "2048": null,
+    "4096": null
+   }
+  }
+ },
+ "readings": {
+  "alpha": 1.7429,
+  "kappa": {
+   "U": null,
+   "W": null
+  },
+  "asymptote": {
+   "U": 0.18228881840387912,
+   "W": 0.26717251329183256
+  },
+  "fit_L": {
+   "U": null,
+   "W": null
+  },
+  "unresolved_cells": [
+   "U|64",
+   "U|128",
+   "U|256",
+   "U|512",
+   "U|1024",
+   "U|2048",
+   "U|4096",
+   "W|64",
+   "W|128",
+   "W|256",
+   "W|512",
+   "W|1024",
+   "W|2048",
+   "W|4096",
+   "S|64",
+   "S|128",
+   "S|256",
+   "S|512",
+   "S|1024",
+   "S|2048",
+   "S|4096"
+  ]
+ },
+ "overall": "NOT SUPPORTED AS REGISTERED"
+}

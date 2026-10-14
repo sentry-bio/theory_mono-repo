@@ -1,0 +1,13 @@
+{
+ "B1": {
+  "G|1.0": "RECOVERS",
+  "G|2.0": "RECOVERS",
+  "H|1.0": "RECOVERS",
+  "H|2.0": "RECOVERS",
+  "T|1.0": "INDETERMINATE",
+  "T|2.0": "RECOVERS"
+ },
+ "B2": "INCONCLUSIVE",
+ "B3": "DISCRIMINATOR WORKS",
+ "p_major_Cstar": 0.6125000000000002
+}

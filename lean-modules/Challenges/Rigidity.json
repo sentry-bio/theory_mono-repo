@@ -1,0 +1,14 @@
+{
+  "challenge_module": "Challenges.Rigidity",
+  "solution_module": "ActiveGeometry.Rigidity",
+  "theorem_names": [
+    "ActiveGeometry.Rigidity.edist_gt_of_dist_gt",
+    "ActiveGeometry.Rigidity.maximal_separated_isNet",
+    "ActiveGeometry.Rigidity.dist_within_two_eps",
+    "ActiveGeometry.Rigidity.quasiIsometric_of_net",
+    "ActiveGeometry.Rigidity.codeword_self_net"
+  ],
+  "definition_names": ["ActiveGeometry.Rigidity.IsNet"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}

@@ -1,0 +1,1088 @@
+{
+ "K1": [
+  13,
+  13
+ ],
+ "samples": {
+  "S1": {
+   "n": 1935,
+   "dim": 2,
+   "centres": [
+    308,
+    493,
+    767,
+    717,
+    1502,
+    393,
+    993,
+    1322,
+    700,
+    1030,
+    539,
+    1302,
+    1058,
+    61,
+    1622,
+    1465,
+    1890,
+    947,
+    1355,
+    1792,
+    476,
+    1621,
+    153,
+    134,
+    712
+   ],
+   "data": [
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.78953747676928,
+     "r2_poly": 0.9259395274425346,
+     "h_slope": 67.05324314134566,
+     "poly_dim": 3.6028234365692975,
+     "n_radii": 40,
+     "centre": 308,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9222305044794645,
+     "r2_poly": 0.9912176502668378,
+     "h_slope": 48.032448351024875,
+     "poly_dim": 3.0700973181759226,
+     "n_radii": 40,
+     "centre": 493,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.881539436402849,
+     "r2_poly": 0.9023729314629663,
+     "h_slope": 51.18069408489745,
+     "poly_dim": 2.071264412232971,
+     "n_radii": 40,
+     "centre": 767,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8414559226744891,
+     "r2_poly": 0.9344567346358821,
+     "h_slope": 13.276752199551451,
+     "poly_dim": 1.686900335567275,
+     "n_radii": 40,
+     "centre": 717,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8163554752694293,
+     "r2_poly": 0.8986586756442391,
+     "h_slope": 20.758028441104827,
+     "poly_dim": 2.4458185766865554,
+     "n_radii": 39,
+     "centre": 1502,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9569856254170948,
+     "r2_poly": 0.993800429858249,
+     "h_slope": 73.92242660130617,
+     "poly_dim": 4.517895290733046,
+     "n_radii": 40,
+     "centre": 393,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9005232147643364,
+     "r2_poly": 0.9387978101620933,
+     "h_slope": 53.010205204484194,
+     "poly_dim": 2.046477905403721,
+     "n_radii": 40,
+     "centre": 993,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.7902008608992783,
+     "r2_poly": 0.9145651940311513,
+     "h_slope": 19.161092256961904,
+     "poly_dim": 3.0099700619747405,
+     "n_radii": 40,
+     "centre": 1322,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.7906599831393405,
+     "r2_poly": 0.9269576053222748,
+     "h_slope": 65.48302127222216,
+     "poly_dim": 3.6672522680202007,
+     "n_radii": 40,
+     "centre": 700,
+     "usable": true
+    },
+    {
+     "verdict": "indeterminate",
+     "r2_exp": 0.9311501518161228,
+     "r2_poly": 0.9318394545909774,
+     "h_slope": 41.62300876791234,
+     "poly_dim": 2.1343161409527753,
+     "n_radii": 39,
+     "centre": 1030,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8932930942743947,
+     "r2_poly": 0.9633664928916555,
+     "h_slope": 83.32566827037152,
+     "poly_dim": 5.738366148172912,
+     "n_radii": 40,
+     "centre": 539,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.7428609639568373,
+     "r2_poly": 0.8689236779623167,
+     "h_slope": 66.51065113112269,
+     "poly_dim": 4.291837111447613,
+     "n_radii": 40,
+     "centre": 1302,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8735855186354493,
+     "r2_poly": 0.8882276858160287,
+     "h_slope": 47.27134948520933,
+     "poly_dim": 2.0801820091777374,
+     "n_radii": 40,
+     "centre": 1058,
+     "usable": true
+    },
+    {
+     "verdict": "exponential",
+     "r2_exp": 0.7815873034436278,
+     "r2_poly": 0.5621509319790967,
+     "h_slope": 18.478700534802538,
+     "poly_dim": 0.32778259246680136,
+     "n_radii": 40,
+     "centre": 61,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8162745474857547,
+     "r2_poly": 0.9528590146126654,
+     "h_slope": 58.273218869538894,
+     "poly_dim": 3.398370362146268,
+     "n_radii": 40,
+     "centre": 1622,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8602370427250703,
+     "r2_poly": 0.949774276340589,
+     "h_slope": 17.159538033096293,
+     "poly_dim": 1.3615134660617427,
+     "n_radii": 39,
+     "centre": 1465,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8837404358504833,
+     "r2_poly": 0.9482601173197435,
+     "h_slope": 19.152344294593743,
+     "poly_dim": 2.913960666637957,
+     "n_radii": 39,
+     "centre": 1890,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.830910650509313,
+     "r2_poly": 0.9511052035020164,
+     "h_slope": 21.9471630764128,
+     "poly_dim": 2.683412331621469,
+     "n_radii": 40,
+     "centre": 947,
+     "usable": true
+    },
+    {
+     "verdict": "indeterminate",
+     "r2_exp": 0.9572518266528314,
+     "r2_poly": 0.9504476184701726,
+     "h_slope": 50.36088078284381,
+     "poly_dim": 2.1696480762630874,
+     "n_radii": 40,
+     "centre": 1355,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.909161263782894,
+     "r2_poly": 0.9239967145624799,
+     "h_slope": 11.816187543545269,
+     "poly_dim": 1.5572359040423935,
+     "n_radii": 39,
+     "centre": 1792,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8916833243787486,
+     "r2_poly": 0.9370615712616747,
+     "h_slope": 37.3516827995776,
+     "poly_dim": 2.337478376671365,
+     "n_radii": 40,
+     "centre": 476,
+     "usable": true
+    },
+    {
+     "verdict": "indeterminate",
+     "r2_exp": 0.8638873325437062,
+     "r2_poly": 0.8709545553327566,
+     "h_slope": 48.891435099823944,
+     "poly_dim": 2.1652818509273075,
+     "n_radii": 40,
+     "centre": 1621,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.7775038680534566,
+     "r2_poly": 0.8874357712861325,
+     "h_slope": 17.036001113351485,
+     "poly_dim": 2.375043615398021,
+     "n_radii": 39,
+     "centre": 153,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8983813445149024,
+     "r2_poly": 0.9324182755245217,
+     "h_slope": 54.221406424852745,
+     "poly_dim": 2.38480190635071,
+     "n_radii": 40,
+     "centre": 134,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8765719001993864,
+     "r2_poly": 0.8884422409041599,
+     "h_slope": 50.06559306944294,
+     "poly_dim": 2.33445440011772,
+     "n_radii": 40,
+     "centre": 712,
+     "usable": true
+    }
+   ],
+   "null": [
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8128788585923172,
+     "r2_poly": 0.9991992977684541,
+     "h_slope": 2.7471286329288134,
+     "poly_dim": 1.694232036816103,
+     "n_radii": 40,
+     "centre": 308,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.7978958975076794,
+     "r2_poly": 0.998153786081414,
+     "h_slope": 2.9645582036958102,
+     "poly_dim": 1.6296773091180974,
+     "n_radii": 40,
+     "centre": 493,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.816689469109829,
+     "r2_poly": 0.9845195559656129,
+     "h_slope": 2.7912727398520327,
+     "poly_dim": 1.512557216631902,
+     "n_radii": 40,
+     "centre": 767,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8416442654058128,
+     "r2_poly": 0.9974372744593866,
+     "h_slope": 2.944455488423467,
+     "poly_dim": 1.7048229577865504,
+     "n_radii": 40,
+     "centre": 717,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8243110456398353,
+     "r2_poly": 0.9932887008702859,
+     "h_slope": 3.128928958801478,
+     "poly_dim": 1.7141249168643324,
+     "n_radii": 40,
+     "centre": 1502,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8081982627513442,
+     "r2_poly": 0.9969649857121249,
+     "h_slope": 2.499556368803382,
+     "poly_dim": 1.7549854032734573,
+     "n_radii": 40,
+     "centre": 393,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8120237152152955,
+     "r2_poly": 0.9959619560677906,
+     "h_slope": 3.4601157025225837,
+     "poly_dim": 1.743460825662019,
+     "n_radii": 40,
+     "centre": 993,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8037848238633207,
+     "r2_poly": 0.9964170630040993,
+     "h_slope": 3.234891537661561,
+     "poly_dim": 1.8138651699173087,
+     "n_radii": 40,
+     "centre": 1322,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.906286065933757,
+     "r2_poly": 0.9780668042197653,
+     "h_slope": 2.247085545277425,
+     "poly_dim": 1.9739434965733464,
+     "n_radii": 40,
+     "centre": 700,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8354761815594931,
+     "r2_poly": 0.9936755246868361,
+     "h_slope": 3.4020105296989227,
+     "poly_dim": 1.8289635264188213,
+     "n_radii": 40,
+     "centre": 1030,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8681368825887308,
+     "r2_poly": 0.9764577523703311,
+     "h_slope": 2.2842571481452394,
+     "poly_dim": 1.6027492331281339,
+     "n_radii": 40,
+     "centre": 539,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9003812957813121,
+     "r2_poly": 0.9921763689837604,
+     "h_slope": 1.969335898088182,
+     "poly_dim": 2.05887888144465,
+     "n_radii": 40,
+     "centre": 1302,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9117424009559191,
+     "r2_poly": 0.9649881675391964,
+     "h_slope": 1.9162907004247185,
+     "poly_dim": 1.9452045643312335,
+     "n_radii": 40,
+     "centre": 1058,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8159561565953526,
+     "r2_poly": 0.9848446094699145,
+     "h_slope": 3.229879203375354,
+     "poly_dim": 1.5593162587933178,
+     "n_radii": 40,
+     "centre": 61,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8353641916841089,
+     "r2_poly": 0.9796155764221913,
+     "h_slope": 2.550790784779867,
+     "poly_dim": 1.6065947517535109,
+     "n_radii": 40,
+     "centre": 1622,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8342468378175291,
+     "r2_poly": 0.998363537918814,
+     "h_slope": 2.2945653094123584,
+     "poly_dim": 1.8858254465551307,
+     "n_radii": 40,
+     "centre": 1465,
+     "usable": true
+    },
+    {
+     "verdict": "indeterminate",
+     "r2_exp": 0.9491573197295925,
+     "r2_poly": 0.9493283206267445,
+     "h_slope": 1.7397757598739154,
+     "poly_dim": 2.4103353584385787,
+     "n_radii": 40,
+     "centre": 1890,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8882306611043634,
+     "r2_poly": 0.9913931033919624,
+     "h_slope": 2.0711831916994896,
+     "poly_dim": 2.0199070742582124,
+     "n_radii": 40,
+     "centre": 947,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8806470161604383,
+     "r2_poly": 0.9859602016838733,
+     "h_slope": 2.553570735108421,
+     "poly_dim": 1.952632804352921,
+     "n_radii": 40,
+     "centre": 1355,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8212897400224565,
+     "r2_poly": 0.9983568059863525,
+     "h_slope": 2.849483144165834,
+     "poly_dim": 1.8478031745543173,
+     "n_radii": 40,
+     "centre": 1792,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8832676767991143,
+     "r2_poly": 0.9921339769505746,
+     "h_slope": 2.059777472576073,
+     "poly_dim": 1.9693854747930593,
+     "n_radii": 40,
+     "centre": 476,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8304956466141715,
+     "r2_poly": 0.9902028910155772,
+     "h_slope": 3.5503768584649915,
+     "poly_dim": 1.738172176979902,
+     "n_radii": 40,
+     "centre": 1621,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.837890349915163,
+     "r2_poly": 0.9978783581575676,
+     "h_slope": 2.4739015064645744,
+     "poly_dim": 1.7518403238187825,
+     "n_radii": 40,
+     "centre": 153,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.840748138433964,
+     "r2_poly": 0.993357078050452,
+     "h_slope": 2.3423535202100463,
+     "poly_dim": 1.811740824867878,
+     "n_radii": 40,
+     "centre": 134,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.83658294694096,
+     "r2_poly": 0.9586388724435995,
+     "h_slope": 3.5560987440781546,
+     "poly_dim": 1.477642915038586,
+     "n_radii": 40,
+     "centre": 712,
+     "usable": true
+    }
+   ],
+   "delta_ratio": 0.3225474207517285,
+   "K2": true,
+   "K3": false,
+   "K4": true,
+   "verdict": "CERTIFIED POLYNOMIAL"
+  },
+  "S2": {
+   "n": 1935,
+   "dim": 5,
+   "centres": [
+    1157,
+    492,
+    766,
+    716,
+    1502,
+    392,
+    992,
+    1322,
+    699,
+    1029,
+    538,
+    1302,
+    1057,
+    61,
+    1622,
+    1465,
+    1890,
+    946,
+    1355,
+    1792,
+    475,
+    1621,
+    153,
+    134,
+    711
+   ],
+   "data": [
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9396160294363071,
+     "r2_poly": 0.9846783703748597,
+     "h_slope": 101.86823521131406,
+     "poly_dim": 3.5641229236368677,
+     "n_radii": 40,
+     "centre": 1157,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9619786826985719,
+     "r2_poly": 0.9848494445577921,
+     "h_slope": 60.355074747442075,
+     "poly_dim": 3.3526856672201406,
+     "n_radii": 40,
+     "centre": 492,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8602017240154584,
+     "r2_poly": 0.9600770729013103,
+     "h_slope": 55.55510120265566,
+     "poly_dim": 2.2103286869323626,
+     "n_radii": 40,
+     "centre": 766,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.931043410161156,
+     "r2_poly": 0.9837752062345042,
+     "h_slope": 78.89497311550656,
+     "poly_dim": 4.367682903745776,
+     "n_radii": 40,
+     "centre": 716,
+     "usable": true
+    },
+    {
+     "verdict": "indeterminate",
+     "r2_exp": 0.967225779333558,
+     "r2_poly": 0.9645632896574019,
+     "h_slope": 102.47924452230374,
+     "poly_dim": 3.2041609766056296,
+     "n_radii": 40,
+     "centre": 1502,
+     "usable": true
+    },
+    {
+     "verdict": "exponential",
+     "r2_exp": 0.9246988827921738,
+     "r2_poly": 0.8268981502594549,
+     "h_slope": 118.62548616285659,
+     "poly_dim": 4.026911519795518,
+     "n_radii": 40,
+     "centre": 392,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9379695404806001,
+     "r2_poly": 0.9889089802274464,
+     "h_slope": 84.23398054997847,
+     "poly_dim": 3.4902587641553393,
+     "n_radii": 40,
+     "centre": 992,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8656498060623641,
+     "r2_poly": 0.9763764591726544,
+     "h_slope": 68.0490385359184,
+     "poly_dim": 3.351024032465337,
+     "n_radii": 40,
+     "centre": 1322,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8927987760229987,
+     "r2_poly": 0.9883295992802941,
+     "h_slope": 60.13747847845348,
+     "poly_dim": 2.7926627892084896,
+     "n_radii": 40,
+     "centre": 699,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9300300601972655,
+     "r2_poly": 0.9782496713941008,
+     "h_slope": 81.6274953074039,
+     "poly_dim": 3.279316197989968,
+     "n_radii": 40,
+     "centre": 1029,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9065095303367258,
+     "r2_poly": 0.9891696019692641,
+     "h_slope": 73.41628142362542,
+     "poly_dim": 2.869164330773238,
+     "n_radii": 40,
+     "centre": 538,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.874378492744986,
+     "r2_poly": 0.9545845590957115,
+     "h_slope": 71.68682059316447,
+     "poly_dim": 3.6778442448192203,
+     "n_radii": 40,
+     "centre": 1302,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.872133063198352,
+     "r2_poly": 0.9560285914004082,
+     "h_slope": 62.013971607403676,
+     "poly_dim": 2.7601841708239605,
+     "n_radii": 40,
+     "centre": 1057,
+     "usable": true
+    },
+    {
+     "verdict": "exponential",
+     "r2_exp": 0.9575060543884001,
+     "r2_poly": 0.8708248804753238,
+     "h_slope": 95.04900469282681,
+     "poly_dim": 2.889792606239875,
+     "n_radii": 40,
+     "centre": 61,
+     "usable": true
+    },
+    {
+     "verdict": "exponential",
+     "r2_exp": 0.9683753425387067,
+     "r2_poly": 0.9509846187568698,
+     "h_slope": 76.31616514807286,
+     "poly_dim": 2.551232739601108,
+     "n_radii": 40,
+     "centre": 1622,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9110465182297447,
+     "r2_poly": 0.9759229293983801,
+     "h_slope": 75.96994607590115,
+     "poly_dim": 3.4793098985888635,
+     "n_radii": 40,
+     "centre": 1465,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9334900663312009,
+     "r2_poly": 0.982574482517697,
+     "h_slope": 88.95595310427031,
+     "poly_dim": 3.828439235661555,
+     "n_radii": 40,
+     "centre": 1890,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9113127625070002,
+     "r2_poly": 0.9846618031382237,
+     "h_slope": 86.81909034934253,
+     "poly_dim": 3.5440956942324675,
+     "n_radii": 40,
+     "centre": 946,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9491287796424464,
+     "r2_poly": 0.9911803417457208,
+     "h_slope": 71.90314898140956,
+     "poly_dim": 3.72958091955006,
+     "n_radii": 40,
+     "centre": 1355,
+     "usable": true
+    },
+    {
+     "verdict": "exponential",
+     "r2_exp": 0.9483217361944257,
+     "r2_poly": 0.9064298071921855,
+     "h_slope": 110.63049943335486,
+     "poly_dim": 3.33299418523836,
+     "n_radii": 40,
+     "centre": 1792,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8889706888372472,
+     "r2_poly": 0.9921220761053244,
+     "h_slope": 72.17651933847797,
+     "poly_dim": 3.033627160246689,
+     "n_radii": 40,
+     "centre": 475,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9380611648060883,
+     "r2_poly": 0.9582767030515109,
+     "h_slope": 74.22821115008377,
+     "poly_dim": 2.942262886898587,
+     "n_radii": 40,
+     "centre": 1621,
+     "usable": true
+    },
+    {
+     "verdict": "indeterminate",
+     "r2_exp": 0.9503554228882232,
+     "r2_poly": 0.9599529375310081,
+     "h_slope": 75.3894608834557,
+     "poly_dim": 2.889127630945858,
+     "n_radii": 40,
+     "centre": 153,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9423434512862734,
+     "r2_poly": 0.9535640859053351,
+     "h_slope": 64.74355434502088,
+     "poly_dim": 3.759548325228328,
+     "n_radii": 40,
+     "centre": 134,
+     "usable": true
+    },
+    {
+     "verdict": "exponential",
+     "r2_exp": 0.9773912051461363,
+     "r2_poly": 0.8650772847119073,
+     "h_slope": 64.0109647928653,
+     "poly_dim": 2.4633065349994094,
+     "n_radii": 40,
+     "centre": 711,
+     "usable": true
+    }
+   ],
+   "null": [
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.91703899451356,
+     "r2_poly": 0.9935121023181707,
+     "h_slope": 2.534575774434838,
+     "poly_dim": 3.761254028307972,
+     "n_radii": 40,
+     "centre": 1157,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9496621112599412,
+     "r2_poly": 0.9969589421899928,
+     "h_slope": 2.094366033805235,
+     "poly_dim": 4.281455569921424,
+     "n_radii": 40,
+     "centre": 492,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9099809560076941,
+     "r2_poly": 0.98144357165972,
+     "h_slope": 2.096033655636322,
+     "poly_dim": 4.263869853881553,
+     "n_radii": 40,
+     "centre": 766,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9485070474518168,
+     "r2_poly": 0.9963629828484589,
+     "h_slope": 2.113384997817827,
+     "poly_dim": 4.2794358109976915,
+     "n_radii": 40,
+     "centre": 716,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9489365782811012,
+     "r2_poly": 0.9953031050167924,
+     "h_slope": 1.9815238991360538,
+     "poly_dim": 4.061718091305021,
+     "n_radii": 40,
+     "centre": 1502,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.953594597230217,
+     "r2_poly": 0.9975561192296205,
+     "h_slope": 1.9770504419838162,
+     "poly_dim": 4.4365573794088125,
+     "n_radii": 40,
+     "centre": 392,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9056027091343668,
+     "r2_poly": 0.9906586798020353,
+     "h_slope": 2.6230491854216136,
+     "poly_dim": 3.881047269662607,
+     "n_radii": 40,
+     "centre": 992,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9347930255696635,
+     "r2_poly": 0.9843216870933941,
+     "h_slope": 1.9124783803270589,
+     "poly_dim": 6.313889305557772,
+     "n_radii": 40,
+     "centre": 1322,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.924439611852308,
+     "r2_poly": 0.9945901190772141,
+     "h_slope": 2.3347905028663685,
+     "poly_dim": 4.118337003947976,
+     "n_radii": 40,
+     "centre": 699,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9460783926704236,
+     "r2_poly": 0.9988612340895954,
+     "h_slope": 2.10089437898286,
+     "poly_dim": 4.171217539549243,
+     "n_radii": 40,
+     "centre": 1029,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.911269628492397,
+     "r2_poly": 0.9853371909630211,
+     "h_slope": 2.0447739010153994,
+     "poly_dim": 4.304063539686264,
+     "n_radii": 40,
+     "centre": 538,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.928343826363335,
+     "r2_poly": 0.9971709847156515,
+     "h_slope": 2.3256246368011224,
+     "poly_dim": 3.9036497763180837,
+     "n_radii": 40,
+     "centre": 1302,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.924696106933884,
+     "r2_poly": 0.990073126970337,
+     "h_slope": 2.1641569337092754,
+     "poly_dim": 4.714059288380991,
+     "n_radii": 40,
+     "centre": 1057,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9113376610461732,
+     "r2_poly": 0.9874674443578595,
+     "h_slope": 2.2131529868534656,
+     "poly_dim": 4.154189612846539,
+     "n_radii": 40,
+     "centre": 61,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9314386023523525,
+     "r2_poly": 0.9852447131048006,
+     "h_slope": 1.8772824957306968,
+     "poly_dim": 5.794108584881986,
+     "n_radii": 40,
+     "centre": 1622,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9705449830262011,
+     "r2_poly": 0.9928800390288611,
+     "h_slope": 1.8972201135348568,
+     "poly_dim": 4.974736223413698,
+     "n_radii": 40,
+     "centre": 1465,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9136857608980278,
+     "r2_poly": 0.9893118150357221,
+     "h_slope": 2.3487249268162134,
+     "poly_dim": 4.353860403419148,
+     "n_radii": 40,
+     "centre": 1890,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9634820242493821,
+     "r2_poly": 0.9808857636950945,
+     "h_slope": 1.9260472387042284,
+     "poly_dim": 4.3143564392314975,
+     "n_radii": 40,
+     "centre": 946,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9228790194403395,
+     "r2_poly": 0.9933234124313123,
+     "h_slope": 2.3895404503316504,
+     "poly_dim": 3.560362086668666,
+     "n_radii": 40,
+     "centre": 1355,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.8853125703663088,
+     "r2_poly": 0.9649986214628723,
+     "h_slope": 2.249297389559154,
+     "poly_dim": 4.350652250250003,
+     "n_radii": 40,
+     "centre": 1792,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9110235404991036,
+     "r2_poly": 0.9873934484088726,
+     "h_slope": 2.267584861151746,
+     "poly_dim": 4.170930533886084,
+     "n_radii": 40,
+     "centre": 475,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9406109686595083,
+     "r2_poly": 0.9889160498708292,
+     "h_slope": 2.259086882659496,
+     "poly_dim": 3.525222233966959,
+     "n_radii": 40,
+     "centre": 1621,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9512092037817509,
+     "r2_poly": 0.9959424380164666,
+     "h_slope": 1.9519414476654822,
+     "poly_dim": 4.555308929960048,
+     "n_radii": 40,
+     "centre": 153,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9082893663277414,
+     "r2_poly": 0.9898907125183708,
+     "h_slope": 2.523657888990986,
+     "poly_dim": 4.042965822978158,
+     "n_radii": 40,
+     "centre": 134,
+     "usable": true
+    },
+    {
+     "verdict": "polynomial(h_pack~0)",
+     "r2_exp": 0.9402830814004132,
+     "r2_poly": 0.9884401113640944,
+     "h_slope": 2.1562626237093347,
+     "poly_dim": 4.0527330966833635,
+     "n_radii": 40,
+     "centre": 711,
+     "usable": true
+    }
+   ],
+   "delta_ratio": 0.5783025408593065,
+   "K2": true,
+   "K3": false,
+   "K4": true,
+   "verdict": "INDETERMINATE"
+  }
+ }
+}

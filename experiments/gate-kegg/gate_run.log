@@ -1,0 +1,8 @@
+K1 certification: 13/13  (7s)
+S1 data (n=1935, dim=2): usable 25/25  exponential 1  polynomial 21  indeterminate 3  h_slope median 48.0324  (8s)
+S1 null: usable 25/25  exponential 0  polynomial 24  indeterminate 1  h_slope median 2.5536  (8s)
+S1: δ-ratio data/null = 0.323;  K2 True  K3 False  K4 True  -> CERTIFIED POLYNOMIAL
+S2 data (n=1935, dim=5): usable 25/25  exponential 5  polynomial 18  indeterminate 2  h_slope median 75.3895  (8s)
+S2 null: usable 25/25  exponential 0  polynomial 25  indeterminate 0  h_slope median 2.1563  (8s)
+S2: δ-ratio data/null = 0.578;  K2 True  K3 False  K4 True  -> INDETERMINATE
+GATE DONE

@@ -1,0 +1,11 @@
+import ActiveGeometry.Persistent
+#print axioms ActiveGeometry.Constrained.packingNumber_mono_set
+#print axioms ActiveGeometry.Constrained.extendSeparated_isCover
+#print axioms ActiveGeometry.Constrained.packingCount_two_mul_le_nestedFinset_card
+#print axioms ActiveGeometry.Constrained.persistentSource_retentive
+#print axioms ActiveGeometry.Constrained.recodingCode_base_persistent
+#print axioms ActiveGeometry.Constrained.persistentSource_hasGrowth
+#print axioms ActiveGeometry.Constrained.achievable_stable_persistent
+#print axioms ActiveGeometry.Constrained.capacity_stable_between
+#print axioms ActiveGeometry.Constrained.capacity_stable_eq_packing_of_boundedGeometry
+#print axioms ActiveGeometry.Constrained.persistent_chain

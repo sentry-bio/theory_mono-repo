@@ -1,0 +1,15 @@
+GW2011-AR1               n  215 split 30|23 depth 1.041  θ 0.71 β 5.06 β−2θ +3.65 | quartet obs 0.700 pred 0.696±0.098 | centroid obs 0.849 pred 0.898±0.050  (46s)
+Haloarculaceae           n  154 split 30|21 depth 0.355  θ 0.85 β 13.93 β−2θ +12.22 | quartet obs 0.700 pred 0.642±0.145 | centroid obs 0.941 pred 0.849±0.084  (86s)
+Haloferacaceae           n  174 split 30|30 depth 0.321  θ 1.34 β 15.21 β−2θ +12.53 | quartet obs 0.925 pred 0.821±0.112 | centroid obs 0.933 pred 0.914±0.056  (146s)
+Methanobacteriaceae      n  226 split 30|30 depth 0.564  θ 1.35 β 9.08 β−2θ +6.37 | quartet obs 0.980 pred 0.827±0.127 | centroid obs 0.983 pred 0.914±0.066  (207s)
+Natrialbaceae            n  125 split 30| 6 depth 0.294  θ 2.83 β 15.61 β−2θ +9.95 | quartet obs 1.000 pred 0.926±0.131 | centroid obs 1.000 pred 0.959±0.082  (220s)
+Nitrosopumilaceae        n  263 split 30|30 depth 0.463  θ 0.82 β 9.55 β−2θ +7.91 | quartet obs 0.920 pred 0.874±0.113 | centroid obs 0.917 pred 0.912±0.071  (285s)
+Poseidoniaceae           n  193 split 30| 7 depth 0.621  θ 0.85 β 8.67 β−2θ +6.97 | quartet obs 1.000 pred 0.947±0.080 | centroid obs 1.000 pred 0.942±0.070  (300s)
+Thalassarchaeaceae       n  166 split 30|13 depth 0.674  θ 0.81 β 8.09 β−2θ +6.48 | quartet obs 0.960 pred 0.808±0.172 | centroid obs 0.977 pred 0.921±0.092  (322s)
+Thermoplasmataceae       n  118 split 30| 9 depth 0.642  θ 0.79 β 6.39 β−2θ +4.80 | quartet obs 0.985 pred 0.907±0.084 | centroid obs 1.000 pred 0.931±0.067  (339s)
+
+[ar] 9 families. quartet obs 0.908 pred 0.828 (median |err| 0.074); centroid obs 0.956 pred 0.915 (median |err| 0.056)
+[ar] advantage centroid−quartet: positive in 67%, within 0.10 of prediction in 100%; Spearman(β−2θ, centroid) = -0.05; above line 9, below 0
+[ar] H1 False  H2 False  H3 False  -> PREREG21 verdict: FAIL   (339s)
+HORIZON21 DONE ar
+HORIZON21 BOTH DONE

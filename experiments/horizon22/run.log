@@ -1,0 +1,27 @@
+2026-10-14 04:28:48 CEST
+PREREG22 frozen:
+167352a414236564426031ec03c46d3031dec877662d595dc149b0ee0b142850  PREREG22_two_reader_horizon.md
+67b4a7ffe25205270139c26c118b2b2a7df52ba7fe141f540e4f010379df2abc  horizon22.py
+7c941ac931fa1b26f4f1ddde4bc0add9e7dda151357ab40f858b6adad6cbdb45  ../paper2/RATE_TAIL_DERIVATION.md
+--- smoke (disclosed) ---
+a=0.5 L=256 unweighted: t*=1.2413
+a=0.5 L=256 weighted: t*=1.9944
+a=0.5 L=1024 unweighted: t*=2.2116
+a=0.5 L=1024 weighted: t*=3.9603
+--- amendment re-freeze ---
+2026-10-14 04:29:36 CEST
+6d32b48c9f313ab46a53a91787c1fe364f932d399ab23acc44f9aa1593f1da9a  PREREG22_two_reader_horizon.md
+f9fbb74ea614e0bf4f1cf1deca82a5dab9a78b44a4e04d1bc00e8345eb571750  horizon22.py
+--- verdict runs launched ---
+2026-10-14 04:29:36 CEST
+--- clock-correction re-freeze (amendment text only) ---
+2026-10-14 04:33:26 CEST
+dd6ff958b91730e8179e70f69ac10faa917d77798ca55306c3c432d56651b9fa  PREREG22_two_reader_horizon.md
+--- predict+score ---
+2026-10-14 04:55:02 CEST
+{"unweighted": 1.0741688878020308, "weighted": 0.8976375122531892}
+V1_form_unweighted PASS
+V2_form_weighted PASS
+V3_slopes PASS
+V4_ordering PASS
+V5_uniform PASS

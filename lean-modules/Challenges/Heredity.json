@@ -1,0 +1,22 @@
+{
+  "challenge_module": "Challenges.Heredity",
+  "solution_module": "ActiveGeometry.Heredity",
+  "theorem_names": [
+    "ActiveGeometry.Heredity.card_carrier",
+    "ActiveGeometry.Heredity.spectrum_le",
+    "ActiveGeometry.Heredity.card_spectra_le",
+    "ActiveGeometry.Heredity.card_composition",
+    "ActiveGeometry.Heredity.histories_le_composition_room",
+    "ActiveGeometry.Heredity.histories_le_sequence_room",
+    "ActiveGeometry.Heredity.spectrum_not_injective",
+    "ActiveGeometry.Heredity.eventually_poly_lt_exp",
+    "ActiveGeometry.Heredity.eventually_spectrum_not_injective"
+  ],
+  "definition_names": [
+    "ActiveGeometry.Heredity.window",
+    "ActiveGeometry.Heredity.spectrum",
+    "ActiveGeometry.Heredity.spectrumFin"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}

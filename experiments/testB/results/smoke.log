@@ -1,0 +1,6 @@
+jc      acc_decided 0.973 undecidable 0.000 composition [0.25, 0.251, 0.25, 0.249]
+gamma   acc_decided 0.997 undecidable 0.000 composition [0.26, 0.242, 0.25, 0.248]
+hky     acc_decided 0.990 undecidable 0.000 composition [0.153, 0.343, 0.358, 0.146]
+hetero  acc_decided 0.961 undecidable 0.237 composition [0.246, 0.251, 0.251, 0.252]
+hgt     acc_decided 0.830 undecidable 0.000 composition [0.25, 0.25, 0.25, 0.25]
+SMOKE OK

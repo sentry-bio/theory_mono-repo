@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenges.CoarseConverse",
+  "solution_module": "ActiveGeometry.CoarseConverse",
+  "theorem_names": [
+    "ActiveGeometry.Constrained.census_card_le_coarse_packing",
+    "ActiveGeometry.Constrained.coarse_packing_converse",
+    "ActiveGeometry.Constrained.balloon_packingCount_le",
+    "ActiveGeometry.Constrained.balloon_coarse_entropy_zero",
+    "ActiveGeometry.Constrained.packingCount_anti",
+    "ActiveGeometry.Constrained.packingCount_le_mul_packingCount",
+    "ActiveGeometry.Constrained.packingRate_scale_invariant",
+    "ActiveGeometry.Constrained.balloon_relational_rate_nonpos"
+  ],
+  "definition_names": [],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}

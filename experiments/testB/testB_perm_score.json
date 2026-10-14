@@ -1,0 +1,30 @@
+{
+ "cells": {
+  "Cstar|1.0": {
+   "n_seeds": 3,
+   "frac_blocked": 1.0,
+   "n_quartets": 600,
+   "phi_median": 879.826
+  },
+  "Cstar|2.0": {
+   "n_seeds": 3,
+   "frac_blocked": 0.9416666666666668,
+   "n_quartets": 600,
+   "phi_median": 207.61849999999998
+  },
+  "T|1.0": {
+   "n_seeds": 3,
+   "frac_blocked": 0.045000000000000005,
+   "n_quartets": 600,
+   "phi_median": 0.941
+  },
+  "T|2.0": {
+   "n_seeds": 3,
+   "frac_blocked": 0.06365967885816236,
+   "n_quartets": 489,
+   "phi_median": 0.969
+  }
+ },
+ "verdict": "BLOCK DISCRIMINATOR WORKS",
+ "rule": "Cstar >= 0.70 and T <= 0.30 BLOCKED at both depths; phi > chi2_19/19 95th pct"
+}

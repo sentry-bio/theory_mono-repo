@@ -1,0 +1,35 @@
+{
+  "challenge_module": "Challenges.BalloonPacking",
+  "solution_module": "ActiveGeometry.BalloonPacking",
+  "theorem_names": [
+    "ActiveGeometry.Constrained.mem_ballFinset_of_hubIndex_le",
+    "ActiveGeometry.Constrained.closedBall_subset_ballFinset",
+    "ActiveGeometry.Constrained.sum_two_pow_lt",
+    "ActiveGeometry.Constrained.succ_lt_two_pow_succ",
+    "ActiveGeometry.Constrained.card_ballFinset_le",
+    "ActiveGeometry.Constrained.closedBall_finite",
+    "ActiveGeometry.Constrained.balloon_hasFinitePacking",
+    "ActiveGeometry.Constrained.leaf_injective",
+    "ActiveGeometry.Constrained.card_leavesOf",
+    "ActiveGeometry.Constrained.leavesOf_separated",
+    "ActiveGeometry.Constrained.leavesOf_subset_closedBall",
+    "ActiveGeometry.Constrained.two_pow_le_packingCount",
+    "ActiveGeometry.Constrained.packingCount_le_two_pow",
+    "ActiveGeometry.Constrained.balloon_packingRate_tendsto",
+    "ActiveGeometry.Constrained.trivialSource_hasGrowth",
+    "ActiveGeometry.Constrained.trivialSource_metricULF",
+    "ActiveGeometry.Constrained.trivialSource_represents",
+    "ActiveGeometry.Constrained.zero_mem_rates_relational",
+    "ActiveGeometry.Constrained.balloon_capacity_block_eq",
+    "ActiveGeometry.Constrained.balloon_capacity_relational_eq_zero",
+    "ActiveGeometry.Constrained.balloon_capacity_strict"
+  ],
+  "definition_names": [
+    "ActiveGeometry.Constrained.ballFinset",
+    "ActiveGeometry.Constrained.leavesOf",
+    "ActiveGeometry.Constrained.trivialSource",
+    "ActiveGeometry.Constrained.trivialCode"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}

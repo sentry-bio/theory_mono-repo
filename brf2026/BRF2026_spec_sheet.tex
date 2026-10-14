@@ -1,0 +1,45 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,longtable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlength{\parskip}{3pt}\setlength{\parindent}{0pt}
+\newcommand{\hpack}{h_{\mathrm{pack}}}
+\begin{document}
+\begin{center}
+{\Large\bfseries BRF2026 --- Biosphere Reference Frame, datum specification sheet}\\[2pt]
+{\small Draft 0.1, 14 October 2026 (prepared with the manuscripts' version Gh/Gf; to be re-issued with every realisation)}
+\end{center}
+
+\textbf{What the datum is.} A frozen, reproducible reference frame for cellular genomic diversity: any genome, named or not, receives an \emph{identity coordinate} relative to a catalogue of reference genomes, and lineages receive \emph{routes} on a separate genealogical backbone. The frame rests on two layers with different evidentiary standards: unconditional theorems (Paper~I, machine-checked in Lean~4) that say what each layer can carry, and pre-registered measurements (Paper~II and the datum's own validation ledger) that say how far each instrument reaches. Nothing learned enters the foundation layer; no later realisation moves an existing coordinate.
+
+\textbf{The one inequality.} Histories that are far apart must stay far apart in the record, $D^{-1}d_S(u,v)-K\le d_M(\mathrm{addr}\,u,\mathrm{addr}\,v)$. At the distance of sisters it is the resolution condition that gives identity; at the distance of deep cousins it is the condition that keeps genealogy. Every band below is a statement about how long some instrument honours it.
+
+\textbf{Why the frame has layers.} A fixed-window statistic of a genome (any $k$-mer composition) has at most $(L+2)^{a^k}$ distinguishable states against $a^L$ ordered ones (Paper~I, \texttt{Heredity.lean}); and over bounded-valence sources, relational capacity is bounded by packing entropy at every scale (the coarse packing converse, \texttt{CoarseConverse.lean}), which is zero for a Euclidean coordinate space. So no composition map can carry deep branching, and a frame for cellular life must have an identity layer and a separate genealogy layer. The architecture is a corollary, not a design preference.
+
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.9cm}>{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{3.4cm}@{}}
+\toprule
+\textbf{Component} & \textbf{Band claimed} & \textbf{Theorem / Lean declaration} & \textbf{Registration, number} & \textbf{What would falsify the band}\\
+\midrule
+\endhead
+Base map (whitened 4-mers, 136 coordinates, Euclidean; recipe fingerprint \texttt{3b92fc2b\ldots}) & Genus and family neighbourhoods; silent on deep branching & Block capacity $=c\,\hpack$ (\texttt{Packing}); room of compositions polynomial in $L$ (\texttt{Heredity.card\_\allowbreak{}spectra\_\allowbreak{}le}); relational capacity zero in a bounded-geometry Euclidean host (\texttt{coarse\_\allowbreak{}packing\_\allowbreak{}converse}, \texttt{packingRate\_\allowbreak{}scale\_\allowbreak{}invariant}) & Datum validation: 96.7\% witness agreement, 91.6\%/86.1\% family/genus nearest; deep quartets 54\%/47\% vs 33\%. PREREG17: composition worth 1--2 aligned sites. PREREG21: centroid reader 0.90 at family depth, bacteria; FAIL archaea. PREREG20 Atlas arm: availability binds, $\eta\approx0.01$ & Deep-quartet recovery that rises with genome length; a composition reader resolving splits beyond the measured horizon; the 0.2 substitutions-per-site horizon prediction (open) missed by a registered margin\\
+Containment (k-mer sets) & Species and below & Identity edge: $N p^L\le\delta$ once $L\ge\log(N/\delta)/(-\log p)$, one-sided in the clock (\texttt{identity\_\allowbreak{}sites}, \texttt{identified\_\allowbreak{}mono}) & Datum validation: two DNA-disjoint halves land on the same genome or species 98.9\% & Identity failing at a faster clock (impossible under the theorem; a failure would indicate a reader, not a frame, defect)\\
+Backbone (marker-protein tree, hyperbolic chart) & How lineages branch & Zero relational tax in $\mathbb H^n_\kappa$: $C^{\mathrm{wt}}_{\mathrm{rel}}=c(n-1)\sqrt\kappa$ (Paper~I Thm.\ on the hyperbolic equality, via Skenderi); $n=2$ embeddability floor; rigidity of exact saturation (\texttt{quasiIsometric\_\allowbreak{}of\_\allowbreak{}net}) & 93\% of branching kept in a 2-D hyperbolic chart, 98\% in 8-D & A bounded-valence genealogy that the chart cannot hold at the backbone's growth rate; a saturated chart that is not tree-like at the reader's scale\\
+Witness (independent marker quartets) & Right or wrong, region by region & Four-point condition $\Leftrightarrow$ tree (Buneman); block-structure discriminator for mixing vs misspecification & 113,747 quartets; PREREG19b: mixing 94--100\% blocked, heterotachy 4--6\% & A witness that disagrees with the backbone on taxonomy-concordant splits at rates above its stated error\\
+Sextant (aligned markers; genealogy where markers fill) & Depth set by marker length and rate spectrum & The distance reader's window (\texttt{window}, \texttt{readable\_\allowbreak{}depth\_\allowbreak{}le}, \texttt{readable\_\allowbreak{}branch\_\allowbreak{}lower}); rate-tail law: $t^*\asymp L^{1/(2(a+1))}$ unweighted, $L^{1/(a+2)}$ rate-weighted, $\tfrac{3}{16}\ln L$ at uniform rates & PREREG22: law confirmed in simulation (within 2.5\%/8.4\%). PREREG23: unresolved on GTDB bac120. PREREG23b (mitogenomes): running & Observed $t^*(L)$ outside $\pm20\%$ of the parameter-free prediction at any resolved $L\ge128$; a rate-weighted reader that does not beat the shuffled control beyond depth $3a/8$\\
+Conformal gate (search policy) & Refuse beyond the horizon & The instrument that can refuse (growth-class gate certified 13/13 on synthetic hosts) & PREREG18: KEGG metric certified polynomial & A gate that returns a placement past the measured horizon with stated confidence\\
+Novelty & New address & Identity outside the census (block capacity unused) & Datum: median distance 0.62 in catalogue, 2.55 new species, 4.51 new genus, 4.98 new family & Novelty distance that does not plateau at depth (would contradict composition saturation)\\
+Chimera & Lateral record & Mixing is the second exit; block structure, not a floor, is specific & PREREG19b block discriminator & Chimeras detected by a floor alone at the discriminator's rate\\
+Audit (five factors) & Where each instrument loses & $\eta$ is the product of availability, writing, retention, collisions and reading, each $\le1$ (\texttt{Chain.efficiency\_\allowbreak{}eq\_\allowbreak{}product}) & PREREG20: Atlas A-curve reproduced; availability 0.62$\to$0.46 binds. PREREG24: in information the chain is ordered; closure fails on the recorder & An audit factor above one in information; a closure that locates no stage\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\textbf{Open items carried by this realisation (not hidden in a frontier list).} (1)~The 4-mer map's genealogical horizon, predicted near $0.2$ substitutions per site from the neutral channel count, is not yet measured as registered. (2)~Archaea: the composition horizon failed as registered; the archaeal band carries the weaker label until a reader is found. (3)~The sextant's depth law is confirmed in the model and untested in nature until PREREG23b reports. (4)~Organelles and viruses are outside the reference set.
+
+\textbf{Realisation rule.} A realisation adds genomes and coordinates; it never changes the recipe, the fingerprint, or an existing distance. Each realisation re-issues this sheet with its validation numbers and its open items. The learned instruments (survey map, gate, novelty, chimera, operations) sit outside the foundation layer and may change between realisations without touching it.
+
+\textbf{Documents.} Paper~I, \emph{The Addressability Limit} (unconditional theorems; Lean kernel). Paper~II, \emph{Evolution as Active Geometry: Identity Is Cheap, Ancestry Is Dear} (registered measurements, PREREG00--24). The Structured Addressability Limit note (Lean inventory, challenge files). The datum package: \texttt{recipe.json}, \texttt{reference.tsv}, \texttt{catalogue\_\allowbreak{}coordinates.npz}, \texttt{SPEC.md}, \texttt{validation.json}, \texttt{CHECKSUMS.sha256}.
+\end{document}

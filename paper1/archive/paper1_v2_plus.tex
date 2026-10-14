@@ -1,0 +1,465 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+% ---------- Theorem environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---------- Macros ----------
+\newcommand{\hpack}{h_{\mathrm{pack}}}
+\newcommand{\hvol}{h_{\mathrm{vol}}}
+\newcommand{\heff}{h_{\mathrm{eff}}}
+\newcommand{\Crel}{C_{\mathrm{rel}}}
+\newcommand{\Cblock}{C_{\mathrm{block}}}
+\newcommand{\Hk}{\mathbb{H}^n_\kappa}
+\newcommand{\Htwo}{\mathbb{H}^2}
+\newcommand{\eps}{\varepsilon}
+
+\begin{document}
+
+\title[The Addressability Limit]{The Addressability Limit:\\ A Geometric Capacity Bound for Information-Generating Hierarchies}
+
+\author{Rohit Fenn}
+\author{Amit Fenn}
+\address{Sentry Bio, Inc., USA}
+\email{research@sentry.bio}
+
+\subjclass[2020]{Primary 51K05, 53C23, 94A24; Secondary 20F67, 22E40, 37C35}
+\keywords{Metric packing, information capacity, hyperbolic geometry, coding theorems, volume entropy, critical exponent}
+\date{\today}
+
+\begin{abstract}
+A process cannot retain distinguishable histories faster than its representation gains room to keep them apart. For retained-history growth rate $\beta$, radial conversion rate $c$, and host packing entropy $\hpack$, we prove $\beta \le c\,\hpack$ unconditionally, in any proper metric space, with no curvature, tree, or stationarity hypothesis, and premises no stronger than retention, distinguishability at a fixed resolution, and a finite rate converting generative depth into representation radius. Read with its quantifiers rearranged, the same fact is a trichotomy: a process occupies exponential room, or its address radius never settles to a finite rate, or it forgets. The bound is \emph{tight}: block address capacity equals $c\,\hpack$ \emph{exactly} in every proper metric space, so packing entropy is a capacity, not a constraint. What packing entropy does not settle is structure. We exhibit a proper space of positive packing entropy admitting no uniform quasi-isometric image of a regular branching tree---room without shape---so the invariant that answers the addressing question is silent on the genealogical one. For one host family we close that gap: in real hyperbolic space, relational capacity attains block capacity at exponential order, $\Crel^{\mathrm{wt}}(\Hk,c;\eps)=c(n-1)\sqrt\kappa$, so preserving a genealogy costs nothing beyond keeping its members apart. Under a full orthogonal symmetry hypothesis on the host's boundary data, Schur's lemma forces that family uniquely within Heintze's classification. The curvature--entropy state equation is exactly the equality case of the bound in this isotropic host, asserted of no system here. Two questions are left open by name: for which hosts packing entropy is a complete invariant for relational capacity, and whether any physical process approaches the ceiling this bound proves exists.
+\end{abstract}
+
+\maketitle
+
+{\small\noindent\emph{On this manuscript.} This paper supersedes a Zenodo record circulated as \emph{A Geometric State Equation for Information-Generating Hierarchies} (concept DOI \href{https://doi.org/10.5281/zenodo.19381557}{10.5281/zenodo.19381557}). That record's public face was an \emph{equality} between curvature and entropy rate; here that equality survives only as the named, detachable equality case of an inequality (\S\ref{sec:IIb}), and the content is now the separation between two capacities rather than any single ceiling. A companion manuscript, \emph{Evolution as Active Geometry} (Fenn \& Fenn, in preparation), instantiates this paper's bound and ladder on genomic data under its own evidentiary standard; it is cited, not fed back into any theorem below. No biological claim appears here.\par}
+
+% =====================================================================
+\section{Introduction, and how to read this paper}
+% =====================================================================
+
+A process that generates and retains distinguishable histories needs somewhere to put them. If a history is to stay distinguishable from every other retained one, it must occupy a location no other occupies at the working resolution; and a representation offers only finitely many such locations within a given reach. So unbounded memory inside a bounded radius is not merely hard but impossible---and the central fact of this paper is that the wall is a strict ceiling, standing exactly where the counting puts it.
+
+\medskip
+\noindent\textbf{What kind of statement this is.} The result is a \emph{limit principle}, in the lineage of the second law, the Carnot bound, and the Shannon capacity: an inequality that cannot be beaten, whose equality case is an idealized realization no particular system is assumed to reach. Most of this paper is the inequality and its exact tightness; a smaller part is the geometry of the equality case; and the honest premises separating the two are stated as they arise. The old ``state equation'' is the equality case, and it appears here in that role only.
+
+\medskip
+\noindent\textbf{The layered structure is the skeleton.} The reader can hold the whole paper as four altitudes, and no claim below is stated above its altitude:
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{7.0cm}>{\raggedright\arraybackslash}p{3.6cm}@{}}
+\toprule
+\textbf{Layer} & \textbf{Statement} & \textbf{Status} \\
+\midrule
+\textbf{I} (\S\ref{sec:limit}--\S\ref{sec:balloon}) & Bound $\beta\le c\,\hpack$; exact block identity $\Cblock=c\,\hpack$; trichotomy; ladder; the balloon separation. Curvature-free. & \textbf{Proven} (Lean: finite/convergent case) \\
+Bridge (\S\ref{sec:classifier}) & Four-point condition $\Leftrightarrow$ tree; $n=2$ embeddability floor. Neither Layer I nor II. & \textbf{Proven} (classical) \\
+Host-specific (\S\ref{sec:relational}) & Relational capacity $\Crel^{\mathrm{wt}}(\Hk)=c(n-1)\sqrt\kappa$; zero tax. \emph{Not} Layer-I universal. & \textbf{Proven} (uses \cite{skenderi2026}) \\
+\textbf{IIa} (\S\ref{sec:chart}) & A3 (full $O(d)$ symmetry) $\Rightarrow M=\Hk$; the state equation as equality case. & \textbf{Proven} (Schur); A3 \emph{asserted} \\
+\textbf{IIb} (\S\ref{sec:IIb}) & Variational selection of the boundary; $\eta=\beta/(c\hpack)$. Does a process saturate? & Selection \textbf{proven}; saturation \textbf{open} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent\textbf{Relation to the companion.} A companion manuscript, \emph{Evolution as Active Geometry}, imports exactly three objects from this paper and re-derives none: the \emph{bound} of \S\ref{sec:limit}, the block/relational \emph{ladder} of \S\ref{sec:ladder} and \S\ref{sec:relational}, and the \emph{chart} statements of \S\ref{sec:classifier} and \S\ref{sec:chart} (the minimal ambient dimension, and the isotropy convention under which a curvature is legally identified). Nothing in the companion's empirical content is a premise below.
+
+\subsection{Relation to existing work}\label{sec:related}
+
+The pairing of trees with negatively curved hosts has a substantial literature; it is worth stating which questions it answers and which one it leaves.
+
+\emph{Embedding results.} Sarkar embeds any finite weighted tree in the hyperbolic plane with edge weights realized exactly and non-adjacent distortion below any $1+\eps$ \cite{sarkar2011}. Bonk--Schramm embed a Gromov hyperbolic space of bounded growth into $\mathbb H^n$ with additive distortion after rescaling \cite{bonkschramm2000}. Buyalo--Schroeder embed every Gromov hyperbolic group quasi-isometrically into a product of binary trees, with a sharp factor count \cite{buyaloschroeder2005,buyaloschroeder2007}. These settle \emph{whether} an object embeds, at what distortion, into how many factors. Our question is different in kind: fixing a resolution $\eps$ and a radial budget $d(o,f(v))\le c\,\tau(v)+A_0$ turns embeddability into a \emph{rate} problem---the supremum of exponential growth rates over admissible codes, not the distortion of any one. The two do not determine each other: low distortion for a fixed tree bounds neither, since a single embedding may consume arbitrary radius. We are not aware of a prior statement that this supremum equals ambient volume entropy exactly (Theorem~\ref{thm:relational}), nor of the separation of \S\ref{sec:balloon} stated as a capacity rather than a dimension.
+
+\emph{Critical exponents.} The lower bound belongs to the Patterson--Sullivan tradition, in which a group's critical exponent equals volume entropy and, for geometrically finite Kleinian groups, the limit-set Hausdorff dimension \cite{patterson1976,sullivan1979,bishopjones1997}. We require a sharper object: a free sub-semigroup with $\eps$-separated orbit whose critical exponent approaches the ambient lattice's, which is exactly Skenderi's construction \cite{skenderi2026}.
+
+\emph{Terminology.} \emph{Capacity} always means an exponential growth rate of an admissible code, never the capacity dimension of \cite{buyaloschroeder2005}. \emph{Host} means the ambient target. Dictionary for readers from metric geometry: block address capacity is the growth rate of $\eps$-separated packings of balls; relational capacity restricts to codes whose image is a uniformly quasi-isometrically embedded weighted tree; the generative clock $\tau$ is the path-length metric of an edge-weighted tree.
+
+% =====================================================================
+\section{The limit}\label{sec:limit}
+% =====================================================================
+
+\subsection{Definitions}
+
+\begin{definition}[Retained-history growth]
+Let $\mathcal H_R$ be the histories retained through generative depth $R$, with $\mathcal H_R\subseteq\mathcal H_{R+1}$, and $N(R):=|\mathcal H_R|$. The retained-history growth rate is
+\[
+\beta:=\limsup_{R\to\infty}\frac{\log N(R)}{R}\qquad\text{(nats per generative step).}
+\]
+\end{definition}
+
+The word \emph{retained} is load-bearing: a process that overwrites its past, so $\mathcal H_R$ does not grow, has $\beta=0$ regardless of instantaneous change. That is the trichotomy's third horn, not an exception to it. Define the effective bit rate $\heff:=\beta/\ln2$, so $\beta=\heff\ln2$ \emph{by definition}---a unit conversion, not a physical claim. A Shannon entropy-rate estimator measures $\heff$ only when a typical-set or coding argument shows it tracks the exponential growth of retained distinguishable histories; alphabet entropy alone does not establish this. Locating the real empirical content here, rather than in the equality $\beta=\heff\ln2$, is what keeps the state equation of \S\ref{sec:chart} honest.
+
+\begin{definition}[Faithful representation at finite radial rate]
+For a pointed metric space $(M,d,o)$, a family $f_R:\mathcal H_R\to M$ is \emph{$\eps$-faithful at finite radial rate} when (1) $f_R$ is injective; (2) $d(f_R(x),f_R(y))\ge\eps$ for distinct $x,y$; (3) $f_R(\mathcal H_R)\subseteq B(o,r(R))$; and (4) $c:=\limsup_R r(R)/R<\infty$.
+\end{definition}
+
+The units of $c$ are geometric length per generative step; it converts the process clock to the host's radial ruler and cannot be omitted when curvatures under different radial gauges are compared. The convention $c=1$ (the \emph{process-time gauge}) is a coordinate choice, not a theorem.
+
+\begin{definition}[Packing entropy]
+With $P(B(o,\rho),\eps)$ the supremum cardinality of an $\eps$-separated subset of $B(o,\rho)$,
+\[
+\hpack(M,o;\eps):=\limsup_{\rho\to\infty}\frac{\log P(B(o,\rho),\eps)}{\rho}.
+\]
+\end{definition}
+
+This needs only a metric; it applies to trees, graphs, statistical manifolds, learned representations, and Riemannian manifolds alike. For a complete Riemannian manifold with uniform positive-lower and finite-upper volume bounds on balls of the relevant fixed radii, $\hpack$ agrees with volume entropy $\hvol$ at exponential order; we use them interchangeably only under that stated condition. The three quantities $\beta,c,\hpack$ are logically independent.
+
+\paragraph{The room's five names.}
+The invariant this paper needs is $\hpack$ alone, and it carries five classical names, each under its own
+hypothesis. In a complete Riemannian manifold of bounded geometry it is the \emph{volume entropy}
+$\hvol=\lim_{\rho\to\infty}\rho^{-1}\log\mathrm{vol}\,B(o,\rho)$, the condition stated above. For a closed negatively
+curved manifold, Manning's theorem identifies the volume entropy of the universal cover with the \emph{topological
+entropy} of the geodesic flow \cite{manning1979}. For a discrete group of isometries of a proper geodesic space, orbit
+growth gives the \emph{critical exponent} $\delta(\Gamma)$ of the Poincar\'e series, equal to $\hvol$ for cocompact
+lattices \cite{patterson1976,sullivan1979} and, for geometrically finite Kleinian groups, to the \emph{Hausdorff
+dimension of the limit set} \cite{bishopjones1997}. The \emph{Liouville entropy} of the geodesic flow is the fifth, and
+it agrees with the others only in the locally symmetric case; in general it lies strictly below (Katok's inequality
+\cite{katok1982}, with the rigidity theorem of Besson--Courtois--Gallot \cite{bcg1995}), and this paper never uses
+it. The five coincide exactly where the host is as symmetric as Assumption~A3 of \S\ref{sec:chart} demands, and they
+come apart outside it. Theorem~\ref{thm:bound} uses only $\hpack$, which exists in every metric space, so none of the
+hypotheses behind the other four is a hypothesis of the bound; they are the names under which the same room has been
+measured in dynamics, geometry and group theory. Read for heredity, they share one sentence: a lineage cannot branch
+faster than its medium's geodesics diverge.
+
+\subsection{The bound and its converse}
+
+\begin{theorem}[Addressability bound]\label{thm:bound}
+If a process of rate $\beta$ admits an $\eps$-faithful representation at finite radial rate $0<c<\infty$ in a host of finite packing entropy $\hpack$, with $r(R)\to\infty$, then $\beta\le c\,\hpack$.
+\end{theorem}
+
+\begin{proof}
+Faithfulness gives $N(R)\le P(B(o,r(R)),\eps)$. For every $\delta>0$, eventually $r(R)\le(c+\delta)R$; monotonicity gives $P(B(o,r(R)),\eps)\le P(B(o,(c+\delta)R),\eps)$. Finiteness of the limsup gives $\log P(B(o,\rho),\eps)\le(\hpack+\delta)\rho$ at large radii. Hence $\log N(R)/R\le(c+\delta)(\hpack+\delta)+o(1)$; take the upper limit, then $\delta\downarrow0$.
+\end{proof}
+
+The finite-depth count and the convergent-rate case are machine-checked (\texttt{convergent\_rate\_addressability\_limit}, Appendix~B); the limsup statement is the paper theorem. The converse is not merely existence---it is an exact identity in full generality.
+
+\begin{definition}[Block address capacity]
+$A_{\mathrm{block}}(\rho,\eps):=\max\{|C|:C\subseteq B(o,\rho),\ d(x,y)\ge\eps\ \forall x\ne y\}$ and $\Cblock(c,\eps):=\limsup_R R^{-1}\log A_{\mathrm{block}}(cR,\eps)$.
+\end{definition}
+
+\begin{theorem}[Exact block-addressability identity]\label{thm:block}
+For every proper metric space $(M,d,o)$, closed balls are compact, so $A_{\mathrm{block}}(\rho,\eps)=P(B(o,\rho),\eps)$ for all $\rho,\eps$, and consequently $\Cblock(c,\eps)=c\,\hpack(M,o;\eps)$.
+\end{theorem}
+
+\begin{proof}
+Properness gives compact balls, hence finite attained packing numbers; $A_{\mathrm{block}}=P$ is the same extremal problem. Sampling the monotone packing-number function at linearly spaced radii $\rho=cR$ preserves its radial limsup.
+\end{proof}
+
+Tightness is what separates a capacity from a constraint: nothing exceeds $c\,\hpack$ and nothing prevents reaching it, so $\hpack$ \emph{measures} retained diversity rather than merely bounding it. This requires no tree, hyperbolicity, isotropy, or stationarity. The finite-radius existence half is machine-checked (\texttt{exists\_optimal\_blockCode} with \texttt{card\_le\_packingCount}, Appendix~B).
+
+\begin{corollary}[Polynomial-growth exclusion; the trichotomy]\label{cor:poly}
+If $\beta>0$ and $c<\infty$, then $\hpack>0$: no host of only polynomial packing growth can faithfully represent retained exponential novelty at finite radial rate.
+\end{corollary}
+
+This is the coordinate-free content: \emph{remembering while creating requires an exponential-growth host}---on pain of the address radius failing to grow at any finite rate, or of forgetting. Positive packing entropy does \emph{not} by itself imply negative curvature or Gromov hyperbolicity; hyperbolic space becomes canonical only after the symmetry assumption of \S\ref{sec:chart}.
+
+\subsection{The admissibility ladder}\label{sec:ladder}
+
+Theorem~\ref{thm:block} proves achievability at exactly one level of task. Stronger senses of ``represent a hierarchy'' form a ladder, each class $\mathcal A$ inducing $C_{\mathcal A}\le\Cblock$: \textbf{(1) Block}---terminal messages $\eps$-separated; \textbf{(2) Persistent}---one nested address family retains prior messages; \textbf{(3) Causal}---parent-to-child addresses obey a per-step motion bound; \textbf{(4) Relational}---the representation preserves the source's pairwise metric up to stated distortion (e.g.\ a uniform quasi-isometric embedding). Packing alone proves achievability only at level 1; \S\ref{sec:relational} shows why the gap to level 4 is not automatically zero, and closes it for the canonical host.
+
+% =====================================================================
+\section{The separation: room without shape}\label{sec:balloon}
+% =====================================================================
+
+Packing entropy answers the addressing question completely and the structural one not at all.
+
+\begin{proposition}[The balloon]\label{prop:balloon}
+There is a proper metric space $(M,d,o)$ with packing entropy $h>0$ at every resolution admitting no uniform quasi-isometric image of a regular branching tree.
+\end{proposition}
+
+\begin{proof}[Construction]
+Take a ray of hub vertices at integer radii $0,1,2,\dots$ and attach to the hub at radius $R$ a clique of $\lceil e^{hR}\rceil$ leaves at unit distance from it. With the graph metric this is proper, and each ball of radius $\rho$ is dominated by the clique at radius $\lfloor\rho\rfloor$, giving packing entropy exactly $h$. But up to radius $R$ there are only $O(R)$ bounded-diameter shells, while a regular branching tree has exponentially many mutually tree-distant vertices at depth $R$; a quasi-isometric lower bound admits only a bounded number of tree-distant points per shell, so no uniform quasi-isometric embedding exists.
+\end{proof}
+
+The balloon is exponentially room-rich and relationally empty: many addresses, no genealogy realizable at uniform distortion. It is the precise sense in which ``diversity,'' ``packing,'' and ``preserved genealogy'' are not synonyms, and the reason the ladder does not collapse to its top rung. Quartet defect $\delta$ (\S\ref{sec:classifier}) is likewise not the capacity slack $\Delta:=c\,\hpack-\beta$: a reticulate source can use every address, a perfect tree very few. (The balloon is also, verbatim, a star phylogeny after a rapid radiation; the companion develops that instance.)
+
+% =====================================================================
+\section{The structural bridge: four-point geometry}\label{sec:classifier}
+% =====================================================================
+
+\emph{This section is neither Layer I nor Layer II. It decides whether a metric is tree-like---motivating the hyperbolic host class---without supplying $\beta$, $c$, saturation, or curvature magnitude.}
+
+For four points, form $S_1=d(a,b)+d(c,d)$, $S_2=d(a,c)+d(b,d)$, $S_3=d(a,d)+d(b,c)$.
+
+\begin{theorem}[Four-point condition]\label{thm:fourpoint}
+A finite metric is an additive weighted-tree metric exactly when the two largest of $S_1,S_2,S_3$ agree for every quartet \cite{buneman1971}. In the geodesic setting, $0$-hyperbolicity is exactly the $\mathbb R$-tree condition \cite{gromov1987}.
+\end{theorem}
+
+The defect $\delta$ measures departure from this. It determines whether the qualitative object is a tree; it does not determine a curvature magnitude.
+
+\begin{remark}[Minimal ambient dimension]\label{rem:floor}
+A genuinely branching tree cannot embed isometrically in a one-dimensional connected Riemannian manifold: an interior path point admits two directions, a branch vertex needs three. So $n=2$ is the minimal smooth hyperbolic ambient dimension admitting genuinely branching tree metrics at arbitrarily low distortion (path trees remain one-dimensional). This is a structural embeddability floor: \emph{not} the minimizer of any curvature functional, not a fitted constant, and not to be inferred from a measured curvature via any state equation. The four-point condition alone does not imply $n=2$.
+\end{remark}
+
+% =====================================================================
+\section{Closing the gap: the hyperbolic host}\label{sec:relational}
+% =====================================================================
+
+\emph{This theorem is host-specific, not Layer-I universal.} Hyperbolic space closes the gap the balloon opens, exactly.
+
+\begin{proposition}[Finite-depth obstruction]\label{prop:finitedepth}
+Fix $\eps>0$ and $0<c<\eps$. If every rooted tree $T$ must satisfy $f(T_R)\subseteq B(o,cR)$ for every integer depth $R$, with $f(\mathrm{root})=o$ and all distinct vertices $\eps$-separated, the only admissible tree is the one-vertex tree.
+\end{proposition}
+
+\begin{proof}
+A child $v\in T_1$ needs $d(o,f(v))\le c<\eps$; separation needs $d(o,f(v))\ge\eps$; contradiction.
+\end{proof}
+
+This is not a failure of hyperbolic capacity but a mismatch between a physical rate, a fixed resolution, and a clock that charges every edge exactly one unit with no startup allowance---a constraint the addressability theorem never imposed. The former Conjecture 4.4 (exact unit-edge form) is thereby retired, and the correct formulation uses an independently calibrated clock.
+
+\begin{definition}[Weighted relational code]
+For a rooted, locally finite tree $T$ with positive edge durations $a(e)$, $\tau(v):=\sum_{e\subset[\mathrm{root},v]}a(e)$, $T_R^\tau:=\{v:\tau(v)\le R\}$, a map $f:V(T)\to\Hk$ is a weighted relational code at rate $c$, resolution $\eps$ when $f(\mathrm{root})=o$; distinct vertices are $\eps$-separated; $D^{-1}d_\tau(u,v)-K\le d(f(u),f(v))\le Dd_\tau(u,v)+K$ for some $D\ge1,K\ge0$; and $d(o,f(v))\le c\,\tau(v)+A_0$ for depth-independent $A_0$. Then $\Crel^{\mathrm{wt}}(\kappa,n,c;\eps):=\sup_{(T,a,f)}\limsup_R R^{-1}\log|T_R^\tau|$.
+\end{definition}
+
+\begin{theorem}[Relational capacity of real hyperbolic space]\label{thm:relational}
+For every $\kappa>0$, $n\ge2$, $c>0$, $\eps>0$,
+\[
+\Crel^{\mathrm{wt}}(\kappa,n,c;\eps)=c(n-1)\sqrt\kappa=\Cblock(\Hk,o;c,\eps).
+\]
+\end{theorem}
+
+\begin{proof}
+Write $h:=(n-1)\sqrt\kappa$. Real hyperbolic space $\Hk$ has bounded geometry (uniform two-sided ball-volume bounds, Bishop--Gromov), so its fixed-resolution packing entropy equals its volume entropy at every resolution, $\hpack(\Hk,o;\eps)=\hvol(\Hk)=h$, and Theorem~\ref{thm:block} gives $\Cblock(\Hk,o;c,\eps)=ch$. It therefore suffices to prove $\Crel^{\mathrm{wt}}=ch$.
+
+\smallskip
+\noindent\emph{Upper bound.} Let $(T,a,f)$ be any weighted relational code. For $v\in T_R^\tau$ the radial condition gives $d(o,f(v))\le c\tau(v)+A_0\le cR+A_0$, so $f(T_R^\tau)\subseteq B(o,cR+A_0)$. Distinct vertices are $\eps$-separated, so $f$ restricted to $T_R^\tau$ is injective with $\eps$-separated image, whence $|T_R^\tau|\le P(B(o,cR+A_0),\eps)$. Since $\log P(B(o,\rho),\eps)=h\rho+o(\rho)$, the additive offset $A_0$ washes out of the exponential rate:
+\[
+\limsup_{R\to\infty}\frac{\log|T_R^\tau|}{R}\le\limsup_{R\to\infty}\frac{\log P(B(o,cR+A_0),\eps)}{R}=ch.
+\]
+As this holds for every admissible code, $\Crel^{\mathrm{wt}}\le ch$.
+
+\smallskip
+\noindent\emph{Lower bound.} Fix $a$ with $0<a<h$; we construct an admissible code of weighted growth rate $\ge ca$. Because $a$ is arbitrary, this gives $\Crel^{\mathrm{wt}}\ge ch$ and, with the upper bound, equality.
+
+\emph{(1) A lattice, and its critical exponent.} Choose a torsion-free cocompact lattice $\Lambda<\mathrm{Isom}(\Hk)$ (these exist for every $n\ge2$ \cite{borel1963}). Cocompactness gives orbit growth $\#\{\gamma:d(o,\gamma o)\le\rho\}\asymp e^{h\rho}$, so the critical exponent---the abscissa of convergence of the Poincar\'e series $\sum_\gamma e^{-s\,d(o,\gamma o)}$---equals the volume entropy $\delta(\Lambda)=h$ \cite{patterson1976,sullivan1979}.
+
+\emph{(2) An $\eps$-separated finite-index subgroup.} The set $F_\eps:=\{\gamma\in\Lambda\setminus\{1\}:d(o,\gamma o)<\eps\}$ is finite by proper discontinuity. As a finitely generated linear group, $\Lambda$ is residually finite \cite{malcev1940}, so a finite-index normal $\Lambda_\eps\triangleleft\Lambda$ meets $F_\eps$ trivially: for $\gamma\in\Lambda_\eps\setminus\{1\}$, $d(o,\gamma o)\ge\eps$, hence by invariance the whole orbit $\Lambda_\eps o$ is $\eps$-separated. A finite-index subgroup of a cocompact lattice is a cocompact lattice with the same exponent, so $\delta(\Lambda_\eps)=h$.
+
+\emph{(3) A free sub-semigroup of nearly full exponent.} $\Hk$ is Gromov hyperbolic and its Busemann coarse-cocycle is expanding with $\|\gamma\|=d(o,\gamma o)$ (Skenderi \cite{skenderi2026}, Ex.~2.8), so his Theorem~3.1 applies to $\Lambda_\eps$ at any level $a<h=\delta(\Lambda_\eps)$. It produces a finite $S\subset\Lambda_\eps$ generating a \emph{free} sub-semigroup $\Sigma=\langle S\rangle^+$ whose word length is comparable to displacement, $B^{-1}|w|_S-b\le d(o,wo)\le B|w|_S+b$; with the Schottky freeness this makes the orbit map of the regular $|S|$-ary word tree a quasi-isometric embedding into $\Hk$. Proposition~3.2(4), evaluated at the identity, is the partition inequality
+\[
+\sum_{s\in S}e^{-a\,d(o,so)}\ \ge\ 1 .
+\]
+Since $\Sigma\subset\Lambda_\eps$, its orbit is $\eps$-separated, and freeness sends distinct words to distinct orbit points.
+
+\emph{(4) The weighted code, and its admissibility.} Let $T$ be the regular word tree of $\Sigma$ (vertices $=$ finite words $w=s_1\cdots s_k$ over $S$, root $=$ empty word), and $f(w):=(s_1\cdots s_k)o$. Give edge $s$ the duration $a_s:=d(o,so)/c>0$; then $\tau(w)=\frac1c\sum_i d(o,s_io)$, and only $|S|$ distinct durations occur. We verify the four code conditions. $f(\mathrm{root})=o$. Distinct vertices are $\eps$-separated by step (3). The orbit map is a quasi-isometry for the unit word metric (step 3); as $\min_s a_s\cdot|w|\le\tau(w)\le\max_s a_s\cdot|w|$, the weighted metric $d_\tau$ is bi-Lipschitz to the word metric, so the map is a quasi-isometry for $d_\tau$, with adjusted $D,K$. Finally, telescoping with isometry-invariance gives the radial budget \emph{with zero offset}:
+\[
+d\big(o,(s_1\cdots s_k)o\big)\le\sum_{i=1}^k d\big(s_1\cdots s_{i-1}o,\,s_1\cdots s_io\big)=\sum_{i=1}^k d(o,s_io)=c\,\tau(w),
+\]
+so $A_0=0$. The code is admissible for the relational rung, its image being a uniformly quasi-isometrically embedded weighted tree.
+
+\emph{(5) The growth rate.} Because $\Sigma$ is free, words biject with finite sequences over $S$, so the weighted counting series factors:
+\[
+Z(q):=\sum_{w}e^{-q\tau(w)}=\sum_{k\ge0}\Big(\sum_{s\in S}e^{-q a_s}\Big)^{k},
+\]
+which converges iff $g(q):=\sum_{s\in S}e^{-qa_s}<1$. As $g$ is continuous and strictly decreasing from $|S|$ to $0$, there is a unique $q^{*}$ with $g(q^{*})=1$, and $q^{*}$ is the abscissa of convergence of $Z$. Since $Z$ is the Laplace--Stieltjes transform of the nondecreasing counting function $R\mapsto|T_R^\tau|$, its abscissa equals that function's exponential growth rate, $\limsup_R R^{-1}\log|T_R^\tau|=q^{*}$. Now evaluate at $q=ca$: since $q\,a_s=(q/c)\,d(o,so)$,
+\[
+g(ca)=\sum_{s\in S}e^{-a\,d(o,so)}\ge1,
+\]
+so $ca\le q^{*}$, i.e.\ this code has weighted growth rate $q^{*}\ge ca$. Hence $\Crel^{\mathrm{wt}}\ge ca$ for every $a<h$, giving $\Crel^{\mathrm{wt}}\ge ch$ and, with the upper bound, $\Crel^{\mathrm{wt}}=ch=c(n-1)\sqrt\kappa$.
+\end{proof}
+
+\begin{remark}[The single modern input]
+Steps (1), (2), (5) are classical (Borel; Patterson--Sullivan; Malcev; the abscissa/growth-rate identity for a free weighted tree). The construction rests on exactly one contemporary result---Skenderi's free sub-semigroup of nearly full critical exponent \cite{skenderi2026}, used only through Theorem~3.1 (freeness and the quasi-isometric orbit tree) and Proposition~3.2(4) (the partition inequality). The zero-tax corollary inherits that single point of dependency, and no other part of this paper does.
+\end{remark}
+
+\begin{corollary}[Zero relational tax]\label{cor:zerotax}
+The relational tax $\Gamma:=\Cblock-\Crel^{\mathrm{wt}}$ is zero at exponential order in real hyperbolic space, as a supremum over weighted-clock, quasi-isometrically embedded tree codes. This establishes neither endpoint attainment, equal-edge achievability, nor zero tax for every prescribed genealogy, and must not be transferred to an arbitrary sequence metric or a host outside this construction.
+\end{corollary}
+
+The supremum is essential and distinguishes this from the embedding literature (\S\ref{sec:related}): a single low-distortion embedding may consume arbitrary radius; the rate question is created by the uniform radial budget along a family measured against one clock. The stronger equal-edge problem remains false for $c<\eps$ (Proposition~\ref{prop:finitedepth}) and open for $c\ge\eps$; it is a synchronization constraint, not host capacity.
+
+\subsection{Slack, efficiency, radial concentration}\label{sec:slack}
+
+Write $B:=c\,\hpack$ and the efficiency $\eta:=\beta/B\le1$. Once a process is represented under the relational class, the block slack decomposes:
+\[
+B-\beta=\underbrace{(B-\Crel)}_{\text{relational tax }\Gamma\ge0}+\underbrace{(\Crel-\beta)}_{\text{utilization slack }\Delta_{\mathrm{use}}\ge0},\qquad
+\eta=\underbrace{\tfrac{\Crel}{B}}_{\text{availability}}\cdot\underbrace{\tfrac{\beta}{\Crel}}_{\text{utilization}}.
+\]
+In the weighted hyperbolic class $\Gamma=0$ (Theorem~\ref{thm:relational}), so block efficiency is exactly utilization; outside it, an observed $\eta<1$ may mix tax with under-utilization, and the decomposition is the correct audit.
+
+A converse locates where a near-capacity code puts its mass.
+
+\begin{theorem}[Radial concentration]\label{thm:radial}
+Let a weighted relational code in $\Hk$, with $h=(n-1)\sqrt\kappa$, radial rate $c$, and offset $A_0$, have growth at least $ch-\Delta$ in the finite form $|T_R^\tau|\ge B^{-1}e^{(ch-\Delta)R}$, where $\Delta\ge0$ is an additive rate deficit. For $0<\delta<1$ put
+\[
+E_\delta(R):=\{v\in T_R^\tau:\ d(o,f(v))\le(1-\delta)\,c\,\tau(v)+A_0\}.
+\]
+Then, for a constant $C=C(\eps,n,\kappa,A_0,B)$,
+\[
+\frac{|E_\delta(R)|}{|T_R^\tau|}\ \le\ C\,e^{-(h\delta c-\Delta)R},
+\]
+whenever the growth lower bound holds---along a realizing sequence with any margin $\xi>0$ for a limsup rate, and eventually if the limit exists.
+\end{theorem}
+
+\begin{proof}
+The histories in $E_\delta(R)$ are $\eps$-separated inside $B(o,(1-\delta)cR+A_0)$, so $|E_\delta(R)|\le P(B(o,(1-\delta)cR+A_0),\eps)\le C_1 e^{h(1-\delta)cR}$ by the packing entropy of $\Hk$. Dividing by $|T_R^\tau|\ge B^{-1}e^{(ch-\Delta)R}$ gives the stated ratio. No shell-regularity hypothesis is used.
+\end{proof}
+
+At exact capacity ($\Delta=0$) the fraction below any band vanishes, so $d(o,f(v))/(c\,\tau(v))\to1$ in probability under uniform counting on $T_R^\tau$; for fixed $\Delta>0$, every band strictly below $1-\Delta/(hc)=\eta$ empties. Thus ``radius is accumulated information'' is a consequence of a hyperbolic host \emph{and} near-capacity operation---a statement about codes, conditional on both, and not an unconditional prediction about any physical system. The finite sub-ball count is machine-checked (\texttt{Packing.subball\_fraction\_le\_packing\_fraction}).
+
+% =====================================================================
+\section{Which host}\label{sec:chart}
+% =====================================================================
+
+\subsection{Isotropic realization}
+
+The packing entropy of \S\ref{sec:limit} need not correspond to a curvature. We add a separate canonicality assumption.
+
+\begin{definition}[Isotropy convention, Assumption A3]
+The host $M$ is complete, simply connected, unbounded, and homogeneous negatively curved---by Heintze \cite{heintze1974} a solvable $N\rtimes_\varphi\mathbb R$ with $N$ nilpotent and $\varphi$ a positive-real-part derivation of $\mathfrak n:=\mathrm{Lie}(N)$. The generating process carries no directional structure beyond a real inner product on $\mathfrak n$: its symmetry acts as the full orthogonal group $O(d)$, $d:=\dim\mathfrak n$, by Lie-algebra automorphisms.
+\end{definition}
+
+\begin{proposition}[Full symmetry forces isotropy]\label{prop:schur}
+Under A3, $\mathfrak n$ is abelian and $\varphi$ a positive scalar multiple of the identity; equivalently $M=\Hk$, with $\hvol=(n-1)\sqrt\kappa$.
+\end{proposition}
+
+\begin{proof}
+Two applications of Schur. The bracket $\Lambda^2\mathfrak n\to\mathfrak n$ is $O(d)$-equivariant. For $d\ne3$, $\Lambda^2\mathbb R^d$ and $\mathbb R^d$ differ in dimension, so $\mathrm{Hom}_{O(d)}=0$ and the bracket vanishes. At $d=3$, $\Lambda^2\mathbb R^3\cong\mathbb R^3$ as $SO(3)$-modules (cross product) but with opposite parity under $-\mathrm{Id}\in O(3)$, so they are non-isomorphic as $O(3)$-modules and the bracket again vanishes; $\mathfrak n$ is abelian. Then $\varphi\in\mathrm{End}_{O(d)}(\mathbb R^d)=\mathbb R\cdot\mathrm{Id}$ (the standard representation is absolutely irreducible for $d\ge2$), and positivity forces a positive scalar. Abelian $\mathfrak n$ with scalar dilation is the horospherical presentation of $\Hk$.
+\end{proof}
+
+\begin{remark}[What this replaces, and the diagnostic it licenses]\label{rem:diagnostic}
+This closes what an earlier draft carried as a conjecture---that hyperbolic geometry is the \emph{generic} homogeneous negatively curved realization. Heintze's classification does not support ``generic'': the generic member has non-abelian $N$ or a non-scalar contraction, hence pinched anisotropic curvature. Given A3 exactly, hyperbolic space is the \emph{only} realization, and there is no genericity claim to make. A departure from A3 is therefore diagnostic, not merely disappointing: reducing the symmetry to a proper subgroup buys a specific structure and names which member of the rank-one class one is in---$U(n)\subset O(2n)$ the complex hyperbolic boundary, $\mathrm{Sp}(n)\!\cdot\!\mathrm{Sp}(1)\subset O(4n)$ the quaternionic, $G_2\subset SO(7)$ the octonionic. (At $d=7$ the octonionic bracket is invariant only under $G_2\subsetneq SO(7)$, already excluded by A3's full $O(d)$; and it is specifically the reflections in $O(3)\setminus SO(3)$ that kill the $d=3$ cross product.) Which invariant tensor survives in a real system's boundary data is a sharper, falsifiable question than whether a fitted curvature looks anomalous. This paper states the diagnostic and does not run it; whether any real process satisfies A3 is an honesty item, not a mathematical gap.
+\end{remark}
+
+\begin{theorem}[Curvature floor and the state equation]\label{thm:floor}
+Under A3, Theorem~\ref{thm:bound} gives $\beta\le c(n-1)\sqrt\kappa$, i.e.\ the curvature floor $\kappa\ge(\beta/(c(n-1)))^2$. The unit-invariant form uses $\bar\kappa:=c^2\kappa$ (under $d\mapsto ad$: $c\mapsto ac$, $\kappa\mapsto\kappa/a^2$):
+\[
+\bar\kappa\ge\Big(\tfrac{\heff\ln2}{n-1}\Big)^2.
+\]
+\end{theorem}
+
+% =====================================================================
+\section{Saturation: the equality case, and what would test it}\label{sec:IIb}
+% =====================================================================
+
+The state equation is the \emph{equality case} of the bound in the isotropic host---no more, and asserted of no system here.
+
+\begin{proposition}[Exponential saturation]\label{prop:sat}
+If the limits defining $\beta$, $c$, $\hpack$ along $r(R)$ exist and $\log P(B(o,r(R)),\eps)-\log N(R)=o(R)$, then $\beta=c\,\hpack$. Combined with A3 this is the boxed equality
+\[
+\boxed{\ \bar\kappa^*=\Big(\tfrac{\heff\ln2}{n-1}\Big)^2\ }\qquad\Big(=(\heff\ln2)^2\ \text{at }n=2\Big),
+\]
+the ``state equation'' of the superseded record, retained here only as this conditional remark.
+\end{proposition}
+
+\begin{remark}[Four rigidities at the equality case]\label{rem:rigidity}
+Equality in Theorem~\ref{thm:bound} is rigid in four independent senses; the Lean module \texttt{Rigidity} checks the
+first and the others are classical.
+\emph{(i) Net.} If $\log N(R)=\log P(B(o,r(R)),\eps)+o(R)$ along a sequence of radii, the address set is, at
+exponential order, a maximal $\eps$-separated subset of the ball, hence an $\eps$-net of it
+(\texttt{Rigidity.maximal\_separated\_isNet}); and a relational code of distortion $(D,K)$ whose book is an $\eps$-net
+of the ball makes the source $(D,K+2\eps)$-quasi-isometric to the host (\texttt{Rigidity.quasiIsometric\_of\_net}). A
+saturating genealogy is therefore not merely housed by its medium: at scale $\eps$ it \emph{is} its medium, and a
+saturating tree forces a host that is a tree at scale $\eps$ (the min form of \S\ref{sec:IIb}).
+\emph{(ii) Isotropy.} Under A3, Proposition~\ref{prop:schur} leaves one host, so the equality value $\bar\kappa^*$ is
+unique.
+\emph{(iii) Entropy rigidity.} Among metrics of fixed volume on a closed negatively curved manifold, the locally
+symmetric metric alone minimizes volume entropy \cite{bcg1995}; a host that is also entropy-minimal is locally
+symmetric.
+\emph{(iv) Katok.} Liouville and topological entropy of the geodesic flow agree only for the locally symmetric metric
+\cite{katok1982}; a saturating process whose dynamical and volume entropies agree is in that case.
+None of the four is a claim about any biological system. Together they say that saturation is a \emph{design regime}:
+reached by engineered codes, which can be laid down as nets, and approached, by the audit of Paper~II, by none of the
+natural media measured there.
+\end{remark}
+
+\noindent\textbf{Why the boundary is special, without a dynamics.} There is a principled, formula-independent reason a process might sit at the boundary: for \emph{any} admissible-representation objective whose geometric cost is strictly increasing in an attainable host-capacity variable, subject to the lossless constraint $c\,\hpack\ge\beta$, the least-capacity minimizer (if attained) lies exactly on $\hpack^*=\beta/c$. Saturation is the natural answer to that one optimization problem. This does not depend on any particular description-length formula, and the saturation condition is analogous to a reversible Carnot cycle or a capacity-achieving Shannon code: the inequality is the limit, equality its ideal realization.
+
+\medskip
+\noindent\textbf{What is \emph{not} proved.} The mismatch $V(\kappa,\kappa^*)=(\sqrt\kappa-\sqrt{\kappa^*})^2$ is positive-definite with a unique zero at $\kappa^*$, but this is \emph{not} Lyapunov stability, global attraction, or self-organization. Those require a differentiable potential on an invariant domain, an explicit evolution law $\dot\kappa=-\partial_\kappa U$, a proof that $\dot V<0$ off equilibrium, and an empirical reason a modeled system follows it. Until such a dynamics is supplied, the correct claims are exactly four: uniqueness of the isotropic equality value; monotonicity of required capacity in rate; strict positivity of mismatch off equality; and variational selection of the boundary under a stated capacity-cost objective. A mismatch potential is not a dynamics.
+
+\medskip
+\noindent\textbf{What would test saturation.} Only $\eta:=\beta/(c\,\hpack)$ computed when $\beta$ and $\hpack$ carry \emph{independent} provenance---$\beta$ read from a process clock that is not the representation whose packing is measured. An $\eta$ produced by fitting one axis to the other, or by back-solving $n$ or $\kappa$ from an assumed equality, tests nothing. Systematic, independently measured $\eta<1$ in systems claimed to optimize description length, after finite-size, unit, distortion, and anisotropy control, would restrict the saturation hypothesis without touching the bound.
+
+% =====================================================================
+\section{The firewall}\label{sec:firewall}
+% =====================================================================
+
+Theorems~\ref{thm:bound}, \ref{thm:block}, \ref{thm:relational} and Corollary~\ref{cor:poly} are unconditional. Theorem~\ref{thm:floor} is conditional only on Assumption~A3. Nothing above requires that any physical process fills the capacity it proves exists, reports a curvature, back-solves a dimension, or treats an experiment as forcing hyperbolic realization over an alternative exponential host. We do not assert $\hvol=\heff\ln2$ as forced by the bound's own axioms---that identity is a unit convention plus a definition (\S\ref{sec:limit}); we use no interior-entropy or unimodal-channel hypothesis; and we offer no second derivation from Fisher--Rao considerations---any resemblance between a location-scale geometry and \S\ref{sec:limit}'s radial construction is a remark, not a proof.
+
+\emph{Relation to the companion.} \emph{Evolution as Active Geometry} needs exactly the three licenses of \S1: the bound (room), the ladder's block/relational distinction (names versus paths), and the chart's minimal-dimension and isotropy statements (the identification a curvature analysis may legally make). It cites these, does not re-derive them, does not place a clade on a curvature scale using this paper's mathematics, and does not run the matched-capacity comparison. Nothing in its empirical content is a premise here.
+
+% =====================================================================
+\section{What is open}\label{sec:open}
+% =====================================================================
+
+Two questions, of different kinds. \emph{Mathematical:} for which proper metric hosts is packing entropy a complete invariant for relational capacity? The balloon (\S\ref{sec:balloon}) is the maximally negative answer, $\Hk$ an affirmative one; everything between is open. The first tractable step is the rank-one symmetric family: complex and quaternionic hyperbolic spaces remain isotropic as Riemannian manifolds, so no sector-wise packing distinguishes them from real hyperbolic space of matching dimension, and whether their relational capacity also attains block capacity---and with which boundary entropy---is well posed with the machinery of \S\ref{sec:relational} largely in place. Beyond the symmetric cases, a cocompact lattice need not exist, so discreteness surrogates may be required.
+
+\emph{Empirical, and untouched here:} the bound proves a ceiling exists and the identity proves it attainable; neither shows any physical process approaches it. Whether retained diversity runs near $c\,\hpack$ or orders of magnitude below is a measurement, requiring $\beta$ and $\hpack$ of independent provenance. We regard this as the more consequential question, the one the mathematics is meant to make askable, and one this paper does not answer.
+
+\clearpage
+\appendix
+\section{Minimal statement}
+\[
+\boxed{\text{retained exponential novelty}\ \Longrightarrow\ \beta\le c\,\hpack}
+\]
+unconditionally ($\hpack=\hvol$ under the stated volume-comparability). Separately,
+\[
+\boxed{\text{A3 (full }O(d)\text{ symmetry, homogeneous negatively curved host)}\ \Longrightarrow\ M=\Hk}
+\]
+by Schur (Proposition~\ref{prop:schur}), with no genericity claim and no claim any process satisfies A3. Imposing in addition $\beta=c\,\hpack$ and $\hpack=(n-1)\sqrt\kappa$ gives $\bar\kappa^*=(\heff\ln2/(n-1))^2$; and independently, the four-point condition $\Leftrightarrow$ tree metric. The quartet fixes the qualitative class; A3 fixes the host; the rate and radial calibration fix the scale; the inequality is the enduring limit; the boxed equality is its optimal isotropic saturated case, asserted of no system here.
+
+\section{Formal (Lean) inventory}
+Machine-checked, \texttt{theory/lean/ActiveGeometry/}, zero \texttt{sorry}/\texttt{admit}; every declaration uses
+only \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}. The kernel (\texttt{Packing},
+\texttt{Constrained}, \texttt{Capacity}, \texttt{Balloon}, \texttt{Chart}) carries the bound, the profile and the
+separation. Three modules sit downstream of it: \texttt{AuditFactors} (the five-ratio efficiency identity and its
+bounds, \S\ref{sec:slack}), \texttt{Rigidity} (the net and quasi-isometry statements of Remark~\ref{rem:rigidity}),
+and \texttt{Window} (the $q$-state symmetric channel and its powers, the identity price $N p^L\le\delta$ once
+$L\ge\log(N/\delta)/(-\log p)$, and the Kesten--Stigum line $b\lambda^2>1\iff\beta>2\rho$ in rate form; exactness of
+that line enters as the named hypothesis \texttt{ReconstructionThreshold}, proved classically for two letters and
+claimed for three and four in the openai/math collection of October 2026, family 229). The geometry lemmas of
+Theorem~\ref{thm:relational}'s lower bound (Skenderi's construction, residual finiteness, critical exponents of
+cocompact lattices), the representation theory of Proposition~\ref{prop:schur}, and Manning's, Katok's and
+Besson--Courtois--Gallot's theorems are classical, cited rather than formalized; the Lean predicate
+\texttt{IsotropicHyperbolic} names a hypothesis, not a derived conclusion. Each module ships with a comparator-style
+challenge file (the same statements with every proof replaced by \texttt{sorry}) and a job file naming the theorems,
+definitions and permitted axioms, so the statements can be checked independently of the proofs.
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{10.4cm}@{}}
+\toprule
+\textbf{File} & \textbf{Certifies} \\
+\midrule
+\texttt{Packing.lean} & Finite-depth count; \texttt{convergent\_rate\_addressability\_limit} (Thm~\ref{thm:bound}, convergent case); \texttt{exists\_optimal\_blockCode}, \texttt{card\_le\_packingCount} (Thm~\ref{thm:block}, finite radius); sub-ball fraction (radial concentration, finite). \\
+\texttt{Capacity.lean} & Real algebra downstream of \texttt{Addressable} $\beta\le c\,\hpack$: \texttt{efficiency\_le\_one}, \texttt{curvature\_at\_least\_floor}, \texttt{saturated\_curvature\_eq\_floor}, gauge invariance (\texttt{normalized\_curvature\_scale\_invariant}, \texttt{process\_time\_gauge}). \texttt{CapacitySaturated} and \texttt{hcap\_eq\_spaceForm} are separate predicates. \\
+\texttt{StateEquation.lean} & The equality-case face: \texttt{normalized\_state\_equation} (saturation $\wedge$ space-form $\Rightarrow$ $c^2\kappa=(\heff\ln2/(n-1))^2$); \texttt{rateMismatchSq} diagnostics (positive-definite, unique zero) explicitly \emph{not} a Lyapunov theorem. \\
+\texttt{Measurability.lean} & Span-information identities behind the growth-class gate's finite-sample refusal rule; an instrument property, not a theorem of \S\ref{sec:limit}--\S\ref{sec:IIb}. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{9}\small
+\bibitem{skenderi2026} Skenderi, A.\ Free semigroups of large critical exponent. \emph{J.\ Topology} (2026). DOI \href{https://doi.org/10.1112/topo.70087}{10.1112/topo.70087}.
+\bibitem{bishopjones1997} Bishop, C.J.\ \& Jones, P.W.\ Hausdorff dimension and Kleinian groups. \emph{Acta Math.} \textbf{179}, 1--39 (1997).
+\bibitem{patterson1976} Patterson, S.J.\ The limit set of a Fuchsian group. \emph{Acta Math.} \textbf{136}, 241--273 (1976).
+\bibitem{sullivan1979} Sullivan, D.\ The density at infinity of a discrete group. \emph{Publ.\ Math.\ IH\'ES} \textbf{50}, 171--202 (1979).
+\bibitem{bonkschramm2000} Bonk, M.\ \& Schramm, O.\ Embeddings of Gromov hyperbolic spaces. \emph{GAFA} \textbf{10}, 266--306 (2000).
+\bibitem{buyaloschroeder2005} Buyalo, S.\ \& Schroeder, V.\ Embedding of hyperbolic spaces in the product of trees. \emph{Geom.\ Dedicata} (2005).
+\bibitem{buyaloschroeder2007} Buyalo, S.\ \& Schroeder, V.\ Embedding of hyperbolic groups into products of binary trees. \emph{Invent.\ Math.} (2007).
+\bibitem{sarkar2011} Sarkar, R.\ Low distortion Delaunay embedding of trees in hyperbolic plane. In \emph{Graph Drawing (GD 2011)}, LNCS (Springer, 2011).
+\bibitem{heintze1974} Heintze, E.\ On homogeneous manifolds of negative curvature. \emph{Math.\ Ann.} \textbf{211}, 23--34 (1974).
+\bibitem{borel1963} Borel, A.\ Compact Clifford--Klein forms of symmetric spaces. \emph{Topology} \textbf{2}, 111--122 (1963).
+\bibitem{malcev1940} Mal'cev, A.I.\ On isomorphic matrix representations of infinite groups. \emph{Mat.\ Sb.} \textbf{8}, 405--422 (1940).
+\bibitem{buneman1971} Buneman, P.\ The recovery of trees from measures of dissimilarity. In \emph{Mathematics in the Archaeological and Historical Sciences}, 387--395 (1971).
+\bibitem{gromov1987} Gromov, M.\ Hyperbolic groups. In \emph{Essays in Group Theory}, 75--263 (Springer, 1987).
+\bibitem{fennfenn2026ii} Fenn, R.\ \& Fenn, A.\ \emph{Evolution as Active Geometry: Descent Occupies the Room; Genomes Encode It}. Companion manuscript, in preparation.
+\bibitem{manning1979} Manning, A.\ Topological entropy for geodesic flows. \emph{Ann.\ of Math.} \textbf{110}, 567--573 (1979).
+\bibitem{katok1982} Katok, A.\ Entropy and closed geodesics. \emph{Ergodic Theory Dynam.\ Systems} \textbf{2}, 339--365 (1982).
+\bibitem{bcg1995} Besson, G., Courtois, G.\ \& Gallot, S.\ Entropies et rigidit\'es des espaces localement sym\'etriques de courbure strictement n\'egative. \emph{Geom.\ Funct.\ Anal.} \textbf{5}, 731--799 (1995).
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,80 @@
+2026-10-14 04:59:00 CEST
+PREREG23 frozen:
+ee8a323314bc72003bd3dcfd32627260e36336080bc3f18363b39d8410160350  PREREG23_rate_class_real_alignment.md
+--- downloads started ---
+2026-10-14 04:59:00 CEST
+v232
+
+
+Released Apr 15, 2026
+--- tooling ---
+iqtree-2.4.0-macOS.zip sha256 ac2e5fc1bb6488d622a34228e968b19ada12007e74cfe3ae2959c55b7b4cd5a0; IQ-TREE 2.4.0 MacOS ARM
+bac120.tree.gz md5 58a23a44a2c51b0f69f58e2484aed437 (matches MD5SUM.txt)
+--- amendment re-freeze (median tau; ambiguity set; re-optimised lengths) ---
+2026-10-14 05:01:06 CEST
+d7b9e033b4f27cc04786ecb02815ba979cbe409bb5b19fd76e453e5b4b7a1b65  PREREG23_rate_class_real_alignment.md
+bac120_msa_reps.faa.gz md5:
+3102f1b7cb2d63627ae8974026f5d30a
+expected 3102f1b7cb2d63627ae8974026f5d30a
+--- prep23 start ---
+2026-10-14 05:01:13 CEST
+tree tips 189801, msa seqs 189801, common 189801
+{"tree_tips": 189801, "msa_seqs": 189801, "common": 189801, "T": 1500, "seed": 23, "L0": 5010, "L_max": 5008, "internal_nodes_pruned": 1499, "elapsed_s": 15.5}
+--- iqtree start ---
+2026-10-14 05:01:38 CEST
+--- prep23 rerun (internal labels dropped for IQ-TREE) + iqtree start ---
+2026-10-14 05:03:07 CEST
+{"tree_tips": 189801, "msa_seqs": 189801, "common": 189801, "T": 1500, "seed": 23, "L0": 5010, "L_max": 5008, "internal_nodes_pruned": 1499, "elapsed_s": 16.0}
+--- amendment (iv)-(vi) re-freeze; scripts frozen ---
+2026-10-14 05:06:48 CEST
+bc4c3e7bfa648a11bcd89f43d321db933ea206610d10cb30ef615fd549f3cb00  PREREG23_rate_class_real_alignment.md
+641c040c3deae79e6efd31a0ac030c3bb7bfaef6153038f20bbe01b7f59e293a  prep23.py
+60e2463267b1082ad31da9b5c8b130227edf71471adabbd65b0bbf22dfad87b8  run23.py
+7511c7ad5d60f3f5d04a2c7f42269b273d7b553040d25b0e0fa7edb2d14ee5aa  diag23.py
+--- iqtree restarted with -mem 2G -nt 4 (machine has 8.6 GB; the first run asked for 4.7 GB) ---
+2026-10-14 05:13:29 CEST
+Log-likelihood of the tree: -3557112.6457 (s.e. 26759.3345)
+Total tree length (sum of branch lengths): 226.0361
+# Site-specific subtitution rates determined by empirical Bayesian method
+# This file can be read in MS Excel or in R with command:
+#   tab=read.table('work/iq.rate',header=TRUE)
+# Columns are tab-separated with following meaning:
+#   Site:   Alignment site ID
+#   Rate:   Posterior mean site rate weighted by posterior probability
+#   Cat:    Category with highest posterior (0=invariable, 1=slow, etc)
+#   C_Rate: Corresponding rate of highest category
+
+[exited with code 0]
+--- quartets + smoke ---
+2026-10-14 05:21:04 CEST
+{"candidates": 303, "kept": 302, "bins": [0.029999999999999995, 0.04892068226859928, 0.07977443845417481, 0.1300873318924205, 0.21213203435596423, 0.34592146172399046, 0.5640904639629589, 0.9198563452759556, 1.5], "per_bin": {"1": 5, "2": 19, "3": 79, "4": 118, "5": 71, "6": 10}, "median_tau": 0.038079854950000006}
+    valid &= ~np.isin(S[k], gapset)
+ValueError: operands could not be broadcast together with shapes (5008,) (18,) (5008,) 
+--- amendment (vii) code fix re-freeze ---
+2026-10-14 05:21:33 CEST
+b60058aed298da79b7ae8bc6842e008d834fbd9d17666ac658eb5a9c1ba446d0  PREREG23_rate_class_real_alignment.md
+6a8797270d12f0b6ee8eff686bd04dc638cd63d09f144f130a8ddc422aa5597b  run23.py
+--- smoke read (disclosed) ---
+quartet 0/100 0s
+done 100 quartets 0s
+--- verdict run: read, tstar, predict, score ---
+2026-10-14 05:22:03 CEST
+done 302 quartets 9s
+U 64:0.000! 128:0.001! 256:0.005! 512:0.015! 1024:0.025! 2048:0.038! 4096:0.040!
+W 64:0.000! 128:0.001! 256:0.007! 512:0.018! 1024:0.026! 2048:0.038! 4096:0.041!
+S 64:0.000! 128:0.001! 256:0.007! 512:0.018! 1024:0.027! 2048:0.037! 4096:0.040!
+{"alpha": 1.7429, "median_tau": 0.038079854950000006, "kappa": {"U": null, "W": null}, "asymptote": {"U": 0.18228881840387912, "W": 0.26717251329183256}}
+V1_form_unweighted FAIL
+V2_form_weighted FAIL
+V3_ordering FAIL
+V4_exponent FAIL
+V5_shuffle FAIL
+NOT SUPPORTED AS REGISTERED
+2026-10-14 05:22:12 CEST
+--- raw downloads deleted after results recorded ---
+2026-10-14 05:25:08 CEST
+total 773248
+-rw-r--r--  1 rohitfenn  staff       5252 Oct 14 04:59 MD5SUM.txt
+-rw-r--r--  1 rohitfenn  staff         29 Oct 14 04:59 VERSION.txt
+-rw-r--r--  1 rohitfenn  staff    2462421 Oct 14 04:59 bac120.tree.gz
+-rw-r--r--  1 rohitfenn  staff  392730781 Oct 14 05:00 bac120_msa_reps.faa.gz

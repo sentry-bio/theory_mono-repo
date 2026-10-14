@@ -1,0 +1,40 @@
+# byte-code, editor and OS droppings
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/
+
+# TeX intermediates (the compiled PDFs and sources in build/ are tracked)
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.bbl
+*.blg
+build/Gf/*.log
+build/Gh/*.log
+
+# Lean build products (modules are compiled in the kernel repository)
+.lake/
+*.olean
+*.ilean
+
+# data that is fetched, not redistributed (licences, size)
+experiments/closure/intmemoir/
+experiments/closure/atlas/*.tree
+experiments/closure/atlas/*.tsv
+experiments/closure/atlas/*.tsv.gz
+experiments/closure/atlas/*.npz
+experiments/closure/atlas/recipe.json
+experiments/gate-kegg/kegg_profiles_868.npz
+experiments/gate-kegg/reference_manifest.csv
+experiments/horizon23/bin/
+experiments/horizon23/work/sub.faa
+experiments/horizon23b/work/
+experiments/horizon23b/data/
+*.faa
+*.fa
+*.gbff.gz
+*.zip

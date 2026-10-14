@@ -1,0 +1,18 @@
+a=0.5 L=256 unweighted: t*=1.2645
+a=0.5 L=256 weighted: t*=1.9998
+a=0.5 L=512 unweighted: t*=1.6744
+a=0.5 L=512 weighted: t*=2.7558
+a=0.5 L=1024 unweighted: t*=2.2515
+a=0.5 L=1024 weighted: t*=3.9101
+a=0.5 L=2048 unweighted: t*=2.9151
+/Users/rohitfenn/.claude/worktrees/theory-oct8/horizon22/horizon22.py:73: RuntimeWarning: invalid value encountered in divide
+  w_oracle = signal(r, t, tau) / variance(r, t, tau)
+a=0.5 L=2048 weighted: t*=5.3981
+a=0.5 L=4096 unweighted: t*=3.8178
+a=0.5 L=4096 weighted: t*=7.0639
+a=0.5 L=8192 unweighted: t*=4.8526
+a=0.5 L=8192 weighted: t*=9.8690
+a=0.5 L=16384 unweighted: t*=6.2709
+a=0.5 L=16384 weighted: t*=13.2125
+a=0.5 L=32768 unweighted: t*=7.7185
+a=0.5 L=32768 weighted: t*=17.5052

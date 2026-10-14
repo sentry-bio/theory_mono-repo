@@ -1,0 +1,25 @@
+{
+  "challenge_module": "Challenges.AuditFactors",
+  "solution_module": "ActiveGeometry.AuditFactors",
+  "theorem_names": [
+    "ActiveGeometry.Audit.Chain.efficiency_eq_product",
+    "ActiveGeometry.Audit.Chain.factors_le_one",
+    "ActiveGeometry.Audit.Chain.factors_pos",
+    "ActiveGeometry.Audit.Chain.efficiency_le_one",
+    "ActiveGeometry.Audit.Chain.availabilityFactor_eq",
+    "ActiveGeometry.Audit.card_chain",
+    "ActiveGeometry.Audit.log_card_chain"
+  ],
+  "definition_names": [
+    "ActiveGeometry.Audit.Chain",
+    "ActiveGeometry.Audit.Chain.efficiency",
+    "ActiveGeometry.Audit.Chain.availabilityFactor",
+    "ActiveGeometry.Audit.Chain.writingFactor",
+    "ActiveGeometry.Audit.Chain.retentionFactor",
+    "ActiveGeometry.Audit.Chain.collisionFactor",
+    "ActiveGeometry.Audit.Chain.readingFactor",
+    "ActiveGeometry.Audit.Chain.Lossy"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}

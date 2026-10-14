@@ -1,0 +1,19 @@
+B1: decided accuracy vs L (mean over seeds)
+  gen    D |    50000   100000   200000   400000   800000 |   Δ(800k−50k)  verdict   undecid(800k)  witness(800k)
+    G  1.0 |   0.9974   0.9994   0.9999   0.9998   1.0000 |   +0.0026     RECOVERS      0.0000        247.0
+    G  2.0 |   0.9918   0.9974   0.9998   0.9998   1.0000 |   +0.0082     RECOVERS      0.0000        254.0
+    H  1.0 |   0.9962   0.9991   0.9996   0.9997   1.0000 |   +0.0038     RECOVERS      0.0000        247.0
+    H  2.0 |   0.9720   0.9859   0.9950   0.9992   0.9994 |   +0.0274     RECOVERS      0.0000        254.0
+    T  1.0 |   0.9113   0.9191   0.9244   0.9263   0.9272 |   +0.0160     INDETERMINATE 0.0000        249.0
+    T  2.0 |   0.8917   0.8962   0.9067   0.9205   0.9372 |   +0.0455     RECOVERS      0.1904        255.0
+
+B2 primary verdict: INCONCLUSIVE
+
+B3 discriminator: C* mean p_major = 0.6125000000000002 (n = 3); prediction ≤ 0.85
+   (reported) G D=1.0: mean p_major = n/a (n = 0)
+   (reported) G D=2.0: mean p_major = n/a (n = 0)
+   (reported) H D=1.0: mean p_major = n/a (n = 0)
+   (reported) H D=2.0: mean p_major = 0.45555555555555555 (n = 3)
+   (reported) T D=1.0: mean p_major = 0.5714371345029239 (n = 3)
+   (reported) T D=2.0: mean p_major = 0.5149790966533048 (n = 3)
+B3 verdict: DISCRIMINATOR WORKS  (misspecified half vacuous: nothing floored)

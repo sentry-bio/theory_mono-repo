@@ -1,0 +1,14 @@
+'ActiveGeometry.Constrained.packingNumber_mono_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.extendSeparated_isCover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.packingCount_two_mul_le_nestedFinset_card' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ActiveGeometry.Constrained.persistentSource_retentive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.recodingCode_base_persistent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.persistentSource_hasGrowth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.achievable_stable_persistent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.capacity_stable_between' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.capacity_stable_eq_packing_of_boundedGeometry' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'ActiveGeometry.Constrained.persistent_chain' depends on axioms: [propext, Classical.choice, Quot.sound]

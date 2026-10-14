@@ -1,0 +1,54 @@
+2026-10-14 05:15:35 CEST
+PREREG24 frozen:
+5970c791925956738fef4577ee1423f1952f7dedd3dc931d6876e285f7212beb  PREREG24_mi_closure.md
+--- smoke run: 2026-10-14 05:16:38 CEST ---
+frozen sha256:
+ad97ccce583c9a9c617311725e1fc238f6a948c3846dda657330ce12e78d4739  mi_closure.py
+d02bc93eaee339efecb61dc77126ea1d0270c2476870bfc0239e38a1432a6347  closure_recorder.py
+5970c791925956738fef4577ee1423f1952f7dedd3dc931d6876e285f7212beb  PREREG24_mi_closure.md
+--- amendment re-freeze (analytic readout) ---
+2026-10-14 05:18:22 CEST
+3ffd1387d06b6fade23bd0fa509e7a8712dba2f11671599512f04e5f32e95540  PREREG24_mi_closure.md
+b951420b63614d8041d840e693ce3d870d892497224231353b9609b197fe8e0a  mi_closure.py
+--- smoke 2 (disclosed) ---
+--- smoke run: 2026-10-14 05:18:24 CEST ---
+frozen sha256:
+b951420b63614d8041d840e693ce3d870d892497224231353b9609b197fe8e0a  mi_closure.py
+d02bc93eaee339efecb61dc77126ea1d0270c2476870bfc0239e38a1432a6347  closure_recorder.py
+3ffd1387d06b6fade23bd0fa509e7a8712dba2f11671599512f04e5f32e95540  PREREG24_mi_closure.md
+  s11c1 (2/2) 9s
+
+[smoke] g | nc | N | log2M | I_inf | I_dist | I_read5 | I_corr | I_read6 | I_obs(above null) | fill | coll | read | corrF | read6F | η_pred5 | η_pred6 | η_obs | err6
+  1 |   2 |    4 | 11.16 | 0.918 | 0.918 | 0.839 | 0.826 | 0.763 | 0.296 | 0.082 | 1.000 | 0.914 | 0.900 | 0.923 | 0.075 | 0.068 | 0.026 | 0.948  (N<50)
+  2 |   2 |    8 | 13.75 | 1.818 | 1.818 | 1.668 | 1.512 | 1.384 | 0.356 | 0.132 | 1.000 | 0.917 | 0.831 | 0.915 | 0.121 | 0.101 | 0.026 | 1.357  (N<50)
+  3 |   2 |   12 | 13.62 | 2.126 | 2.103 | 1.923 | 1.413 | 1.285 | 0.200 | 0.156 | 0.989 | 0.915 | 0.672 | 0.910 | 0.141 | 0.094 | 0.015 | 1.86  (N<50)
+  4 |   1 |    8 |  9.55 | 2.500 | 2.431 | 2.211 | 1.312 | 1.185 | 0.000 | 0.262 | 0.972 | 0.910 | 0.540 | 0.903 | 0.232 | 0.124 | 0.000 | None  (N<50)
+done 9s
+--- amendment (ii) re-freeze ---
+2026-10-14 05:19:51 CEST
+2a031ca5a7784c5ec1eb00ce34721303069346c66614ed3f65ea29f2e5c86765  PREREG24_mi_closure.md
+a673686887ed65ad8e248369681199ee05e2221fccb29de6cb4062d8d2c8f60e  mi_closure.py
+--- smoke 3 (disclosed) ---
+--- smoke run: 2026-10-14 05:19:52 CEST ---
+frozen sha256:
+a673686887ed65ad8e248369681199ee05e2221fccb29de6cb4062d8d2c8f60e  mi_closure.py
+d02bc93eaee339efecb61dc77126ea1d0270c2476870bfc0239e38a1432a6347  closure_recorder.py
+2a031ca5a7784c5ec1eb00ce34721303069346c66614ed3f65ea29f2e5c86765  PREREG24_mi_closure.md
+[smoke] g | nc | N | log2M | I_inf | I_dist | I_read5 | I_corr | I_read6 | I_obs(model6) | fill | coll | read | corrF | read6F | η_pred5 | η_pred6 | η_obs | err6
+  1 |   2 |    4 | 11.16 | 0.918 | 0.918 | 0.839 | 0.826 | 0.763 | -0.642 | 0.082 | 1.000 | 0.914 | 0.900 | 0.923 | 0.075 | 0.068 | -0.057 | None  (N<50)
+  2 |   2 |    8 | 13.75 | 1.818 | 1.818 | 1.668 | 1.512 | 1.384 | -1.097 | 0.132 | 1.000 | 0.917 | 0.831 | 0.915 | 0.121 | 0.101 | -0.080 | None  (N<50)
+  3 |   2 |   12 | 13.62 | 2.126 | 2.103 | 1.923 | 1.413 | 1.285 | -0.549 | 0.156 | 0.989 | 0.915 | 0.672 | 0.910 | 0.141 | 0.094 | -0.040 | None  (N<50)
+  4 |   1 |    8 |  9.55 | 2.500 | 2.431 | 2.211 | 1.312 | 1.185 | -0.671 | 0.262 | 0.972 | 0.910 | 0.540 | 0.903 | 0.232 | 0.124 | -0.070 | None  (N<50)
+done 9s
+--- verdict runs: main then swap ---
+2026-10-14 05:20:19 CEST
+--- main run: 2026-10-14 05:20:21 CEST ---
+frozen sha256:
+a673686887ed65ad8e248369681199ee05e2221fccb29de6cb4062d8d2c8f60e  mi_closure.py
+d02bc93eaee339efecb61dc77126ea1d0270c2476870bfc0239e38a1432a6347  closure_recorder.py
+2a031ca5a7784c5ec1eb00ce34721303069346c66614ed3f65ea29f2e5c86765  PREREG24_mi_closure.md
+--- swap run: 2026-10-14 05:21:05 CEST ---
+frozen sha256:
+a673686887ed65ad8e248369681199ee05e2221fccb29de6cb4062d8d2c8f60e  mi_closure.py
+d02bc93eaee339efecb61dc77126ea1d0270c2476870bfc0239e38a1432a6347  closure_recorder.py
+2a031ca5a7784c5ec1eb00ce34721303069346c66614ed3f65ea29f2e5c86765  PREREG24_mi_closure.md

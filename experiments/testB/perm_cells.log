@@ -1,0 +1,12 @@
+{'gen': 'Cstar', 'D': 1.0, 'seed': 0, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 1.0, 'phi_median': 710.6788530438404, 'margin_median': 18221.0, 'sec': 4.492040157318115}
+{'gen': 'Cstar', 'D': 1.0, 'seed': 1, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 1.0, 'phi_median': 755.3895818078634, 'margin_median': 14629.5, 'sec': 4.34920072555542}
+{'gen': 'Cstar', 'D': 1.0, 'seed': 2, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 1.0, 'phi_median': 996.1832029585095, 'margin_median': 24600.0, 'sec': 4.256866693496704}
+{'gen': 'Cstar', 'D': 2.0, 'seed': 0, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 0.96, 'phi_median': 187.05902441450988, 'margin_median': 12193.0, 'sec': 4.824960947036743}
+{'gen': 'Cstar', 'D': 2.0, 'seed': 1, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 0.955, 'phi_median': 207.1326462353775, 'margin_median': 6375.0, 'sec': 4.783535718917847}
+{'gen': 'Cstar', 'D': 2.0, 'seed': 2, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 0.91, 'phi_median': 243.93632570815848, 'margin_median': 10691.0, 'sec': 4.789721965789795}
+{'gen': 'T', 'D': 1.0, 'seed': 0, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 0.055, 'phi_median': 0.9381797813339048, 'margin_median': -79490.5, 'sec': 7.402869939804077}
+{'gen': 'T', 'D': 1.0, 'seed': 1, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 0.035, 'phi_median': 0.9058386767017022, 'margin_median': -79685.5, 'sec': 7.377717018127441}
+{'gen': 'T', 'D': 1.0, 'seed': 2, 'L': 800000, 'n_wrong_scored': 200, 'frac_blocked': 0.045, 'phi_median': 0.9721489459056609, 'margin_median': -78772.0, 'sec': 7.403835773468018}
+{'gen': 'T', 'D': 2.0, 'seed': 0, 'L': 800000, 'n_wrong_scored': 177, 'frac_blocked': 0.05084745762711865, 'phi_median': 0.9439726640178401, 'margin_median': -14378.0, 'sec': 7.860694885253906}
+{'gen': 'T', 'D': 2.0, 'seed': 1, 'L': 800000, 'n_wrong_scored': 160, 'frac_blocked': 0.0875, 'phi_median': 0.9571402585563777, 'margin_median': -19411.0, 'sec': 7.769181966781616}
+{'gen': 'T', 'D': 2.0, 'seed': 2, 'L': 800000, 'n_wrong_scored': 152, 'frac_blocked': 0.05263157894736842, 'phi_median': 1.0195222705476783, 'margin_median': -18771.5, 'sec': 7.789750099182129}

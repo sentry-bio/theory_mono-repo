@@ -1,0 +1,22 @@
+{
+  "challenge_module": "Challenges.BalloonCapacity",
+  "solution_module": "ActiveGeometry.BalloonCapacity",
+  "theorem_names": [
+    "ActiveGeometry.Constrained.census_card_le_of_relational",
+    "ActiveGeometry.Constrained.metricULF_not_relational_pos",
+    "ActiveGeometry.Constrained.balloon_rates_relational_subset",
+    "ActiveGeometry.Constrained.balloon_capacity_relational_le_zero",
+    "ActiveGeometry.Constrained.take_eq_of_le_lcp",
+    "ActiveGeometry.Constrained.card_ball_le_of_wordsOfLength",
+    "ActiveGeometry.Constrained.binaryTreeSource_metricULF",
+    "ActiveGeometry.Constrained.binaryTreeSource_mem_metricUlf",
+    "ActiveGeometry.Constrained.balloon_capacity_separation",
+    "ActiveGeometry.Constrained.balloon_separates_metricUlf"
+  ],
+  "definition_names": [
+    "ActiveGeometry.Constrained.Source.MetricULF",
+    "ActiveGeometry.Constrained.metricUlfSources"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}
