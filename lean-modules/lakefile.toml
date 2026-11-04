@@ -1,0 +1,65 @@
+# Lake build for the modules in this directory, from this repository alone.
+#
+# The modules under ActiveGeometry/ are the files INTEGRATION.md and its 14 October addendum
+# say to add to the kernel's `theory/lean/ActiveGeometry/`. Here they are built as the top-level
+# modules `AuditFactors`, `BalloonCapacity`, ... (srcDir = ActiveGeometry), not as
+# `ActiveGeometry.<Module>`: the kernel's library globs every `ActiveGeometry.*` name, and Lake
+# resolves an import against every package whose library claims it, so a module of that name here
+# would also be looked for in the kernel checkout and fail. Only the import lines between these
+# modules differ from their kernel form (`import BalloonCapacity` here, `import
+# ActiveGeometry.BalloonCapacity` in the kernel); namespaces and statements are unchanged.
+# Mapping: this repository's module `<M>` is the kernel's `ActiveGeometry.<M>`.
+#
+# Both dependencies are pinned by commit. The kernel's own lake-manifest.json pins the same
+# Mathlib revision; it is repeated here so that the pin is visible without reading the manifest.
+
+name = "theory_modules"
+defaultTargets = ["ActiveGeometryModules"]
+
+[leanOptions]
+# As in the kernel's lakefile.lean, under which these modules were first compiled. (The kernel also
+# sets the pretty-printer option pp.unicode.fun, which does not affect elaboration.)
+autoImplicit = false
+
+[[require]]
+name = "ActiveGeometry"
+git = "https://github.com/sentry-bio/addressability-limit"
+rev = "97e31280b726dcd5deea2f0b56b3e691508fd471"
+subDir = "theory/lean"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "51c80a99cdb5e352e0871dae67039335d16e49c6"
+
+# The proved modules. `sorry`-free; every theorem on propext, Classical.choice, Quot.sound
+# (checked by axcheck/AxiomCheck.lean).
+[[lean_lib]]
+name = "ActiveGeometryModules"
+srcDir = "ActiveGeometry"
+roots = [
+  "AuditFactors",
+  "BalloonCapacity",
+  "BalloonPacking",
+  "CoarseConverse",
+  "Heredity",
+  "Persistent",
+  "Rigidity",
+  "Window",
+]
+
+# The challenge files: the same statements with every proof replaced by `sorry`.
+# Not a default target, so `lake build` stays sorry-free; `lake build Challenges` builds them.
+[[lean_lib]]
+name = "Challenges"
+roots = [
+  "Challenges.AuditFactors",
+  "Challenges.BalloonCapacity",
+  "Challenges.BalloonPacking",
+  "Challenges.CoarseConverse",
+  "Challenges.Heredity",
+  "Challenges.Persistent",
+  "Challenges.Rigidity",
+  "Challenges.Window",
+]
