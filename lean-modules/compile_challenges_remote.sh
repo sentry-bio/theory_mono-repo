@@ -1,4 +1,7 @@
 #!/bin/bash
+# LEGACY PATH. See compile_remote.sh; the build from this repository alone is `lake build Challenges`
+# in lean-modules/, run and checked by `lean-modules/ci.sh`.
+#
 # Type-check challenge modules (statements with `sorry`) against the pinned library on biosphereatlas.
 # Usage: compile_challenges_remote.sh <Module> [<Module> ...]   (files in /fast/scratch_lean2/new_modules/Challenges/)
 set -u
