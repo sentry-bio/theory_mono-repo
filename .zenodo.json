@@ -1,0 +1,43 @@
+{
+  "title": "theory_mono-repo: the addressability programme",
+  "upload_type": "software",
+  "description": "<p>The canonical record of one theory, written as four documents that share a single inequality, D<sup>-1</sup> d<sub>S</sub>(u,v) &minus; K &le; d<sub>M</sub>(addr u, addr v), and of the reference frame it licenses. Everything here is either a theorem (machine-checked in Lean 4 where the kernel reaches, cited where it does not), a registered measurement (registration dated before its data, verdict scored by the registered rule, readings kept separate), or a named open question.</p><p>Contents: Paper I, <em>The Addressability Limit</em>; Paper II, <em>Evolution as Active Geometry: Descent Under the Addressability Limit</em>; the note, <em>The Structured Addressability Limit</em>; the BRF2026 datum specification sheet (draft 0.1); the Lean 4 modules added to the kernel sentry-bio/addressability-limit; the registered record, PREREG00 to 25, with its ledger.</p><p>Licences: MIT for the Lean code and scripts; CC BY 4.0 for the papers, registrations and documentation; CC BY-SA 4.0 for files that contain GTDB-derived trees or labels. The mapping by directory is in LICENSES.md.</p>",
+  "creators": [
+    {
+      "name": "Fenn, Rohit",
+      "affiliation": "Sentry Bio, Inc., USA"
+    },
+    {
+      "name": "Fenn, Amit",
+      "affiliation": "Sentry Bio, Inc., USA"
+    }
+  ],
+  "access_right": "open",
+  "license": "other-open",
+  "version": "0.1.0-pre",
+  "keywords": [
+    "addressability",
+    "packing entropy",
+    "metric capacity",
+    "hyperbolic geometry",
+    "phylogenetics",
+    "genealogy horizon",
+    "pre-registration",
+    "Lean 4",
+    "BRF2026",
+    "Biosphere Reference Frame"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/sentry-bio/theory_mono-repo",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/sentry-bio/addressability-limit",
+      "relation": "requires",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "Draft metadata prepared by task T4. TODO before any deposit: ORCID for each creator (none found in the repository); confirm the copyright holder line in LICENSE; the licence field is other-open because the repository carries three licences (MIT, CC BY 4.0, CC BY-SA 4.0), see LICENSES.md; the record is deposited only after the tag v0.1.0-pre is cut by a human and the completion audit is clean (decision D10). Paper I states that it supersedes the Zenodo record with concept DOI 10.5281/zenodo.19381557; whether this deposit should declare a relation to that record is a human decision, so none is declared here."
+}
