@@ -1,0 +1,45 @@
+# Lean CI for lean-modules/: build the proved modules, check every theorem's axioms, forbid sorry
+# outside Challenges/, build Challenges/ and compare its sorry count with the twins' theorem count.
+# The steps live in lean-modules/ci.sh so that the same script runs locally.
+name: lean
+
+on:
+  push:
+    branches: [main]
+    paths: ['lean-modules/**', '.github/workflows/lean.yml']
+  pull_request:
+    paths: ['lean-modules/**', '.github/workflows/lean.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      # Installs elan with the toolchain in lean-modules/lean-toolchain and runs `lake exe cache get`
+      # (the Mathlib olean cache) in lean-modules/. It does not build: ci.sh does.
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean-modules
+          auto-config: false
+          use-mathlib-cache: true
+          use-github-cache: false
+          build: false
+          test: false
+          lint: false
+
+      - name: ci.sh
+        run: ./lean-modules/ci.sh
+
+      - name: axiom check output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axcheck-output
+          path: lean-modules/axcheck/axcheck.out
+          if-no-files-found: ignore

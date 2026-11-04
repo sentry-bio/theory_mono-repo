@@ -63,12 +63,13 @@ docs/             The closure plan, the package notes of 14 Oct, the status note
 ## Lean
 
 The kernel lives in `sentry-bio/addressability-limit`. The modules here (`BalloonCapacity`, `BalloonPacking`,
-`CoarseConverse`, `Persistent`, `Heredity`, the `Window` extension, `AuditFactors`, `Rigidity`) were compiled against
-that repository's pinned library (Lean 4.34.0-rc1, Mathlib as pinned) with every theorem on `propext`,
-`Classical.choice`, `Quot.sound` and no `sorry`; the axiom-check files and logs are in `lean-modules/axcheck/`. Each
-module ships a challenge file (the same statements with every proof replaced by `sorry`, type-checked) and a job JSON
-naming theorems, definitions and permitted axioms. `lean-modules/INTEGRATION.md` and the addendum say how they go
-into the kernel.
+`CoarseConverse`, `Persistent`, `Heredity`, the `Window` extension, `AuditFactors`, `Rigidity`) build against that
+repository's pinned library (Lean 4.34.0-rc1, Mathlib as pinned) with every theorem on `propext`,
+`Classical.choice`, `Quot.sound` and no `sorry`; see "Building the Lean modules" below. The axiom check that CI runs is
+`lean-modules/axcheck/AxiomCheck.lean`, and its last output is `lean-modules/axcheck/axcheck.out`; the per-module
+check files and the log from the first compilation are beside it. Each module ships a challenge file (the same
+statements with every proof replaced by `sorry`, type-checked) and a job JSON naming theorems, definitions and
+permitted axioms. `lean-modules/INTEGRATION.md` and the addendum say how they go into the kernel.
 
 ## The registered record
 
@@ -83,6 +84,40 @@ The manuscripts compile with Tectonic 0.15 (`tectonic -X compile <file>.tex`). `
 sources from the vG sources (typographic fixes only; it aborts if any replacement misses); `build/make_gh.py` derives
 Paper I's structural pass; `build/note_inventory.py` regenerates the note's inventory section from Paper I's
 appendix table. `paper1/texcheck.py` is the static check (environments, refs, cites, braces).
+
+### Building the Lean modules
+
+`lean-modules/` is a Lake package that builds from this repository alone. `lean-modules/lean-toolchain` pins
+Lean 4.34.0-rc1; `lean-modules/lakefile.toml` requires the kernel `sentry-bio/addressability-limit` at commit
+`97e31280` (its `theory/lean` package) and Mathlib at `51c80a99`, the revision the kernel's manifest pins;
+`lean-modules/lake-manifest.json` pins the transitive dependencies to the same revisions as the kernel's manifest.
+
+    cd lean-modules
+    lake exe cache get     # Mathlib oleans, 8,700 files from lakecache.blob.core.windows.net
+    lake build             # the eight proved modules (and the five kernel modules they import)
+    lake build Challenges  # the challenge files, sorry by design, never part of the default build
+    ./ci.sh                # everything CI does: build, axiom check, sorry check, challenge count
+
+`ci.sh` is what `.github/workflows/lean.yml` runs. Its four steps: `lake build`; `lake env lean
+axcheck/AxiomCheck.lean`, which collects the axioms of every declaration the eight modules introduce, prints one line
+per theorem and fails on any axiom other than `propext`, `Classical.choice`, `Quot.sound` (a `sorry` is the axiom
+`sorryAx`, so it fails too), then checks that every theorem the per-module `axcheck/<Module>Ax.lean` files name was
+printed; `check_sorry.py`, which fails on a `sorry` in code (comments stripped) in any Lean file outside
+`Challenges/`; and `lake build Challenges`, after which each challenge file's number of declarations that use `sorry`
+must equal the number of `theorem`s in its twin under `ActiveGeometry/` (123 in all).
+
+Module names: the files under `ActiveGeometry/` are built as the top-level modules `AuditFactors`, `BalloonCapacity`,
+... (`srcDir = "ActiveGeometry"`), not as `ActiveGeometry.<Module>`, because the kernel's library claims every
+`ActiveGeometry.*` name and Lake resolves an import against every package that claims it. This repository's module
+`<M>` is the kernel's `ActiveGeometry.<M>`; only the import lines between these modules differ from the form they
+take in the kernel, and namespaces and statements are unchanged.
+
+Times on a 4-vCPU cloud session: `lake update` with the Mathlib cache fetch 1 min 53 s; a clean `lake build` of the
+kernel modules and the eight modules 41 s; `lake build Challenges` 9 s; the axiom check 5 s; `ci.sh` after a
+build 50 s. The cache host `lakecache.blob.core.windows.net` was reachable without any change to the session's
+network allowlist (Mathlib's newer host `mathlib-cache.lean-lang.org` was not, and was not needed). The Mathlib build
+directory is 6.6 GB; the two legacy scripts `lean-modules/compile_remote.sh` and `compile_challenges_remote.sh`
+are the path that compiled the modules on the team's build host before this one existed and are kept as a record.
 
 ## Data not in this repository
 
