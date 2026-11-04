@@ -1,0 +1,40 @@
+# Task T3: the registered record is tamper-evident.
+# Fails if any file listed in registrations/RECORD_HASHES.tsv is missing or
+# differs, if a record file is not listed, if a listed row was changed or
+# removed relative to the base branch (rows may only be added), or if
+# registrations/record_index.tsv is stale relative to the ledger.
+name: record-check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Listed files match their hashes; every record file is listed
+        run: python3 tools/record_hashes.py check
+
+      - name: No listed row changed or removed (pull request, against the base branch)
+        if: github.event_name == 'pull_request'
+        run: python3 tools/record_hashes.py compare --base "origin/${{ github.base_ref }}"
+
+      - name: No listed row changed or removed (push, against the previous commit)
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        run: |
+          if git cat-file -e "${{ github.event.before }}^{commit}" 2>/dev/null; then
+            python3 tools/record_hashes.py compare --base "${{ github.event.before }}"
+          else
+            echo "previous commit ${{ github.event.before }} not in history (force push or rewrite); skipping"
+          fi
+
+      - name: The ledger index is up to date
+        run: python3 tools/record_index.py --check
