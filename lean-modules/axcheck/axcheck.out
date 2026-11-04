@@ -1,4 +1,4 @@
-== AuditFactors: 58 declarations
+== ActiveGeometry.AuditFactors: 58 declarations
 'ActiveGeometry.Audit.Chain.read_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Audit.Chain.Lossy.distinct_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Audit.Chain.Lossy.read_le' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -20,7 +20,7 @@
 'ActiveGeometry.Audit.Chain.cblock_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Audit.Chain.mk.injEq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Audit.Chain.kept_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
-== BalloonCapacity: 19 declarations
+== ActiveGeometry.BalloonCapacity: 19 declarations
 'ActiveGeometry.Constrained.binaryTreeSource_metricULF' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.take_eq_of_le_lcp' depends on axioms: [propext, Quot.sound]
 'ActiveGeometry.Constrained.balloon_capacity_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -31,7 +31,7 @@
 'ActiveGeometry.Constrained.metricULF_not_relational_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.card_ball_le_of_wordsOfLength' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.balloon_separates_metricUlf' depends on axioms: [propext, Classical.choice, Quot.sound]
-== BalloonPacking: 34 declarations
+== ActiveGeometry.BalloonPacking: 34 declarations
 'ActiveGeometry.Constrained.leavesOf_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.packingCount_le_two_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.balloon_capacity_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -42,8 +42,8 @@
 'ActiveGeometry.Constrained.balloon_capacity_block_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.balloon_hasFinitePacking' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.trivialSource_hasGrowth' depends on axioms: [propext, Classical.choice, Quot.sound]
-'ActiveGeometry.Constrained.instProperSpaceBalloon_balloonPacking' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.closedBall_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveGeometry.Constrained.instProperSpaceBalloon' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.leaf_injective' depends on axioms: [propext]
 'ActiveGeometry.Constrained.succ_lt_two_pow_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.leavesOf_subset_closedBall' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -54,7 +54,7 @@
 'ActiveGeometry.Constrained.zero_mem_rates_relational' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.card_ballFinset_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.balloon_capacity_relational_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
-== CoarseConverse: 17 declarations
+== ActiveGeometry.CoarseConverse: 17 declarations
 'ActiveGeometry.Constrained.packingCount_le_mul_packingCount' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.packingRate_scale_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.packingCount_anti' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -63,7 +63,7 @@
 'ActiveGeometry.Constrained.balloon_packingCount_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.census_card_le_coarse_packing' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.balloon_relational_rate_nonpos' depends on axioms: [propext, Classical.choice, Quot.sound]
-== Heredity: 22 declarations
+== ActiveGeometry.Heredity: 22 declarations
 'ActiveGeometry.Heredity.histories_le_sequence_room' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Heredity.card_carrier' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Heredity.histories_le_composition_room' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -74,7 +74,7 @@
 'ActiveGeometry.Heredity.eventually_poly_lt_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Heredity.card_composition' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Heredity.eventually_spectrum_not_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
-== Persistent: 63 declarations
+== ActiveGeometry.Persistent: 63 declarations
 'ActiveGeometry.Constrained.packingNumber_mono_set' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.nestedSet_isCover' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.persistentCount_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -119,13 +119,13 @@
 'ActiveGeometry.Constrained.recodingCode_base_persistent' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.packingCount_two_mul_le_nestedFinset_card' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Constrained.persistentSource_mem_retentive' depends on axioms: [propext, Classical.choice, Quot.sound]
-== Rigidity: 6 declarations
+== ActiveGeometry.Rigidity: 6 declarations
 'ActiveGeometry.Rigidity.quasiIsometric_of_net' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Rigidity.edist_gt_of_dist_gt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Rigidity.codeword_self_net' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Rigidity.dist_within_two_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Rigidity.maximal_separated_isNet' depends on axioms: [propext, Classical.choice, Quot.sound]
-== Window: 54 declarations
+== ActiveGeometry.Window: 54 declarations
 'ActiveGeometry.Window.same_letter_prob' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Window.ReconstructionThreshold.tight' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ActiveGeometry.Window.identity_sites' depends on axioms: [propext, Classical.choice, Quot.sound]
