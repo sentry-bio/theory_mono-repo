@@ -37,7 +37,7 @@
 -/
 
 import ActiveGeometry.Structured
-import CoarseConverse
+import ActiveGeometry.CoarseConverse
 
 namespace ActiveGeometry.Constrained
 

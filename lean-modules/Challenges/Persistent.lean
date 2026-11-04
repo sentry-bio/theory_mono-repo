@@ -5,7 +5,7 @@
   `recodingCode` and to `packingRate_scale_invariant` of `CoarseConverse`.
 -/
 import ActiveGeometry.Structured
-import CoarseConverse
+import ActiveGeometry.CoarseConverse
 
 namespace Challenges.Persistent
 

@@ -1,6 +1,6 @@
 /-
-  Axiom check for every module in ActiveGeometryModules
-  ====================================================
+  Axiom check for the eight modules, imported from the kernel
+  ============================================================
 
   Imports the proved modules and, for every declaration they introduce, collects the axioms
   it depends on. Prints one line per theorem in the form the legacy `<Module>Ax.lean` files
@@ -14,18 +14,17 @@
 
       lake env lean axcheck/AxiomCheck.lean
 
-  The module list below is the same as `roots` of `ActiveGeometryModules` in `lakefile.toml`
-  (the modules of ActiveGeometry/, built under their top-level names, see lakefile.toml);
-  `ci.sh` checks that the two agree.
+  The modules are the kernel's `ActiveGeometry.<M>` at the commit `lakefile.toml` pins, one per
+  file under ActiveGeometry/ here; `ci.sh` checks that the list below matches those files.
 -/
-import AuditFactors
-import BalloonCapacity
-import BalloonPacking
-import CoarseConverse
-import Heredity
-import Persistent
-import Rigidity
-import Window
+import ActiveGeometry.AuditFactors
+import ActiveGeometry.BalloonCapacity
+import ActiveGeometry.BalloonPacking
+import ActiveGeometry.CoarseConverse
+import ActiveGeometry.Heredity
+import ActiveGeometry.Persistent
+import ActiveGeometry.Rigidity
+import ActiveGeometry.Window
 import Lean
 
 namespace AxiomCheck
@@ -34,14 +33,14 @@ open Lean Elab Command
 
 /-- The modules whose declarations are checked. -/
 def checkedModules : List Name := [
-  `AuditFactors,
-  `BalloonCapacity,
-  `BalloonPacking,
-  `CoarseConverse,
-  `Heredity,
-  `Persistent,
-  `Rigidity,
-  `Window
+  `ActiveGeometry.AuditFactors,
+  `ActiveGeometry.BalloonCapacity,
+  `ActiveGeometry.BalloonPacking,
+  `ActiveGeometry.CoarseConverse,
+  `ActiveGeometry.Heredity,
+  `ActiveGeometry.Persistent,
+  `ActiveGeometry.Rigidity,
+  `ActiveGeometry.Window
 ]
 
 /-- The axioms a declaration may depend on. -/
