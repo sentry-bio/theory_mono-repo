@@ -2,10 +2,12 @@
 # The Lean CI for lean-modules/, runnable locally from this directory with the pinned toolchain
 # (lean-toolchain) after `lake exe cache get` has fetched the Mathlib oleans. Steps, in order:
 #
-#   1. lake build            the proved modules (ActiveGeometryModules), timed
+#   1. lake build            the kernel's ActiveGeometry.<M> for the eight modules (via TheoryModules), timed
 #   2. axiom check           axcheck/AxiomCheck.lean: every declaration on propext, Classical.choice,
 #                            Quot.sound only; every theorem printed; the names the legacy axcheck/<M>Ax.lean
 #                            files printed must all appear
+#   2b. identity             each ActiveGeometry/<M>.lean, Challenges/<M>.lean and Challenges/<M>.json here is
+#                            byte-identical to the kernel's file at the pinned commit
 #   3. sorry check           check_sorry.py: no `sorry` in code outside Challenges/
 #   4. challenges            lake build Challenges, then per module: the number of declarations that
 #                            use `sorry` (Lean's own warning) equals the number of theorems in the twin
@@ -23,23 +25,17 @@ step() { echo; echo "######## $*"; }
 step "0. toolchain"
 cat lean-toolchain; lean --version; lake --version
 
-step "1. lake build (ActiveGeometryModules)"
+step "1. lake build (TheoryModules: the kernel's ActiveGeometry.<M> for the eight modules)"
 t0=$(date +%s)
 lake build
 t1=$(date +%s)
 echo "lake build: $((t1 - t0)) s"
 
 step "2. axiom check (permitted: $PERMITTED)"
-# The module list in AxiomCheck.lean must be the roots of ActiveGeometryModules in lakefile.toml.
-roots=$(python3 -I - <<'PY'
-import re,tomllib
-cfg=tomllib.load(open("lakefile.toml","rb"))
-lib=[l for l in cfg["lean_lib"] if l["name"]=="ActiveGeometryModules"][0]
-print("\n".join(sorted(lib["roots"])))
-PY
-)
-listed=$(grep -oE '^  `[A-Za-z]+,?$' axcheck/AxiomCheck.lean | tr -d ' `,' | sort)
-[ "$roots" = "$listed" ] || fail "AxiomCheck.lean module list differs from lakefile.toml roots"
+# The module list in AxiomCheck.lean must be ActiveGeometry.<M> for the eight modules.
+expected=$(printf 'ActiveGeometry.%s\n' "${MODULES[@]}" | sort)
+listed=$(grep -oE '^  `ActiveGeometry\.[A-Za-z]+,?$' axcheck/AxiomCheck.lean | tr -d ' `,' | sort)
+[ "$expected" = "$listed" ] || fail "AxiomCheck.lean module list differs from MODULES"
 t0=$(date +%s)
 lake env lean axcheck/AxiomCheck.lean | tee axcheck/axcheck.out
 t1=$(date +%s)
@@ -54,6 +50,16 @@ for f in axcheck/*Ax.lean; do
 done
 [ "$missing" = 0 ] || fail "a theorem named in a legacy axcheck file was not printed (renamed or removed?)"
 echo "every theorem named in axcheck/*Ax.lean was printed (and so passed the axiom check)"
+
+step "2b. the copies here are byte-identical to the kernel's files at the pinned commit"
+kernel=.lake/packages/ActiveGeometry/theory/lean
+[ -d "$kernel" ] || fail "kernel checkout not found at $kernel (run lake build first)"
+for m in "${MODULES[@]}"; do
+  cmp "ActiveGeometry/$m.lean" "$kernel/ActiveGeometry/$m.lean" || fail "ActiveGeometry/$m.lean differs from the kernel's"
+  cmp "Challenges/$m.lean" "$kernel/Challenges/$m.lean" || fail "Challenges/$m.lean differs from the kernel's"
+  cmp "Challenges/$m.json" "$kernel/challenges/$m.json" || fail "Challenges/$m.json differs from the kernel's challenges/$m.json"
+done
+echo "24 files identical to the kernel's (ActiveGeometry/<M>.lean, Challenges/<M>.lean, Challenges/<M>.json)"
 
 step "3. sorry check (outside Challenges/)"
 python3 -I check_sorry.py

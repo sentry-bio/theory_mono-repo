@@ -89,28 +89,33 @@ appendix table. `paper1/texcheck.py` is the static check (environments, refs, ci
 
 `lean-modules/` is a Lake package that builds from this repository alone. `lean-modules/lean-toolchain` pins
 Lean 4.34.0-rc1; `lean-modules/lakefile.toml` requires the kernel `sentry-bio/addressability-limit` at commit
-`97e31280` (its `theory/lean` package) and Mathlib at `51c80a99`, the revision the kernel's manifest pins;
-`lean-modules/lake-manifest.json` pins the transitive dependencies to the same revisions as the kernel's manifest.
+`72d2c4d6` (its `theory/lean` package; the commit of the pull request that integrated the eight modules there as
+`ActiveGeometry.<Module>`, task T2; no tag exists yet, decision D10) and Mathlib at `51c80a99`, the revision the
+kernel's manifest pins; `lean-modules/lake-manifest.json` pins the transitive dependencies to the same revisions as
+the kernel's manifest. The eight modules build as the kernel's own `ActiveGeometry.<Module>`; the copies under
+`lean-modules/ActiveGeometry/` are the record, and CI checks that each is byte-identical to the kernel's file.
 
     cd lean-modules
     lake exe cache get     # Mathlib oleans, 8,700 files from lakecache.blob.core.windows.net
-    lake build             # the eight proved modules (and the five kernel modules they import)
+    lake build             # the kernel's ActiveGeometry.<Module> for the eight modules (TheoryModules.lean imports them)
     lake build Challenges  # the challenge files, sorry by design, never part of the default build
     ./ci.sh                # everything CI does: build, axiom check, sorry check, challenge count
 
-`ci.sh` is what `.github/workflows/lean.yml` runs. Its four steps: `lake build`; `lake env lean
+`ci.sh` is what `.github/workflows/lean.yml` runs. Its five steps: `lake build`; `lake env lean
 axcheck/AxiomCheck.lean`, which collects the axioms of every declaration the eight modules introduce, prints one line
 per theorem and fails on any axiom other than `propext`, `Classical.choice`, `Quot.sound` (a `sorry` is the axiom
 `sorryAx`, so it fails too), then checks that every theorem the per-module `axcheck/<Module>Ax.lean` files name was
-printed; `check_sorry.py`, which fails on a `sorry` in code (comments stripped) in any Lean file outside
-`Challenges/`; and `lake build Challenges`, after which each challenge file's number of declarations that use `sorry`
-must equal the number of `theorem`s in its twin under `ActiveGeometry/` (123 in all).
+printed; a byte-identity check of each `ActiveGeometry/<Module>.lean`, `Challenges/<Module>.lean` and
+`Challenges/<Module>.json` against the kernel checkout at the pinned commit; `check_sorry.py`, which fails on a
+`sorry` in code (comments stripped) in any Lean file outside `Challenges/`; and `lake build Challenges`, after which
+each challenge file's number of declarations that use `sorry` must equal the number of `theorem`s in its twin under
+`ActiveGeometry/` (123 in all).
 
-Module names: the files under `ActiveGeometry/` are built as the top-level modules `AuditFactors`, `BalloonCapacity`,
-... (`srcDir = "ActiveGeometry"`), not as `ActiveGeometry.<Module>`, because the kernel's library claims every
-`ActiveGeometry.*` name and Lake resolves an import against every package that claims it. This repository's module
-`<M>` is the kernel's `ActiveGeometry.<M>`; only the import lines between these modules differ from the form they
-take in the kernel, and namespaces and statements are unchanged.
+Module names: the eight modules are the kernel's `ActiveGeometry.<Module>`, and nothing here is compiled under
+another name. Before T2 the copies were built here as top-level modules (`srcDir = "ActiveGeometry"`) because the
+kernel's library claims every `ActiveGeometry.*` name; that workaround is gone, and the only observable change in
+the axiom output is the auto-generated name of the one anonymous instance (`instProperSpaceBalloon`, which the
+top-level build had suffixed `_balloonPacking`).
 
 Times on a 4-vCPU cloud session: `lake update` with the Mathlib cache fetch 1 min 53 s; a clean `lake build` of the
 kernel modules and the eight modules 41 s; `lake build Challenges` 9 s; the axiom check 5 s; `ci.sh` after a

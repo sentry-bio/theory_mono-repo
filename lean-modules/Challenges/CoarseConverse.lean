@@ -24,7 +24,7 @@
   packing entropy at every scale, which is why it CAN have zero relational tax
   (the equality itself is Skenderi's, not this theorem's).
 -/
-import BalloonPacking
+import ActiveGeometry.BalloonPacking
 
 namespace Challenges.CoarseConverse
 

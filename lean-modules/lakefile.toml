@@ -1,30 +1,32 @@
-# Lake build for the modules in this directory, from this repository alone.
+# Lake build for lean-modules/, from this repository alone.
 #
-# The modules under ActiveGeometry/ are the files INTEGRATION.md and its 14 October addendum
-# say to add to the kernel's `theory/lean/ActiveGeometry/`. Here they are built as the top-level
-# modules `AuditFactors`, `BalloonCapacity`, ... (srcDir = ActiveGeometry), not as
-# `ActiveGeometry.<Module>`: the kernel's library globs every `ActiveGeometry.*` name, and Lake
-# resolves an import against every package whose library claims it, so a module of that name here
-# would also be looked for in the kernel checkout and fail. Only the import lines between these
-# modules differ from their kernel form (`import BalloonCapacity` here, `import
-# ActiveGeometry.BalloonCapacity` in the kernel); namespaces and statements are unchanged.
-# Mapping: this repository's module `<M>` is the kernel's `ActiveGeometry.<M>`.
+# The proved modules under ActiveGeometry/ are the files INTEGRATION.md and its 14 October addendum
+# say to add to the kernel's `theory/lean/ActiveGeometry/`. Since kernel commit 72d2c4d6 (task T2) they
+# are there, as the modules `ActiveGeometry.<M>`, and that is what builds here: `lake build` builds the
+# kernel's `ActiveGeometry` library at the pinned commit, the eight included, and
+# axcheck/AxiomCheck.lean checks their axioms by importing them from it. The copies in this
+# directory are the specification's record; ci.sh checks that each is byte-identical to the kernel's.
+#
+# Before T2 the copies were built here under top-level names (srcDir = ActiveGeometry), because the
+# kernel's library claims every `ActiveGeometry.*` name; that workaround is gone.
 #
 # Both dependencies are pinned by commit. The kernel's own lake-manifest.json pins the same
 # Mathlib revision; it is repeated here so that the pin is visible without reading the manifest.
 
 name = "theory_modules"
-defaultTargets = ["ActiveGeometryModules"]
+defaultTargets = ["TheoryModules"]
 
 [leanOptions]
-# As in the kernel's lakefile.lean, under which these modules were first compiled. (The kernel also
-# sets the pretty-printer option pp.unicode.fun, which does not affect elaboration.)
+# As in the kernel's lakefile.lean. (The kernel also sets the pretty-printer option pp.unicode.fun,
+# which does not affect elaboration.)
 autoImplicit = false
 
+# The kernel, at the commit of the pull request that integrated the eight modules (task T2).
+# No tag exists yet (decision D10); pinned to a commit on purpose.
 [[require]]
 name = "ActiveGeometry"
 git = "https://github.com/sentry-bio/addressability-limit"
-rev = "97e31280b726dcd5deea2f0b56b3e691508fd471"
+rev = "72d2c4d6e9f70f9ffaafdd590301d5b50311c5cf"
 subDir = "theory/lean"
 
 [[require]]
@@ -33,24 +35,14 @@ scope = "leanprover-community"
 git = "https://github.com/leanprover-community/mathlib4.git"
 rev = "51c80a99cdb5e352e0871dae67039335d16e49c6"
 
-# The proved modules. `sorry`-free; every theorem on propext, Classical.choice, Quot.sound
-# (checked by axcheck/AxiomCheck.lean).
+# The default target: one file importing the kernel's eight modules, so that `lake build` compiles them.
 [[lean_lib]]
-name = "ActiveGeometryModules"
-srcDir = "ActiveGeometry"
-roots = [
-  "AuditFactors",
-  "BalloonCapacity",
-  "BalloonPacking",
-  "CoarseConverse",
-  "Heredity",
-  "Persistent",
-  "Rigidity",
-  "Window",
-]
+name = "TheoryModules"
+roots = ["TheoryModules"]
 
-# The challenge files: the same statements with every proof replaced by `sorry`.
-# Not a default target, so `lake build` stays sorry-free; `lake build Challenges` builds them.
+# The challenge files: the same statements as the kernel's ActiveGeometry/<M>.lean with every proof
+# replaced by `sorry`, built here against the kernel. Not a default target, so `lake build` stays
+# sorry-free; `lake build Challenges` builds them.
 [[lean_lib]]
 name = "Challenges"
 roots = [
