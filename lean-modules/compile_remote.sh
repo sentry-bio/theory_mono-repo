@@ -1,4 +1,9 @@
 #!/bin/bash
+# LEGACY PATH. This script compiled the modules on the team's build host against a kernel checkout there,
+# and cannot run anywhere else. The build from this repository alone is `lake build` in lean-modules/
+# (lakefile.toml, lean-toolchain) and `lean-modules/ci.sh`, which is what CI runs. Kept unchanged below
+# as the record of how the modules were first compiled.
+#
 # Compile one new module (and optionally its axiom-check file) against the pinned library on biosphereatlas.
 # Usage: compile_remote.sh <Module>   (expects /fast/scratch_lean2/new_modules/<Module>.lean and optional <Module>Ax.lean)
 set -u

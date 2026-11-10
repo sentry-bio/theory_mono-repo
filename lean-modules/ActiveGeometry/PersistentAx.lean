@@ -1,4 +1,4 @@
-import ActiveGeometry.Persistent
+import Persistent
 #print axioms ActiveGeometry.Constrained.packingNumber_mono_set
 #print axioms ActiveGeometry.Constrained.extendSeparated_isCover
 #print axioms ActiveGeometry.Constrained.packingCount_two_mul_le_nestedFinset_card

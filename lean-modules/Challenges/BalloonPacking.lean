@@ -15,7 +15,7 @@
 
       capacity_rel = 0  <  log 2 = capacity_block.
 -/
-import ActiveGeometry.BalloonCapacity
+import BalloonCapacity
 
 namespace Challenges.BalloonPacking
 
