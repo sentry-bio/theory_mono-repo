@@ -1,0 +1,100 @@
+# Citation metadata for this repository (Citation File Format 1.2.0).
+# Drafted by task T4 from README.md and the papers' title pages. Every field marked TODO
+# was not found in the repository and is left for a human. See LICENSES.md for the
+# licence that applies to each directory.
+cff-version: 1.2.0
+message: >-
+  If you use this repository, cite it as below. Until the tag v0.1.0-pre exists,
+  pin the commit you used and say so (decision D10). No DOI is minted yet.
+type: software
+title: "theory_mono-repo: the addressability programme"
+abstract: >-
+  The canonical record of one theory, written as four documents that share a single
+  inequality, D^{-1} d_S(u,v) - K <= d_M(addr u, addr v), and of the reference frame
+  it licenses. Everything here is either a theorem (machine-checked in Lean 4 where the
+  kernel reaches, cited where it does not), a registered measurement (registration dated
+  before its data, verdict scored by the registered rule, readings kept separate), or a
+  named open question. The repository holds Paper I (The Addressability Limit), Paper II
+  (Evolution as Active Geometry: Descent Under the Addressability Limit), the note
+  (The Structured Addressability Limit), the BRF2026 datum specification sheet, the Lean 4
+  modules added to the kernel, and the registered record (PREREG00 to 25).
+authors:
+  - family-names: Fenn
+    given-names: Rohit
+    affiliation: "Sentry Bio, Inc., USA"
+    # TODO: ORCID not found in README.md or any title page.
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: Fenn
+    given-names: Amit
+    affiliation: "Sentry Bio, Inc., USA"
+    # TODO: ORCID not found in README.md or any title page.
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+contact:
+  - name: "Sentry Bio research correspondence"
+    email: research@sentry.bio
+version: 0.1.0-pre
+# TODO: date-released is the date a human cuts the tag v0.1.0-pre (decision D10).
+# date-released: "2026-XX-XX"
+# TODO: a DOI is minted only after the licence files are merged and the completion audit is clean (D10).
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.XXXXXXX"
+repository-code: "https://github.com/sentry-bio/theory_mono-repo"
+license:
+  - MIT
+  - CC-BY-4.0
+  - CC-BY-SA-4.0
+keywords:
+  - addressability
+  - packing entropy
+  - metric capacity
+  - hyperbolic geometry
+  - phylogenetics
+  - genealogy horizon
+  - pre-registration
+  - Lean 4
+  - BRF2026
+  - Biosphere Reference Frame
+references:
+  - type: unpublished
+    title: "The Addressability Limit: A Geometric Capacity Bound for Information-Generating Hierarchies"
+    authors:
+      - family-names: Fenn
+        given-names: Rohit
+      - family-names: Fenn
+        given-names: Amit
+    year: 2026
+    notes: "Paper I, version Gh, 14 October 2026. Source paper1/paper1_vGh.tex; compiled build/Gh/paper1_addressability_limit_vGh.pdf. Candidate release text, awaiting one end-to-end human read."
+  - type: unpublished
+    title: "Evolution as Active Geometry: Descent Under the Addressability Limit"
+    authors:
+      - family-names: Fenn
+        given-names: Rohit
+      - family-names: Fenn
+        given-names: Amit
+    year: 2026
+    notes: "Paper II, version G, October 2026. Source paper2/paper2_vG.tex; compiled build/Gf/paper2_evolution_as_active_geometry_vGf.pdf."
+  - type: unpublished
+    title: "The Structured Addressability Limit: a note for independent review of the core mathematics"
+    authors:
+      - family-names: Fenn
+        given-names: Rohit
+      - family-names: Fenn
+        given-names: Amit
+    year: 2026
+    notes: "The note, version Gf. Source paper1/structured-addressability-note_vG.tex; compiled build/Gf/structured-addressability-note_vGf.pdf. The note's own title page carries no author line; the authors are taken from Paper I's bibliography entry fennfennnote."
+  - type: report
+    title: "BRF2026, Biosphere Reference Frame, datum specification sheet, draft 0.1"
+    authors:
+      - family-names: Fenn
+        given-names: Rohit
+      - family-names: Fenn
+        given-names: Amit
+    year: 2026
+    notes: "brf2026/BRF2026_spec_sheet.tex, 15 October 2026. The sheet carries no author line; TODO confirm the authors. Placeholders still open: realisation name, partner institutions, archaeal band label."
+  - type: software
+    title: "addressability-limit (the Lean 4 kernel)"
+    authors:
+      - name: "Sentry Bio"
+    repository-code: "https://github.com/sentry-bio/addressability-limit"
+    notes: "The MIT Lean library the modules in lean-modules/ build on."
