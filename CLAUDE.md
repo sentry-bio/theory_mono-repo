@@ -47,7 +47,7 @@ Read the indexes before anything else, and only what your task touches.
 
 Things to know:
 
-- `lean-modules/Challenges/` holds the same statements as `ActiveGeometry/` with every proof replaced by `sorry` (125 in all). Those `sorry` are deliberate.
+- `lean-modules/Challenges/` holds the same statements as `ActiveGeometry/` with every proof replaced by `sorry` (123 in code, one per theorem). Those `sorry` are deliberate.
 - `experiments/` covers PREREG17 onward. PREREG00 to 16 ran elsewhere; their folders are being imported separately (decision D13).
 - `build/` holds derivation scripts and compiled releases with hashes; `GF_HASHES.txt` is a record, not a cache.
 - Today the only Lean build is a legacy remote script (`compile_remote.sh`). Task T1 replaces it with a build from this repository alone.
